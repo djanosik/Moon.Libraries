@@ -2,7 +2,7 @@
     "version": "1.0.0-ci",
     "authors": [ "Dusan Janosik" ],
     "owners": [ "djanosik" ],
-    "projectUrl": "https://github.com/djanosik/moon.core",
+    "projectUrl": "https://github.com/djanosik/Moon.Core",
     "iconUrl": "http://moontea.net/moon.png",
     "description": "Simple Guard (or DbC) implementation.",
     "tags": [ "moontea", "contracts", "guard" ],
