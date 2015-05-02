@@ -5,7 +5,7 @@ build_script:
   - ps: ls project*.json -rec | %{ $f=$_; (gc $f.PSPath) | %{ $_ -replace "1.0.0-ci", (gi env:"APPVEYOR_BUILD_VERSION").Value } | sc $f.PSPath }
   - build.cmd --quiet verify
 artifacts:
-  - path: '**/*.nupkg'
+  - path: 'artifacts/build/*.nupkg'
     name: NuGet
 clone_depth: 1
 test: off
