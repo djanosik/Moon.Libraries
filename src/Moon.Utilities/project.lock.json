@@ -3,7 +3,7 @@
   "version": -9998,
   "projectFileDependencyGroups": {
     "": [
-      "Moon.Contracts >= 1.0.0"
+      "Moon.Contracts >= 1.0.0-ci"
     ],
     ".NETFramework,Version=v4.5.1": [],
     "DNX,Version=v4.5.1": [],
