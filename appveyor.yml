@@ -2,11 +2,12 @@ version: 1.0.{build}
 init:
   - git config --global core.autocrlf true
 build_script:
-  - ps: ls project*.json -rec | %{ $f=$_; (gc $f.PSPath) | %{ $_ -replace "1.0.0-ci", (gi env:"APPVEYOR_BUILD_VERSION").Value } | sc $f.PSPath }
+  - SET CI_BUILD_NUMBER=%APPVEYOR_BUILD_VERSION%
   - build.cmd --quiet verify
 artifacts:
-  - path: 'artifacts/build/*.nupkg'
+  - path: artifacts/**.nupkg
     name: NuGet
 clone_depth: 1
-test: off
+test:
+  assemblies: test/**/*.dll
 deploy: off
