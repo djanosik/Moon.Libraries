@@ -3,7 +3,7 @@ init:
   - git config --global core.autocrlf true
 build_script:
   - SET CI_BUILD_NUMBER=%APPVEYOR_BUILD_VERSION%
-  - build.cmd --quiet verify
+  - build.cmd
 artifacts:
   - path: artifacts/**.nupkg
     name: NuGet
