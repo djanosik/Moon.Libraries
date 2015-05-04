@@ -1,5 +1,5 @@
 #r "build/FAKE/tools/FakeLib.dll"
-#load "build/FAKEX/tools/targets.fsx"
+#load "build/FAKEX/tools/fakex.fsx"
 open Fake
 
 RunTargetOrDefault "Build"

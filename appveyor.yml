@@ -2,12 +2,10 @@ version: 1.0.{build}
 init:
   - git config --global core.autocrlf true
 build_script:
-  - SET CI_BUILD_NUMBER=%APPVEYOR_BUILD_VERSION%
   - build.cmd
 artifacts:
   - path: artifacts/**.nupkg
     name: NuGet
 clone_depth: 1
-test:
-  assemblies: test/**/*.dll
+test: off
 deploy: off
