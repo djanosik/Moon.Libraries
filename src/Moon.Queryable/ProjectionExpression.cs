@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Moon.Linq
+namespace Moon.Queryable
 {
     /// <summary>
     /// The projection expression used to project elements of source into a new form.

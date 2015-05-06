@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Moon.Linq
+namespace Moon.Queryable
 {
     /// <summary>
     /// Automatic projection which can be used to project elements to results with matching
@@ -18,15 +18,7 @@ namespace Moon.Linq
         where TResult : class
     {
         private static readonly ConcurrentDictionary<string, Expression> cache = new ConcurrentDictionary<string, Expression>();
-        private readonly string cacheKey;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AutomaticProjection{TSource, TResult}" /> class.
-        /// </summary>
-        public AutomaticProjection()
-        {
-            cacheKey = GetCacheKey();
-        }
+        private readonly string cacheKey = string.Concat(typeof(TSource).FullName, typeof(TResult).FullName);
 
         /// <summary>
         /// Returns an expression used to project elements.
@@ -63,8 +55,5 @@ namespace Moon.Linq
 
         private Expression<Func<TSource, TResult>> GetCachedExpression()
             => cache.ContainsKey(cacheKey) ? cache[cacheKey] as Expression<Func<TSource, TResult>> : null;
-
-        private string GetCacheKey()
-            => string.Concat(typeof(TSource).FullName, typeof(TResult).FullName);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Moon.Linq
+namespace Moon.Queryable
 {
     /// <summary>
     /// <see cref="IQueryable{T}" /> extension methods.

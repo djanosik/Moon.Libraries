@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Moon.Linq
+namespace Moon.Queryable
 {
     /// <summary>
     /// Represents an extensibility point you can use to create reusable queries.

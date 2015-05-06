@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Xunit;
 
-namespace Moon.Linq.Tests
+namespace Moon.Queryable.Tests
 {
     public class QueryableExtensionsTests
     {

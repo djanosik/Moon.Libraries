@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Moon.Linq
+namespace Moon.Queryable
 {
     /// <summary>
     /// The base class for element projections.
