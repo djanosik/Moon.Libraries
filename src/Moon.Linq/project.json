@@ -2,7 +2,7 @@
     "version": "1.0.0-ci",
     "authors": [ "Dusan Janosik" ],
     "owners": [ "djanosik" ],
-    "projectUrl": "https://github.com/djanosik/Moon.Framework",
+    "projectUrl": "https://github.com/djanosik/Moon.Libraries",
     "iconUrl": "http://moontea.net/moon.png",
     "description": "Reusable LINQ queries and projections, extensions for System.Linq.",
     "tags": [ "moontea", "linq", "collections" ],

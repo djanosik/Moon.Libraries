@@ -2,7 +2,7 @@
     "version": "1.0.0-ci",
     "authors": [ "Dusan Janosik" ],
     "owners": [ "djanosik" ],
-    "projectUrl": "https://github.com/djanosik/Moon.Framework",
+    "projectUrl": "https://github.com/djanosik/Moon.Libraries",
     "iconUrl": "http://moontea.net/moon.png",
     "description": "Essential types and helpers, extensions for System.Runtime.",
     "tags": [ "moontea", "framework", "runtime" ],

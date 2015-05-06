@@ -1,5 +1,5 @@
-# Moon.Framework
+# Moon.Libraries
 
-[![Build status](https://ci.appveyor.com/api/projects/status/0d0xliwjlga4je30?svg=true)](https://ci.appveyor.com/project/djanosik/moon-framework)
+[![Build status](https://ci.appveyor.com/api/projects/status/ch2mna4pc45llqif?svg=true)](https://ci.appveyor.com/project/djanosik/moon-libraries)
 
-Framework for creating .NET / DNX applications. See [Wiki](https://github.com/djanosik/Moon.Framework/wiki) to find more information.
+Libraries for creating .NET / DNX applications. See [Wiki](https://github.com/djanosik/Moon.Libraries/wiki) to find more information.
