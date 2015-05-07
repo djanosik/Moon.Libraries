@@ -7,7 +7,7 @@
     "description": "Helpers for handling IO operations, extensions for System.IO.",
     "tags": [ "moontea", "IO" ],
     "dependencies": {
-        "Moon.Threading.Tasks": "1.0.0-ci"
+        "Moon.Threading": "1.0.0-ci"
     },
     "frameworks": {
         "net451": { },
