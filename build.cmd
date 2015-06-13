@@ -27,5 +27,5 @@ CALL build\FAKEX\tools\dnvm install default -runtime CoreCLR -arch x86 -nonative
 
 :run
 CALL build\FAKEX\tools\dnvm use default -runtime CLR -arch x86
-FOR /f %%i in ("build\FAKEX\tools\dnvm name default") do SET DNX_FOLDER=%USERPROFILE%\.dnx\runtimes\%%i\bin
+FOR /f %%i in ('build\FAKEX\tools\dnvm name default') do SET DNX_FOLDER=%USERPROFILE%\.dnx\runtimes\%%i\bin
 build\FAKE\tools\Fake.exe build.fsx %*
