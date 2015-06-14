@@ -9,14 +9,6 @@ namespace Moon.Collections
     public static class ArrayExtensions
     {
         /// <summary>
-        /// Returns empty array if the <paramref name="source" /> is <c>null</c>.
-        /// </summary>
-        /// <typeparam name="T">The type of elements of source.</typeparam>
-        /// <param name="source">A source array.</param>
-        public static T[] EmptyIfNull<T>(this T[] source)
-            => source ?? new T[0];
-
-        /// <summary>
         /// Moves an item at the <paramref name="oldIndex" /> to the <paramref name="newIndex" />.
         /// </summary>
         /// <typeparam name="T">The type of elements of source.</typeparam>

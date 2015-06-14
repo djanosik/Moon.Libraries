@@ -1,6 +1,6 @@
 using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Moon
 {
@@ -9,7 +9,7 @@ namespace Moon
     /// </summary>
     public static class MimeType
     {
-        private static readonly Dictionary<string, string> mimeMap = new Dictionary<string, string>(StringComparer.CurrentCultureIgnoreCase)
+        static readonly Dictionary<string, string> mimeMap = new Dictionary<string, string>(StringComparer.CurrentCultureIgnoreCase)
         {
             [".aac"] = "audio/aac",
             [".mp3"] = "audio/mpeg",
@@ -121,7 +121,7 @@ namespace Moon
         {
             Requires.NotNullOrWhiteSpace(fileExtensionOrName, nameof(fileExtensionOrName));
 
-            if (!fileExtensionOrName.StartsWith("."))
+            if (!fileExtensionOrName.StartsWith(".", StringComparison.Ordinal))
             {
                 fileExtensionOrName = Path.GetExtension(fileExtensionOrName);
             }

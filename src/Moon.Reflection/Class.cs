@@ -51,7 +51,7 @@ namespace Moon.Reflection
             return args.Any() ? GetActivator(type, args)(args) : GetActivator(type)();
         }
 
-        private static Func<object[], object> GetActivator(Type type, IEnumerable<object> args)
+        static Func<object[], object> GetActivator(Type type, IEnumerable<object> args)
         {
             var argTypes = args.Select(x => x.GetType()).ToArray();
             var ctorInfo = type.GetTypeInfo().GetConstructor(argTypes);
@@ -68,12 +68,12 @@ namespace Moon.Reflection
             return (Func<object[], object>)lambda.Compile();
         }
 
-        private static Func<object> GetActivator(Type type)
+        static Func<object> GetActivator(Type type)
         {
             return (Func<object>)Expression.Lambda(Expression.Convert(Expression.New(type), typeof(object))).Compile();
         }
 
-        private static Expression[] GetConstructorArguments(ConstructorInfo ctorInfo, ParameterExpression argValues)
+        static Expression[] GetConstructorArguments(ConstructorInfo ctorInfo, ParameterExpression argValues)
         {
             var argTypes = ctorInfo.GetParameters().Select(x => x.ParameterType).ToArray();
             var ctorArguments = new Expression[argTypes.Length];

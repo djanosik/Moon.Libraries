@@ -54,7 +54,7 @@ namespace Moon
             var bytes = Encoding.GetEncoding("ISO-8859-8").GetBytes(input);
             return Encoding.UTF8.GetString(bytes, 0, bytes.Length);
         }
-        
+
         /// <summary>
         /// Removes all occurrences of the specified string.
         /// </summary>

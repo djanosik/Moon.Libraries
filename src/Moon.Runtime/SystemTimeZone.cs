@@ -8,7 +8,7 @@ namespace Moon
     /// </summary>
     public sealed class SystemTimeZone : TimeZone
     {
-        private static readonly Dictionary<string, string> tzidMap = new Dictionary<string, string>
+        static readonly Dictionary<string, string> tzidMap = new Dictionary<string, string>
         {
             ["Etc/GMT+12"] = "Dateline Standard Time",
             ["Etc/GMT+11"] = "UTC-11",

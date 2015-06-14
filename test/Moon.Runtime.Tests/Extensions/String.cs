@@ -3,8 +3,8 @@ using Xunit;
 
 namespace Moon.Tests
 {
-	public class StringExtensionsTests
-	{
+    public class StringExtensionsTests
+    {
         [Fact]
         public void Capitalize_AnyString_ShouldConvertFirstLetterToUpperCase()
         {
@@ -44,7 +44,7 @@ namespace Moon.Tests
 
             Assert.Equal("testTextOf", result);
         }
-        
+
         [Fact]
         public void Replace_AnyString_ShouldReplaceStringUsingTheGivenComparisonMethod()
         {
@@ -61,5 +61,5 @@ namespace Moon.Tests
 
             Assert.True(result.Length < input.Length);
         }
-	}	
+    }
 }

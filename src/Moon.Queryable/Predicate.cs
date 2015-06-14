@@ -58,7 +58,7 @@ namespace Moon.Queryable
         public static Expression<Func<T, bool>> True<T>()
             => p => true;
 
-        private static Expression<T> Compose<T>(this Expression<T> first, Expression<T> second, Func<Expression, Expression, Expression> merge)
+        static Expression<T> Compose<T>(this Expression<T> first, Expression<T> second, Func<Expression, Expression, Expression> merge)
         {
             // zip parameters (map from parameters of second to parameters of first)
             var map = first.Parameters
@@ -72,11 +72,11 @@ namespace Moon.Queryable
             return Expression.Lambda<T>(merge(first.Body, secondBody), first.Parameters);
         }
 
-        private class ParameterRebinder : ExpressionVisitor
+        class ParameterRebinder : ExpressionVisitor
         {
-            private readonly Dictionary<ParameterExpression, ParameterExpression> map;
+            readonly Dictionary<ParameterExpression, ParameterExpression> map;
 
-            private ParameterRebinder(Dictionary<ParameterExpression, ParameterExpression> map)
+            ParameterRebinder(Dictionary<ParameterExpression, ParameterExpression> map)
             {
                 this.map = map ?? new Dictionary<ParameterExpression, ParameterExpression>();
             }
@@ -86,16 +86,16 @@ namespace Moon.Queryable
                 return new ParameterRebinder(map).Visit(exp);
             }
 
-            protected override Expression VisitParameter(ParameterExpression p)
+            protected override Expression VisitParameter(ParameterExpression node)
             {
                 ParameterExpression replacement;
 
-                if (map.TryGetValue(p, out replacement))
+                if (map.TryGetValue(node, out replacement))
                 {
-                    p = replacement;
+                    node = replacement;
                 }
 
-                return base.VisitParameter(p);
+                return base.VisitParameter(node);
             }
         }
     }

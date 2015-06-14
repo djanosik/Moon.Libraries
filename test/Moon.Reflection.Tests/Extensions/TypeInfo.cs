@@ -3,6 +3,14 @@ using Xunit;
 
 namespace Moon.Reflection.Tests
 {
+    public interface ITest<T>
+    {
+    }
+
+    public interface ITest
+    {
+    }
+
     public class TypeInfoExtensionsTests
     {
         [Fact]
@@ -38,15 +46,7 @@ namespace Moon.Reflection.Tests
         }
     }
 
-    public class Test : ITest<string>, ITest 
-    {
-    }
-
-    public interface ITest<T>
-    {
-    }
-    
-    public interface ITest
+    public class Test : ITest<string>, ITest
     {
     }
 }

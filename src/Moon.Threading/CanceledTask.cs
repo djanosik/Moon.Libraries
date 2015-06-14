@@ -16,7 +16,7 @@ namespace Moon.Threading.Tasks
     /// <typeparam name="TResult">The type of the result.</typeparam>
     public class CanceledTask<TResult>
     {
-        private readonly Task<TResult> task;
+        readonly Task<TResult> task;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CanceledTask{TResult}" /> class.

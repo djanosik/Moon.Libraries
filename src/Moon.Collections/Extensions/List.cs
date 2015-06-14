@@ -5,7 +5,7 @@ using System.Linq;
 namespace Moon.Collections
 {
     /// <summary>
-    /// <see cref="IList" /> extension methods.
+    /// <see cref="IList{T}" /> extension methods.
     /// </summary>
     public static class ListExtensions
     {
@@ -22,22 +22,6 @@ namespace Moon.Collections
                 source.AddRange(items.AsEnumerable());
             }
         }
-
-        /// <summary>
-        /// Returns empty list if the <paramref name="source" /> is <c>null</c>.
-        /// </summary>
-        /// <typeparam name="T">The type of elements of source.</typeparam>
-        /// <param name="source">A source list.</param>
-        public static List<T> EmptyIfNull<T>(this List<T> source)
-            => source ?? new List<T>(0);
-
-        /// <summary>
-        /// Returns empty list if the <paramref name="source" /> is <c>null</c>.
-        /// </summary>
-        /// <typeparam name="T">The type of elements of source.</typeparam>
-        /// <param name="source">A source list.</param>
-        public static IList<T> EmptyIfNull<T>(this IList<T> source)
-            => source ?? new List<T>(0);
 
         /// <summary>
         /// Moves na item at the <paramref name="oldIndex" /> to the <paramref name="newIndex" />.

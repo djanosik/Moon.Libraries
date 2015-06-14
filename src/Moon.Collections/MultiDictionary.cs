@@ -34,7 +34,7 @@ namespace Moon.Collections
         public void Add(TKey key, TValue value)
         {
             Requires.NotNull(key, nameof(key));
-            
+
             List<TValue> list;
             if (!TryGetValue(key, out list))
             {
@@ -69,7 +69,7 @@ namespace Moon.Collections
         public bool Contains(TKey key, TValue value)
         {
             Requires.NotNull(key, nameof(key));
-            
+
             List<TValue> list;
             return TryGetValue(key, out list) && list.Contains(value);
         }
@@ -83,7 +83,7 @@ namespace Moon.Collections
         public bool Remove(TKey key, TValue value)
         {
             Requires.NotNull(key, nameof(key));
-            
+
             List<TValue> list;
             return TryGetValue(key, out list) && list.Remove(value);
         }

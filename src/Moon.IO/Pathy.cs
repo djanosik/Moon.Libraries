@@ -186,7 +186,7 @@ namespace Moon.IO
 
             path = Normalize(path);
 
-            if (path.StartsWith("/"))
+            if (path.StartsWith("/", StringComparison.Ordinal))
             {
                 path = path.Substring(1);
             }
@@ -218,7 +218,7 @@ namespace Moon.IO
             return folderPath;
         }
 
-        private static string RemoveRedundantSlashes(string path)
+        static string RemoveRedundantSlashes(string path)
         {
             const string schemeSep = "://";
 
@@ -246,7 +246,7 @@ namespace Moon.IO
             return path;
         }
 
-        private static string ReplaceBackSlashes(string path)
+        static string ReplaceBackSlashes(string path)
         {
             Requires.NotNull(path, nameof(path));
 

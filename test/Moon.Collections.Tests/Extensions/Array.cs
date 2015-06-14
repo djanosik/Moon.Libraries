@@ -13,12 +13,12 @@ namespace Moon.Collections.Tests
 
             Assert.Equal(1, items[2]);
         }
-        
+
         [Fact]
         public void Trim_SholdReturnTrimmedArray()
         {
             var result = new[] { 1, 2, 3 }.Trim(1);
-            
+
             Assert.Equal(1, result.Last());
         }
     }

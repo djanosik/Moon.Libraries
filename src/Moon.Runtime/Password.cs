@@ -7,7 +7,7 @@ namespace Moon
     /// </summary>
     public static class Password
     {
-        private static readonly Random random = new Random();
+        static readonly Random random = new Random();
 
         /// <summary>
         /// Generates a password of the specified length.

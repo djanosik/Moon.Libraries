@@ -5,7 +5,7 @@ using System.Linq;
 namespace Moon.Collections
 {
     /// <summary>
-    /// <see cref="IEnumerable" /> extension methods.
+    /// <see cref="IEnumerable{T}" /> extension methods.
     /// </summary>
     public static class EnumerableExtensions
     {
@@ -31,14 +31,6 @@ namespace Moon.Collections
         /// <param name="source">A source enumeration.</param>
         public static bool Empty<T>(this IEnumerable<T> source)
             => !source.Any();
-
-        /// <summary>
-        /// Returns empty enumeration if the <paramref name="source" /> is <c>null</c>.
-        /// </summary>
-        /// <typeparam name="T">The type of elements of source.</typeparam>
-        /// <param name="source">A source enumeration.</param>
-        public static IEnumerable<T> EmptyIfNull<T>(this IEnumerable<T> source)
-            => source ?? Enumerable.Empty<T>();
 
         /// <summary>
         /// Returns first half of items from the <paramref name="source" /> enumeration.
