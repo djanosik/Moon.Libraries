@@ -6,9 +6,11 @@
     "iconUrl": "http://moontea.net/moon.png",
     "description": "Reusable LINQ queries, extensions for System.Linq.",
     "tags": [ "moontea", "linq", "collections", "queryable" ],
+
     "dependencies": {
         "Moon.Reflection": "1.0.0-ci"
     },
+
     "frameworks": {
         "net451": { },
         "dnx451": { },

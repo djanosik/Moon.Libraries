@@ -6,9 +6,11 @@
     "iconUrl": "http://moontea.net/moon.png",
     "description": "Essential types and helpers, extensions for System.Runtime.",
     "tags": [ "moontea", "framework", "runtime" ],
+
     "dependencies": {
         "Moon.Contracts": "1.0.0-ci"
     },
+
     "frameworks": {
         "net451": { },
         "dnx451": { },

@@ -6,9 +6,11 @@
     "iconUrl": "http://moontea.net/moon.png",
     "description": "Fast object activator, extensions for System.Reflection.",
     "tags": [ "moontea", "reflection" ],
+
     "dependencies": {
         "Moon.Runtime": "1.0.0-ci"
     },
+
     "frameworks": {
         "net451": { },
         "dnx451": { },

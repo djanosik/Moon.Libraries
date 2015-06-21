@@ -6,9 +6,11 @@
     "iconUrl": "http://moontea.net/moon.png",
     "description": "Helper that runs async methods synchronously, extensions for System.Threading.",
     "tags": [ "moontea", "utilities", "helpers", "common" ],
+
     "dependencies": {
         "Moon.Runtime": "1.0.0-ci"
     },
+
     "frameworks": {
         "net451": { },
         "dnx451": { },
