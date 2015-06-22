@@ -123,7 +123,7 @@ namespace Moon
         /// </param>
         /// <param name="result">When this method returns, contains an object of type <typeparamref name="TEnum" />.</param>
         public static bool TryParse(string value, out TEnum result)
-            => Enum.TryParse<TEnum>(value, out result);
+            => Enum.TryParse(value, out result);
 
         /// <summary>
         /// Converts the string representation of the name or numeric value of one or more
@@ -136,6 +136,6 @@ namespace Moon
         /// <param name="ignoreCase">If true, ignore case; otherwise, regard case.</param>
         /// <param name="result">When this method returns, contains an object of type <typeparamref name="TEnum" />.</param>
         public static bool TryParse(string value, bool ignoreCase, out TEnum result)
-            => Enum.TryParse<TEnum>(value, ignoreCase, out result);
+            => Enum.TryParse(value, ignoreCase, out result);
     }
 }

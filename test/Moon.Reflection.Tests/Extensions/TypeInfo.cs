@@ -3,14 +3,6 @@ using Xunit;
 
 namespace Moon.Reflection.Tests
 {
-    public interface ITest<T>
-    {
-    }
-
-    public interface ITest
-    {
-    }
-
     public class TypeInfoExtensionsTests
     {
         [Fact]
@@ -44,9 +36,17 @@ namespace Moon.Reflection.Tests
 
             Assert.True(typeInfo.Implements(typeof(ITest).GetTypeInfo()));
         }
-    }
 
-    public class Test : ITest<string>, ITest
-    {
+        public interface ITest
+        {
+        }
+
+        public interface ITest<T>
+        {
+        }
+
+        public class Test : ITest<string>, ITest
+        {
+        }
     }
 }

@@ -11,6 +11,8 @@ namespace Moon.Reflection.Tests
             var dictionary = Anonymous.ToDictionary<string>(obj);
 
             Assert.Equal(2, dictionary.Count);
+            Assert.Equal("test", dictionary["test"]);
+            Assert.Equal("test2", dictionary["test2"]);
         }
     }
 }

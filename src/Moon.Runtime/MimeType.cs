@@ -60,6 +60,7 @@ namespace Moon
             [".jp2"] = "image/jpeg",
             [".jfif"] = "image/jpeg",
             [".png"] = "image/png",
+            [".webp"] = "image/webp",
             [".eml"] = "message/rfc822",
             [".mhtml"] = "message/rfc822",
             [".mht"] = "message/rfc822",

@@ -19,7 +19,8 @@ namespace Moon.Collections.Tests
         {
             var result = new[] { 1, 2, 3 }.Trim(1);
 
-            Assert.Equal(1, result.Last());
+            Assert.Equal(1, result.Count());
+            Assert.Equal(1, result[0]);
         }
     }
 }
