@@ -1,19 +1,17 @@
 {
-    "version": "1.0.0-ci",
-    "authors": [ "Dusan Janosik" ],
-    "owners": [ "djanosik" ],
-    "projectUrl": "https://github.com/djanosik/Moon.Libraries",
-    "iconUrl": "http://moontea.net/moon.png",
-    "description": "Helpers for handling IO operations, extensions for System.IO.",
-    "tags": [ "moontea", "IO" ],
+  "version": "1.0.0-ci",
+  "authors": [ "Dusan Janosik" ],
+  "owners": [ "djanosik" ],
+  "projectUrl": "https://github.com/djanosik/Moon.Libraries",
+  "iconUrl": "http://moontea.net/moon.png",
+  "description": "Helpers for handling IO operations, extensions for System.IO.",
+  "tags": [ "moontea", "IO" ],
 
-    "dependencies": {
-        "Moon.Threading": "1.0.0-ci"
-    },
+  "dependencies": {
+    "Moon.Threading": "1.0.0-ci"
+  },
 
-    "frameworks": {
-        "net451": { },
-        "dnx451": { },
-        "dnxcore50": { }
-    }
+  "frameworks": {
+    "dotnet": { }
+  }
 }

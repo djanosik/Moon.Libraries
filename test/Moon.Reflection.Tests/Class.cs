@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Moon.Reflection.Tests
@@ -16,11 +17,10 @@ namespace Moon.Reflection.Tests
         [Fact]
         public void Create_WithParams_ReturnsNewInstance()
         {
-            var items = new[] { 1, 2, 3 };
-            var list = Class.Create<List<int>>(items);
+            var list = Class.Create<List<int>>(1);
 
             Assert.IsAssignableFrom<List<int>>(list);
-            Assert.Equal(3, list.Count);
+            Assert.Equal(1, list.Capacity);
         }
     }
 }
