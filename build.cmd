@@ -22,7 +22,7 @@ build\NuGet.exe install FAKEX -ExcludeVersion -o build
 
 :getdnx
 IF "%SKIP_DNX_INSTALL%"=="1" goto run
-CALL build\FAKEX\tools\dnvm install '1.0.0-beta4' -a default -runtime CLR -arch x86 -nonative
+CALL build\FAKEX\tools\dnvm install '1.0.0-beta6' -a default -runtime CLR -arch x86 -nonative
 CALL build\FAKEX\tools\dnvm install default -runtime CoreCLR -arch x86 -nonative
 
 :run
