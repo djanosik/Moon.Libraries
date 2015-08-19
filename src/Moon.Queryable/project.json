@@ -8,11 +8,16 @@
   "tags": [ "moontea", "linq", "collections", "queryable" ],
 
   "dependencies": {
-    "Moon.Runtime": "1.0.0-ci",
-    "System.Linq.Queryable": "4.0.0"
+    "Moon.Runtime": "1.0.0-ci"
   },
 
   "frameworks": {
-    "dotnet": { }
+    "net451": { },
+    "dnx451": { },
+    "dotnet": {
+      "dependencies": {
+        "System.Linq.Queryable": "4.0.0"
+      }
+    }
   }
 }

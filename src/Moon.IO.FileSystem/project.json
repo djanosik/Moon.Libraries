@@ -8,11 +8,16 @@
   "tags": [ "moontea", "IO", "files", "filesystem" ],
 
   "dependencies": {
-    "Moon.IO": "1.0.0-ci",
-    "System.IO.FileSystem": "4.0.0"
+    "Moon.IO": "1.0.0-ci"
   },
 
   "frameworks": {
-    "dotnet": { }
+    "net451": { },
+    "dnx451": { },
+    "dotnet": {
+      "dependencies": {
+        "System.IO.FileSystem": "4.0.0"
+      }
+    }
   }
 }

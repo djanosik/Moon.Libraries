@@ -2,6 +2,8 @@
   "locked": false,
   "version": 1,
   "targets": {
+    ".NETFramework,Version=v4.5.1": {},
+    "DNX,Version=v4.5.1": {},
     ".NETPlatform,Version=v5.0": {
       "System.Collections/4.0.10": {
         "dependencies": {
@@ -699,9 +701,12 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Moon.Runtime >= 1.0.0-ci",
-      "System.Linq.Queryable >= 4.0.0"
+      "Moon.Runtime >= 1.0.0-ci"
     ],
-    ".NETPlatform,Version=v5.0": []
+    ".NETFramework,Version=v4.5.1": [],
+    "DNX,Version=v4.5.1": [],
+    ".NETPlatform,Version=v5.0": [
+      "System.Linq.Queryable >= 4.0.0"
+    ]
   }
 }

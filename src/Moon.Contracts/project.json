@@ -7,12 +7,14 @@
   "description": "Simple Guard (or DbC) implementation.",
   "tags": [ "moontea", "contracts", "guard" ],
 
-  "dependencies": {
-    "System.Linq": "4.0.0",
-    "System.Reflection": "4.0.10"
-  },
-
   "frameworks": {
-    "dotnet": { }
+    "net451": { },
+    "dnx451": { },
+    "dotnet": {
+      "dependencies": {
+        "System.Linq": "4.0.0",
+        "System.Reflection": "4.0.10"
+      }
+    }
   }
 }

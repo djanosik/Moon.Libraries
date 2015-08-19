@@ -2,6 +2,8 @@
   "locked": false,
   "version": 1,
   "targets": {
+    ".NETFramework,Version=v4.5.1": {},
+    "DNX,Version=v4.5.1": {},
     ".NETPlatform,Version=v5.0": {
       "System.Collections/4.0.10": {
         "dependencies": {
@@ -564,10 +566,12 @@
     }
   },
   "projectFileDependencyGroups": {
-    "": [
+    "": [],
+    ".NETFramework,Version=v4.5.1": [],
+    "DNX,Version=v4.5.1": [],
+    ".NETPlatform,Version=v5.0": [
       "System.Linq >= 4.0.0",
       "System.Reflection >= 4.0.10"
-    ],
-    ".NETPlatform,Version=v5.0": []
+    ]
   }
 }

@@ -2,6 +2,8 @@
   "locked": false,
   "version": 1,
   "targets": {
+    ".NETFramework,Version=v4.5.1": {},
+    "DNX,Version=v4.5.1": {},
     ".NETPlatform,Version=v5.0": {
       "System.Collections/4.0.10": {
         "dependencies": {
@@ -553,6 +555,8 @@
     "": [
       "Moon.Threading >= 1.0.0-ci"
     ],
+    ".NETFramework,Version=v4.5.1": [],
+    "DNX,Version=v4.5.1": [],
     ".NETPlatform,Version=v5.0": []
   }
 }

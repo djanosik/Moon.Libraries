@@ -8,11 +8,16 @@
   "tags": [ "moontea", "framework", "runtime" ],
 
   "dependencies": {
-    "Moon.Contracts": "1.0.0-ci",
-    "System.Runtime.Extensions": "4.0.10"
+    "Moon.Contracts": "1.0.0-ci"
   },
 
   "frameworks": {
-    "dotnet": { }
+    "net451": { },
+    "dnx451": { },
+    "dotnet": {
+      "dependencies": {
+        "System.Runtime.Extensions": "4.0.10"
+      }
+    }
   }
 }

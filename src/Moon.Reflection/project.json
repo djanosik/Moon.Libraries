@@ -8,12 +8,17 @@
   "tags": [ "moontea", "reflection" ],
 
   "dependencies": {
-    "Moon.Runtime": "1.0.0-ci",
-    "System.Reflection.Extensions": "4.0.0",
-    "System.Linq.Expressions": "4.0.10"
+    "Moon.Runtime": "1.0.0-ci"
   },
 
   "frameworks": {
-    "dotnet": { }
+    "net451": { },
+    "dnx451": { },
+    "dotnet": {
+      "dependencies": {
+        "System.Reflection.Extensions": "4.0.0",
+        "System.Linq.Expressions": "4.0.10"
+      }
+    }
   }
 }
