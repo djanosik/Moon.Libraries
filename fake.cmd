@@ -4,7 +4,6 @@ cd %~dp0
 SETLOCAL
 SET NUGET_FOLDER=%LocalAppData%\NuGet
 SET CACHED_NUGET=%LocalAppData%\NuGet\NuGet.exe
-SET DNX_FEED=https://www.nuget.org/api/v2/
 
 IF EXIST %CACHED_NUGET% goto getnuget
 echo Downloading latest version of NuGet.exe...
@@ -27,5 +26,4 @@ CALL build\FAKEX\tools\dnvm install default -runtime CoreCLR -arch x86 -nonative
 
 :run
 CALL build\FAKEX\tools\dnvm use default -runtime CLR -arch x86
-FOR /f %%i in ('build\FAKEX\tools\dnvm name default') do SET DNX_FOLDER=%USERPROFILE%\.dnx\runtimes\%%i\bin
-build\FAKE\tools\Fake.exe build.fsx %*
+build\FAKE\tools\Fake.exe fake.fsx %*
