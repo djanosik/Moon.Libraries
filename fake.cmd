@@ -16,14 +16,8 @@ IF NOT EXIST build md build
 copy %CACHED_NUGET% build\NuGet.exe > nul
 
 :getfake
-IF EXIST build\FAKEX goto getdnx
+IF EXIST build\FAKEX goto run
 build\NuGet.exe install FAKEX -ExcludeVersion -o build
 
-:getdnx
-IF "%SKIP_DNX_INSTALL%"=="1" goto run
-CALL build\FAKEX\tools\dnvm install '1.0.0-beta6' -a default -runtime CLR -arch x86 -nonative
-CALL build\FAKEX\tools\dnvm install default -runtime CoreCLR -arch x86 -nonative
-
 :run
-CALL build\FAKEX\tools\dnvm use default -runtime CLR -arch x86
 build\FAKE\tools\Fake.exe fake.fsx %*
