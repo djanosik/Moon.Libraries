@@ -12,17 +12,4 @@ Target "SetupRuntime" (fun _ ->
 
 "SetupRuntime" ==> "RestoreDependencies"
 
-Target "Deploy" (fun _ ->
-    WebDeploy { 
-        appPath = "playe";
-        project = "src/Playe/project.json";
-        serviceUrl = "playe.scm.azurewebsites.net";
-        skipExtraFiles = false;
-        userName = "$playe";
-        password = (environVar "WEBDEPLOY_PWD")
-    }
-)
-
-"SetupRuntime" ==> "Deploy"
-
 RunTargetOrDefault "Build"
