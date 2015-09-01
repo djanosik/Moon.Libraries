@@ -12,11 +12,7 @@
   },
 
   "frameworks": {
-    "net451": {
-      "frameworkAssemblies": {
-        "System.Runtime": "4.0.10.0"
-      }
-    },
+    "net451": { },
     "dnx451": { },
     "dotnet": {
       "dependencies": {
