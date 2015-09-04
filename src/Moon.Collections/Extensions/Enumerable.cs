@@ -69,19 +69,10 @@ namespace Moon.Collections
             var items = source.Reverse().ToArray();
             T[] results;
 
-            var isLengthEven = items.Length % 2 == 0;
             var halfLength = items.Length / 2;
 
-            if (isLengthEven)
-            {
-                results = new T[halfLength];
-                Array.Copy(items, results, halfLength);
-            }
-            else
-            {
-                results = new T[halfLength];
-                Array.Copy(items, results, halfLength);
-            }
+            results = new T[halfLength];
+            Array.Copy(items, results, halfLength);
 
             return results.Reverse();
         }
