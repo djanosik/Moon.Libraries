@@ -10,16 +10,19 @@ using Microsoft.OData.Edm.Library;
 namespace Moon.OData
 {
     /// <summary>
-    /// Represents OData query options that can be used to perform query composition. Currently this
-    /// only supports $filter, $orderby, $top, $skip, and $count.
+    /// Represents OData query options that can be used to perform query composition.
     /// </summary>
     /// <typeparam name="TEntity">The type of entity.</typeparam>
     public class ODataQuery<TEntity>
     {
         readonly Lazy<bool?> count;
+        readonly Lazy<string> deltaToken;
         readonly Lazy<FilterClause> filter;
         readonly Lazy<OrderByClause> orderBy;
+        readonly Lazy<SearchClause> search;
+        readonly Lazy<SelectExpandClause> selectAndExpand;
         readonly Lazy<long?> skip;
+        readonly Lazy<string> skipToken;
         readonly Lazy<long?> top;
 
         /// <summary>
@@ -48,9 +51,13 @@ namespace Moon.OData
                 entities, queryOptions);
 
             count = Lazy.From(parser.ParseCount);
+            deltaToken = Lazy.From(parser.ParseDeltaToken);
             filter = Lazy.From(parser.ParseFilter);
             orderBy = Lazy.From(parser.ParseOrderBy);
+            search = Lazy.From(parser.ParseSearch);
+            selectAndExpand = Lazy.From(parser.ParseSelectAndExpand);
             skip = Lazy.From(parser.ParseSkip);
+            skipToken = Lazy.From(parser.ParseSkipToken);
             top = Lazy.From(parser.ParseTop);
         }
 
@@ -59,6 +66,12 @@ namespace Moon.OData
         /// </summary>
         public bool? Count
             => count.Value;
+
+        /// <summary>
+        /// Gets a parsed $delattoken query option.
+        /// </summary>
+        public string DeltaToken
+            => deltaToken.Value;
 
         /// <summary>
         /// Gets a $filter clause parsed into semantic nodes.
@@ -73,10 +86,28 @@ namespace Moon.OData
             => orderBy.Value;
 
         /// <summary>
+        /// Gets a $search clause parsed into semantic nodes.
+        /// </summary>
+        public SearchClause Search
+            => search.Value;
+
+        /// <summary>
+        /// Gets a $select and $expand clauses parsed into semantic nodes.
+        /// </summary>
+        public SelectExpandClause SelectAndExpand
+            => selectAndExpand.Value;
+
+        /// <summary>
         /// Gets a parsed $skip query option.
         /// </summary>
         public long? Skip
             => skip.Value;
+
+        /// <summary>
+        /// Gets a parsed $skiptoken query option.
+        /// </summary>
+        public string SkipToken
+            => skipToken.Value;
 
         /// <summary>
         /// Gets a parsed $top query option.
