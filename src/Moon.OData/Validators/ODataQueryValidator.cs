@@ -5,9 +5,9 @@
     /// </summary>
     public class ODataQueryValidator
     {
-        readonly FilterQueryValidator filterQueryValidator = new FilterQueryValidator();
-        readonly SkipQueryValidator skipQueryValidator = new SkipQueryValidator();
-        readonly TopQueryValidator topQueryValidator = new TopQueryValidator();
+        readonly FilterQueryValidator filterValidator = new FilterQueryValidator();
+        readonly SkipQueryValidator skipValidator = new SkipQueryValidator();
+        readonly TopQueryValidator topValidator = new TopQueryValidator();
 
         /// <summary>
         /// Validates the given OData query using the specified validation settings..
@@ -38,7 +38,7 @@
             if (odata.Filter != null)
             {
                 ValidateAllowed(AllowedQueryOptions.Filter, settings.AllowedQueryOptions);
-                filterQueryValidator.Validate(odata.Filter, settings);
+                filterValidator.Validate(odata.Filter, settings);
             }
 
             if (odata.OrderBy != null)
@@ -64,7 +64,7 @@
             if (odata.Skip != null)
             {
                 ValidateAllowed(AllowedQueryOptions.Skip, settings.AllowedQueryOptions);
-                skipQueryValidator.Validate(odata.Skip, settings);
+                skipValidator.Validate(odata.Skip, settings);
             }
 
             if (odata.RawValues.SkipToken != null)
@@ -75,7 +75,7 @@
             if (odata.Top != null)
             {
                 ValidateAllowed(AllowedQueryOptions.Top, settings.AllowedQueryOptions);
-                topQueryValidator.Validate(odata.Top, settings);
+                topValidator.Validate(odata.Top, settings);
             }
         }
 
