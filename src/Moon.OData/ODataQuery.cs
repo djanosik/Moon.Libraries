@@ -6,6 +6,7 @@ using Microsoft.OData.Core.UriParser;
 using Microsoft.OData.Core.UriParser.Semantic;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Library;
+using Moon.OData.Validators;
 
 namespace Moon.OData
 {
@@ -16,14 +17,14 @@ namespace Moon.OData
     public class ODataQuery<TEntity>
     {
         readonly Lazy<bool?> count;
-        readonly Lazy<string> deltaToken;
         readonly Lazy<FilterClause> filter;
         readonly Lazy<OrderByClause> orderBy;
         readonly Lazy<SearchClause> search;
         readonly Lazy<SelectExpandClause> selectAndExpand;
         readonly Lazy<long?> skip;
-        readonly Lazy<string> skipToken;
         readonly Lazy<long?> top;
+
+        readonly ODataQueryValidator validator = new ODataQueryValidator();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ODataQuery{TEntity}" /> class.
@@ -44,34 +45,28 @@ namespace Moon.OData
             Requires.NotNull(queryOptions, nameof(queryOptions));
             Requires.NotNull(primitives, nameof(primitives));
 
-            var model = GetEdmModel(GetPrimitives(primitives).ToDictionary(p => p.Type));
-            var entities = model.FindDeclaredNavigationSource("Entities");
-
-            var parser = new ODataQueryOptionParser(model, entities.EntityType(),
-                entities, queryOptions);
+            RawValues = new ODataRawValues(queryOptions);
+            var parser = CreateParser(primitives);
 
             count = Lazy.From(parser.ParseCount);
-            deltaToken = Lazy.From(parser.ParseDeltaToken);
             filter = Lazy.From(parser.ParseFilter);
             orderBy = Lazy.From(parser.ParseOrderBy);
             search = Lazy.From(parser.ParseSearch);
             selectAndExpand = Lazy.From(parser.ParseSelectAndExpand);
             skip = Lazy.From(parser.ParseSkip);
-            skipToken = Lazy.From(parser.ParseSkipToken);
             top = Lazy.From(parser.ParseTop);
         }
+
+        /// <summary>
+        /// Gets raw OData query option values.
+        /// </summary>
+        public ODataRawValues RawValues { get; }
 
         /// <summary>
         /// Gets a parsed $count query option.
         /// </summary>
         public bool? Count
             => count.Value;
-
-        /// <summary>
-        /// Gets a parsed $delattoken query option.
-        /// </summary>
-        public string DeltaToken
-            => deltaToken.Value;
 
         /// <summary>
         /// Gets a $filter clause parsed into semantic nodes.
@@ -104,16 +99,21 @@ namespace Moon.OData
             => skip.Value;
 
         /// <summary>
-        /// Gets a parsed $skiptoken query option.
-        /// </summary>
-        public string SkipToken
-            => skipToken.Value;
-
-        /// <summary>
         /// Gets a parsed $top query option.
         /// </summary>
         public long? Top
             => top.Value;
+
+        /// <summary>
+        /// Validate all OData queries, including $skip, $top and $filter, based on the given settings.
+        /// </summary>
+        /// <param name="settings">The validation settings.</param>
+        public virtual void Validate(ODataValidationSettings settings)
+        {
+            Requires.NotNull(settings, nameof(settings));
+
+            validator.Validate(this, settings);
+        }
 
         static IEnumerable<IPrimitiveType> GetPrimitives(IEnumerable<IPrimitiveType> primitives)
         {
@@ -141,6 +141,15 @@ namespace Moon.OData
             {
                 yield return primitive;
             }
+        }
+
+        ODataQueryOptionParser CreateParser(IEnumerable<IPrimitiveType> primitives)
+        {
+            var model = GetEdmModel(GetPrimitives(primitives).ToDictionary(p => p.Type));
+            var entities = model.FindDeclaredNavigationSource("Entities");
+
+            return new ODataQueryOptionParser(model, entities.EntityType(),
+                entities, RawValues.Values);
         }
 
         IEdmModel GetEdmModel(IDictionary<Type, IPrimitiveType> primitives)
