@@ -4,12 +4,12 @@
   "owners": [ "djanosik" ],
   "projectUrl": "https://github.com/djanosik/Moon.Libraries",
   "iconUrl": "http://moontea.net/moon.png",
-  "description": "Simple library for parsing OData query options.",
-  "tags": [ "moontea", "odata", "query", "options", "parser" ],
+  "description": "Library for translating OData query options into T-SQL commands.",
+  "tags": [ "moontea", "odata", "query", "options", "sql" ],
 
   "dependencies": {
     "Moon.Reflection": "1.0.0-ci",
-    "Microsoft.OData.Core": "6.13.0"
+    "Moon.OData": "1.0.0-ci"
   },
 
   "frameworks": {
@@ -17,7 +17,8 @@
     "dnx451": { },
     "dnxcore50": {
       "dependencies": {
-        "System.Reflection.Extensions": "4.0.1-beta-23225"
+        "System.Reflection.Extensions": "4.0.1-beta-23225",
+        "System.Text.RegularExpressions": "4.0.11-beta-23225"
       }
     }
   }

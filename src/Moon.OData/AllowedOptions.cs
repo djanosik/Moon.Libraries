@@ -6,7 +6,7 @@ namespace Moon.OData
     /// OData query options to allow for querying.
     /// </summary>
     [Flags]
-    public enum AllowedQueryOptions
+    public enum AllowedOptions
     {
         /// <summary>
         /// A value that corresponds to allowing no query options.

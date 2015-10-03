@@ -12,14 +12,14 @@ namespace Moon.OData
         /// <summary>
         /// Initializes a new instance of the <see cref="ODataRawValues" /> class.
         /// </summary>
-        /// <param name="queryOptions">The dictionary storing query option key-value pairs.</param>
-        public ODataRawValues(IDictionary<string, string> queryOptions)
+        /// <param name="options">The dictionary storing query option key-value pairs.</param>
+        public ODataRawValues(IDictionary<string, string> options)
         {
-            Requires.NotNull(queryOptions, nameof(queryOptions));
+            Requires.NotNull(options, nameof(options));
 
             Values = new Dictionary<string, string>();
 
-            foreach (var pair in queryOptions)
+            foreach (var pair in options)
             {
                 if (supportedOptions.Contains(pair.Key))
                 {

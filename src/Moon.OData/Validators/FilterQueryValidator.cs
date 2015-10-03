@@ -14,7 +14,7 @@ namespace Moon.OData.Validators
         /// </summary>
         /// <param name="filter">The parsed $filter query option.</param>
         /// <param name="settings">The validation settings.</param>
-        public virtual void Validate(FilterClause filter, ODataValidationSettings settings)
+        public virtual void Validate(FilterClause filter, ValidationSettings settings)
         {
             Requires.NotNull(filter, nameof(filter));
             Requires.NotNull(settings, nameof(settings));
@@ -22,7 +22,7 @@ namespace Moon.OData.Validators
             ValidateQueryNode(filter.Expression, settings);
         }
 
-        void ValidateQueryNode(QueryNode node, ODataValidationSettings settings)
+        void ValidateQueryNode(QueryNode node, ValidationSettings settings)
         {
             RuntimeHelpers.EnsureSufficientExecutionStack();
 
@@ -39,58 +39,49 @@ namespace Moon.OData.Validators
             }
         }
 
-        void ValidateSingleValueNode(SingleValueNode node, ODataValidationSettings settings)
+        void ValidateSingleValueNode(SingleValueNode node, ValidationSettings settings)
         {
             switch (node.Kind)
             {
-                case QueryNodeKind.BinaryOperator:
-                    ValidateBinaryOperatorNode(node as BinaryOperatorNode, settings);
-                    break;
-
                 case QueryNodeKind.Convert:
                     ValidateQueryNode((node as ConvertNode).Source, settings);
                     break;
 
-                case QueryNodeKind.SingleValuePropertyAccess:
-                    ValidateQueryNode((node as SingleValuePropertyAccessNode).Source, settings);
+                case QueryNodeKind.BinaryOperator:
+                    ValidateBinaryOperatorNode(node as BinaryOperatorNode, settings);
                     break;
 
                 case QueryNodeKind.UnaryOperator:
                     ValidateUnaryOperatorNode(node as UnaryOperatorNode, settings);
                     break;
 
+                case QueryNodeKind.SingleValuePropertyAccess:
+                    ValidateQueryNode((node as SingleValuePropertyAccessNode).Source, settings);
+                    break;
+
                 case QueryNodeKind.SingleValueFunctionCall:
                     ValidateSingleValueFunctionCallNode(node as SingleValueFunctionCallNode, settings);
-                    break;
-
-                case QueryNodeKind.SingleEntityFunctionCall:
-                    ValidateSingleEntityFunctionCallNode(node as SingleEntityFunctionCallNode, settings);
-                    break;
-
-                case QueryNodeKind.SingleEntityCast:
-                    ValidateQueryNode((node as SingleEntityCastNode).Source, settings);
                     break;
 
                 case QueryNodeKind.Any:
                     ValidateAnyNode(node as AnyNode, settings);
                     break;
 
+                case QueryNodeKind.SingleEntityCast:
+                    ValidateQueryNode((node as SingleEntityCastNode).Source, settings);
+                    break;
+
                 case QueryNodeKind.All:
                     ValidateAllNode(node as AllNode, settings);
                     break;
 
-                case QueryNodeKind.Constant:
-                case QueryNodeKind.EntityRangeVariableReference:
-                case QueryNodeKind.NonentityRangeVariableReference:
-                case QueryNodeKind.SingleValueOpenPropertyAccess:
+                case QueryNodeKind.SingleEntityFunctionCall:
+                    ValidateSingleEntityFunctionCallNode(node as SingleEntityFunctionCallNode, settings);
                     break;
-
-                default:
-                    throw new ODataException($"Validation of the '{node.Kind}' query node is not supported.");
             }
         }
 
-        void ValidateCollectionNode(CollectionNode node, ODataValidationSettings settings)
+        void ValidateCollectionNode(CollectionNode node, ValidationSettings settings)
         {
             switch (node.Kind)
             {
@@ -101,13 +92,10 @@ namespace Moon.OData.Validators
                 case QueryNodeKind.EntityCollectionCast:
                     ValidateQueryNode((node as EntityCollectionCastNode).Source, settings);
                     break;
-
-                default:
-                    throw new ODataException($"Validation of the '{node.Kind}' query node is not supported.");
             }
         }
 
-        void ValidateBinaryOperatorNode(BinaryOperatorNode node, ODataValidationSettings settings)
+        void ValidateBinaryOperatorNode(BinaryOperatorNode node, ValidationSettings settings)
         {
             switch (node.OperatorKind)
             {
@@ -129,7 +117,7 @@ namespace Moon.OData.Validators
             }
         }
 
-        void ValidateUnaryOperatorNode(UnaryOperatorNode node, ODataValidationSettings settings)
+        void ValidateUnaryOperatorNode(UnaryOperatorNode node, ValidationSettings settings)
         {
             ValidateQueryNode(node.Operand, settings);
 
@@ -137,18 +125,15 @@ namespace Moon.OData.Validators
             {
                 case UnaryOperatorKind.Negate:
                 case UnaryOperatorKind.Not:
-                    if (!settings.AllowedLogicalOperators.HasFlag(AllowedLogicalOperators.Not))
+                    if (!settings.AllowedOperators.HasFlag(AllowedOperators.Not))
                     {
                         throw new ODataException($"The '{node.OperatorKind}' logical operator is not allowed.");
                     }
                     break;
-
-                default:
-                    throw new ODataException($"Validation of the '{node.OperatorKind}' unary operator is not supported.");
             }
         }
 
-        void ValidateSingleValueFunctionCallNode(SingleValueFunctionCallNode node, ODataValidationSettings settings)
+        void ValidateSingleValueFunctionCallNode(SingleValueFunctionCallNode node, ValidationSettings settings)
         {
             ValidateFunction(node.Name, settings);
 
@@ -158,7 +143,7 @@ namespace Moon.OData.Validators
             }
         }
 
-        void ValidateSingleEntityFunctionCallNode(SingleEntityFunctionCallNode node, ODataValidationSettings settings)
+        void ValidateSingleEntityFunctionCallNode(SingleEntityFunctionCallNode node, ValidationSettings settings)
         {
             ValidateFunction(node.Name, settings);
 
@@ -168,7 +153,7 @@ namespace Moon.OData.Validators
             }
         }
 
-        void ValidateNavigationPropertyNode(QueryNode node, ODataValidationSettings settings)
+        void ValidateNavigationPropertyNode(QueryNode node, ValidationSettings settings)
         {
             if (node != null)
             {
@@ -176,7 +161,7 @@ namespace Moon.OData.Validators
             }
         }
 
-        void ValidateAnyNode(AnyNode node, ODataValidationSettings settings)
+        void ValidateAnyNode(AnyNode node, ValidationSettings settings)
         {
             ValidateFunction("any", settings);
             ValidateQueryNode(node.Source, settings);
@@ -187,40 +172,40 @@ namespace Moon.OData.Validators
             }
         }
 
-        void ValidateAllNode(AllNode node, ODataValidationSettings settings)
+        void ValidateAllNode(AllNode node, ValidationSettings settings)
         {
             ValidateFunction("all", settings);
             ValidateQueryNode(node.Source, settings);
             ValidateQueryNode(node.Body, settings);
         }
 
-        void ValidateLogicalOperator(BinaryOperatorNode node, ODataValidationSettings settings)
+        void ValidateLogicalOperator(BinaryOperatorNode node, ValidationSettings settings)
         {
-            var logicalOperator = ToLogicalOperator(node);
+            var op = ToLogicalOperator(node);
 
-            if (!settings.AllowedLogicalOperators.HasFlag(logicalOperator))
+            if (!settings.AllowedOperators.HasFlag(op))
             {
-                throw new ODataException($"The '{logicalOperator}' logical operator is not allowed.");
+                throw new ODataException($"The '{op}' logical operator is not allowed.");
             }
 
             ValidateQueryNode(node.Left, settings);
             ValidateQueryNode(node.Right, settings);
         }
 
-        void ValidateArithmeticOperator(BinaryOperatorNode node, ODataValidationSettings settings)
+        void ValidateArithmeticOperator(BinaryOperatorNode node, ValidationSettings settings)
         {
-            var arithmeticOperator = ToArithmeticOperator(node);
+            var op = ToArithmeticOperator(node);
 
-            if (!settings.AllowedArithmeticOperators.HasFlag(arithmeticOperator))
+            if (!settings.AllowedOperators.HasFlag(op))
             {
-                throw new ODataException($"The '{arithmeticOperator}' arithmetic operator is not allowed.");
+                throw new ODataException($"The '{op}' arithmetic operator is not allowed.");
             }
 
             ValidateQueryNode(node.Left, settings);
             ValidateQueryNode(node.Right, settings);
         }
 
-        void ValidateFunction(string functionName, ODataValidationSettings settings)
+        void ValidateFunction(string functionName, ValidationSettings settings)
         {
             var function = ToFunction(functionName);
 
@@ -230,76 +215,76 @@ namespace Moon.OData.Validators
             }
         }
 
-        AllowedLogicalOperators ToLogicalOperator(BinaryOperatorNode binaryNode)
+        AllowedOperators ToLogicalOperator(BinaryOperatorNode binaryNode)
         {
-            var result = AllowedLogicalOperators.None;
+            var result = AllowedOperators.None;
 
             switch (binaryNode.OperatorKind)
             {
                 case BinaryOperatorKind.Equal:
-                    result = AllowedLogicalOperators.Equal;
+                    result = AllowedOperators.Equal;
                     break;
 
                 case BinaryOperatorKind.NotEqual:
-                    result = AllowedLogicalOperators.NotEqual;
-                    break;
-
-                case BinaryOperatorKind.And:
-                    result = AllowedLogicalOperators.And;
+                    result = AllowedOperators.NotEqual;
                     break;
 
                 case BinaryOperatorKind.GreaterThan:
-                    result = AllowedLogicalOperators.GreaterThan;
+                    result = AllowedOperators.GreaterThan;
                     break;
 
                 case BinaryOperatorKind.GreaterThanOrEqual:
-                    result = AllowedLogicalOperators.GreaterThanOrEqual;
+                    result = AllowedOperators.GreaterThanOrEqual;
                     break;
 
                 case BinaryOperatorKind.LessThan:
-                    result = AllowedLogicalOperators.LessThan;
+                    result = AllowedOperators.LessThan;
                     break;
 
                 case BinaryOperatorKind.LessThanOrEqual:
-                    result = AllowedLogicalOperators.LessThanOrEqual;
+                    result = AllowedOperators.LessThanOrEqual;
+                    break;
+
+                case BinaryOperatorKind.And:
+                    result = AllowedOperators.And;
                     break;
 
                 case BinaryOperatorKind.Or:
-                    result = AllowedLogicalOperators.Or;
+                    result = AllowedOperators.Or;
                     break;
 
                 case BinaryOperatorKind.Has:
-                    result = AllowedLogicalOperators.Has;
+                    result = AllowedOperators.Has;
                     break;
             }
 
             return result;
         }
 
-        AllowedArithmeticOperators ToArithmeticOperator(BinaryOperatorNode binaryNode)
+        AllowedOperators ToArithmeticOperator(BinaryOperatorNode binaryNode)
         {
-            var result = AllowedArithmeticOperators.None;
+            var result = AllowedOperators.None;
 
             switch (binaryNode.OperatorKind)
             {
                 case BinaryOperatorKind.Add:
-                    result = AllowedArithmeticOperators.Add;
-                    break;
-
-                case BinaryOperatorKind.Divide:
-                    result = AllowedArithmeticOperators.Divide;
-                    break;
-
-                case BinaryOperatorKind.Modulo:
-                    result = AllowedArithmeticOperators.Modulo;
-                    break;
-
-                case BinaryOperatorKind.Multiply:
-                    result = AllowedArithmeticOperators.Multiply;
+                    result = AllowedOperators.Add;
                     break;
 
                 case BinaryOperatorKind.Subtract:
-                    result = AllowedArithmeticOperators.Subtract;
+                    result = AllowedOperators.Subtract;
+                    break;
+
+                case BinaryOperatorKind.Multiply:
+                    result = AllowedOperators.Multiply;
+                    break;
+
+                case BinaryOperatorKind.Divide:
+                    result = AllowedOperators.Divide;
+                    break;
+
+                case BinaryOperatorKind.Modulo:
+                    result = AllowedOperators.Modulo;
                     break;
             }
 
@@ -312,76 +297,24 @@ namespace Moon.OData.Validators
 
             switch (functionName)
             {
-                case "any":
-                    result = AllowedFunctions.Any;
-                    break;
-
-                case "all":
-                    result = AllowedFunctions.All;
-                    break;
-
-                case "cast":
-                    result = AllowedFunctions.Cast;
-                    break;
-
-                case "ceiling":
-                    result = AllowedFunctions.Ceiling;
-                    break;
-
-                case "concat":
-                    result = AllowedFunctions.Concat;
-                    break;
-
                 case "contains":
-                    result = AllowedFunctions.SubstringOf;
-                    break;
-
-                case "day":
-                    result = AllowedFunctions.Day;
+                    result = AllowedFunctions.Contains;
                     break;
 
                 case "endswith":
                     result = AllowedFunctions.EndsWith;
                     break;
 
-                case "floor":
-                    result = AllowedFunctions.Floor;
-                    break;
-
-                case "hour":
-                    result = AllowedFunctions.Hour;
-                    break;
-
-                case "indexof":
-                    result = AllowedFunctions.IndexOf;
-                    break;
-
-                case "isof":
-                    result = AllowedFunctions.IsOf;
+                case "startswith":
+                    result = AllowedFunctions.StartsWith;
                     break;
 
                 case "length":
                     result = AllowedFunctions.Length;
                     break;
 
-                case "minute":
-                    result = AllowedFunctions.Minute;
-                    break;
-
-                case "month":
-                    result = AllowedFunctions.Month;
-                    break;
-
-                case "round":
-                    result = AllowedFunctions.Round;
-                    break;
-
-                case "second":
-                    result = AllowedFunctions.Second;
-                    break;
-
-                case "startswith":
-                    result = AllowedFunctions.StartsWith;
+                case "indexof":
+                    result = AllowedFunctions.IndexOf;
                     break;
 
                 case "substring":
@@ -400,8 +333,36 @@ namespace Moon.OData.Validators
                     result = AllowedFunctions.Trim;
                     break;
 
+                case "concat":
+                    result = AllowedFunctions.Concat;
+                    break;
+
                 case "year":
                     result = AllowedFunctions.Year;
+                    break;
+
+                case "month":
+                    result = AllowedFunctions.Month;
+                    break;
+
+                case "day":
+                    result = AllowedFunctions.Day;
+                    break;
+
+                case "hour":
+                    result = AllowedFunctions.Hour;
+                    break;
+
+                case "minute":
+                    result = AllowedFunctions.Minute;
+                    break;
+
+                case "second":
+                    result = AllowedFunctions.Second;
+                    break;
+
+                case "fractionalseconds":
+                    result = AllowedFunctions.FractionalSeconds;
                     break;
 
                 case "date":
@@ -412,8 +373,52 @@ namespace Moon.OData.Validators
                     result = AllowedFunctions.Time;
                     break;
 
-                case "fractionalseconds":
-                    result = AllowedFunctions.FractionalSeconds;
+                case "totaloffsetminutes":
+                    result = AllowedFunctions.TotalOffsetMinutes;
+                    break;
+
+                case "now":
+                    result = AllowedFunctions.Now;
+                    break;
+
+                case "maxdatetime":
+                    result = AllowedFunctions.MaxDateTime;
+                    break;
+
+                case "mindatetime":
+                    result = AllowedFunctions.MinDateTime;
+                    break;
+
+                case "totalseconds":
+                    result = AllowedFunctions.TotalSeconds;
+                    break;
+
+                case "round":
+                    result = AllowedFunctions.Round;
+                    break;
+
+                case "floor":
+                    result = AllowedFunctions.Floor;
+                    break;
+
+                case "ceiling":
+                    result = AllowedFunctions.Ceiling;
+                    break;
+
+                case "isof":
+                    result = AllowedFunctions.IsOf;
+                    break;
+
+                case "cast":
+                    result = AllowedFunctions.Cast;
+                    break;
+
+                case "any":
+                    result = AllowedFunctions.Any;
+                    break;
+
+                case "all":
+                    result = AllowedFunctions.All;
                     break;
             }
 

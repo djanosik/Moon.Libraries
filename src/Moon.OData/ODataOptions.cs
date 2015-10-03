@@ -6,6 +6,7 @@ using Microsoft.OData.Core.UriParser;
 using Microsoft.OData.Core.UriParser.Semantic;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Library;
+using Moon.OData.Edm;
 using Moon.OData.Validators;
 
 namespace Moon.OData
@@ -13,15 +14,17 @@ namespace Moon.OData
     /// <summary>
     /// Represents OData query options that can be used to perform query composition.
     /// </summary>
-    /// <typeparam name="TEntity">The type of entity.</typeparam>
-    public class ODataQuery<TEntity>
+    /// <typeparam name="TEntity">The type of the entity you are building the query for.</typeparam>
+    public class ODataOptions<TEntity> : IODataOptions
     {
         readonly Lazy<bool?> count;
+        readonly Lazy<string> deltaToken;
         readonly Lazy<FilterClause> filter;
         readonly Lazy<OrderByClause> orderBy;
         readonly Lazy<SearchClause> search;
         readonly Lazy<SelectExpandClause> selectAndExpand;
         readonly Lazy<long?> skip;
+        readonly Lazy<string> skipToken;
         readonly Lazy<long?> top;
 
         readonly ODataQueryValidator validator = new ODataQueryValidator();
@@ -29,44 +32,53 @@ namespace Moon.OData
         /// <summary>
         /// Initializes a new instance of the <see cref="ODataQuery{TEntity}" /> class.
         /// </summary>
-        /// <param name="queryOptions">The dictionary storing query option key-value pairs.</param>
-        public ODataQuery(IDictionary<string, string> queryOptions)
-            : this(queryOptions, Enumerable.Empty<IPrimitiveType>())
+        /// <param name="options">The dictionary storing query option key-value pairs.</param>
+        public ODataOptions(IDictionary<string, string> options)
+            : this(options, Enumerable.Empty<IPrimitiveType>())
         {
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ODataQuery{TEntity}" /> class.
         /// </summary>
-        /// <param name="queryOptions">The dictionary storing query option key-value pairs.</param>
+        /// <param name="options">The dictionary storing query option key-value pairs.</param>
         /// <param name="primitives">An enumeration of additional primitive types.</param>
-        public ODataQuery(IDictionary<string, string> queryOptions, IEnumerable<IPrimitiveType> primitives)
+        public ODataOptions(IDictionary<string, string> options, IEnumerable<IPrimitiveType> primitives)
         {
-            Requires.NotNull(queryOptions, nameof(queryOptions));
+            Requires.NotNull(options, nameof(options));
             Requires.NotNull(primitives, nameof(primitives));
 
-            RawValues = new ODataRawValues(queryOptions);
+            RawValues = new ODataRawValues(options);
             var parser = CreateParser(primitives);
 
             count = Lazy.From(parser.ParseCount);
+            deltaToken = Lazy.From(parser.ParseDeltaToken);
             filter = Lazy.From(parser.ParseFilter);
             orderBy = Lazy.From(parser.ParseOrderBy);
             search = Lazy.From(parser.ParseSearch);
             selectAndExpand = Lazy.From(parser.ParseSelectAndExpand);
             skip = Lazy.From(parser.ParseSkip);
+            skipToken = Lazy.From(parser.ParseSkipToken);
             top = Lazy.From(parser.ParseTop);
         }
 
         /// <summary>
-        /// Gets raw OData query option values.
+        /// Gets the type of the entity you are building the query for.
         /// </summary>
-        public ODataRawValues RawValues { get; }
+        public Type EntityType
+            => typeof(TEntity);
 
         /// <summary>
         /// Gets a parsed $count query option.
         /// </summary>
         public bool? Count
             => count.Value;
+
+        /// <summary>
+        /// Gets a parsed $deltatoken query option.
+        /// </summary>
+        public string DeltaToken
+            => deltaToken.Value;
 
         /// <summary>
         /// Gets a $filter clause parsed into semantic nodes.
@@ -99,16 +111,27 @@ namespace Moon.OData
             => skip.Value;
 
         /// <summary>
+        /// Gets a parsed $skiptoken query option.
+        /// </summary>
+        public string SkipToken
+            => skipToken.Value;
+
+        /// <summary>
         /// Gets a parsed $top query option.
         /// </summary>
         public long? Top
             => top.Value;
 
         /// <summary>
+        /// Gets raw OData query option values.
+        /// </summary>
+        public ODataRawValues RawValues { get; }
+
+        /// <summary>
         /// Validate all OData queries, including $skip, $top and $filter, based on the given settings.
         /// </summary>
         /// <param name="settings">The validation settings.</param>
-        public virtual void Validate(ODataValidationSettings settings)
+        public virtual void Validate(ValidationSettings settings)
         {
             Requires.NotNull(settings, nameof(settings));
 
@@ -152,39 +175,36 @@ namespace Moon.OData
                 entities, RawValues.Values);
         }
 
-        IEdmModel GetEdmModel(IDictionary<Type, IPrimitiveType> primitives)
+        EdmModel GetEdmModel(IDictionary<Type, IPrimitiveType> primitives)
         {
-            var model = new EdmModel();
+            var result = new EdmModel();
+
             var container = new EdmEntityContainer("Default", "Container");
             container.AddEntitySet("Entities", GetEdmType(typeof(TEntity), primitives));
-            model.AddElement(container);
+            result.AddElement(container);
 
-            return model;
+            return result;
         }
 
-        IEdmEntityType GetEdmType(Type type, IDictionary<Type, IPrimitiveType> primitives)
+        EdmClrType GetEdmType(Type type, IDictionary<Type, IPrimitiveType> primitives)
         {
-            var entityType = new EdmEntityType(type.Namespace, type.Name);
+            var result = new EdmClrType(type);
 
             foreach (var property in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
                 if (primitives.ContainsKey(property.PropertyType))
                 {
                     var primitive = primitives[property.PropertyType];
-                    entityType.AddKeys(entityType.AddStructuralProperty(property.Name, primitive.Kind));
+                    result.AddProperty(new EdmClrProperty(result, property, primitive.Kind));
                 }
                 else
                 {
                     var propertyType = GetEdmType(property.PropertyType, primitives);
-                    var reference = new EdmEntityTypeReference(propertyType, IsNullable(property.PropertyType));
-                    entityType.AddKeys(entityType.AddStructuralProperty(property.Name, reference));
+                    result.AddProperty(new EdmClrProperty(result, property, propertyType));
                 }
             }
 
-            return entityType;
+            return result;
         }
-
-        bool IsNullable(Type type)
-            => !type.GetTypeInfo().IsValueType || Nullable.GetUnderlyingType(type) != null;
     }
 }

@@ -1,87 +1,87 @@
 ﻿namespace Moon.OData.Validators
 {
     /// <summary>
-    /// Represents a validator used to validate OData queries based on the <see cref="ODataValidationSettings" />.
+    /// Represents a validator used to validate OData queries based on the <see cref="ValidationSettings" />.
     /// </summary>
     public class ODataQueryValidator
     {
-        readonly FilterQueryValidator filterValidator = new FilterQueryValidator();
         readonly SkipQueryValidator skipValidator = new SkipQueryValidator();
+        readonly FilterQueryValidator filterValidator = new FilterQueryValidator();
         readonly TopQueryValidator topValidator = new TopQueryValidator();
 
         /// <summary>
         /// Validates the given OData query using the specified validation settings..
         /// </summary>
         /// <typeparam name="TEntity">The type of entity.</typeparam>
-        /// <param name="odata">The OData query to validate.</param>
+        /// <param name="options">The OData query to validate.</param>
         /// <param name="settings">The validation settings.</param>
-        public virtual void Validate<TEntity>(ODataQuery<TEntity> odata, ODataValidationSettings settings)
+        public virtual void Validate<TEntity>(ODataOptions<TEntity> options, ValidationSettings settings)
         {
-            Requires.NotNull(odata, nameof(odata));
+            Requires.NotNull(options, nameof(options));
             Requires.NotNull(settings, nameof(settings));
 
-            if (odata.Count != null)
+            if (options.Count != null)
             {
-                ValidateAllowed(AllowedQueryOptions.Count, settings.AllowedQueryOptions);
+                ValidateAllowed(AllowedOptions.Count, settings);
             }
 
-            if (odata.RawValues.DeltaToken != null)
+            if (options.RawValues.DeltaToken != null)
             {
-                ValidateAllowed(AllowedQueryOptions.DeltaToken, settings.AllowedQueryOptions);
+                ValidateAllowed(AllowedOptions.DeltaToken, settings);
             }
 
-            if (odata.RawValues.Format != null)
+            if (options.RawValues.Format != null)
             {
-                ValidateAllowed(AllowedQueryOptions.Format, settings.AllowedQueryOptions);
+                ValidateAllowed(AllowedOptions.Format, settings);
             }
 
-            if (odata.Filter != null)
+            if (options.Filter != null)
             {
-                ValidateAllowed(AllowedQueryOptions.Filter, settings.AllowedQueryOptions);
-                filterValidator.Validate(odata.Filter, settings);
+                ValidateAllowed(AllowedOptions.Filter, settings);
+                filterValidator.Validate(options.Filter, settings);
             }
 
-            if (odata.OrderBy != null)
+            if (options.OrderBy != null)
             {
-                ValidateAllowed(AllowedQueryOptions.OrderBy, settings.AllowedQueryOptions);
+                ValidateAllowed(AllowedOptions.OrderBy, settings);
             }
 
-            if (odata.Search != null)
+            if (options.Search != null)
             {
-                ValidateAllowed(AllowedQueryOptions.Search, settings.AllowedQueryOptions);
+                ValidateAllowed(AllowedOptions.Search, settings);
             }
 
-            if (odata.RawValues.Select != null)
+            if (options.RawValues.Select != null)
             {
-                ValidateAllowed(AllowedQueryOptions.Select, settings.AllowedQueryOptions);
+                ValidateAllowed(AllowedOptions.Select, settings);
             }
 
-            if (odata.RawValues.Expand != null)
+            if (options.RawValues.Expand != null)
             {
-                ValidateAllowed(AllowedQueryOptions.Expand, settings.AllowedQueryOptions);
+                ValidateAllowed(AllowedOptions.Expand, settings);
             }
 
-            if (odata.Skip != null)
+            if (options.Skip != null)
             {
-                ValidateAllowed(AllowedQueryOptions.Skip, settings.AllowedQueryOptions);
-                skipValidator.Validate(odata.Skip, settings);
+                ValidateAllowed(AllowedOptions.Skip, settings);
+                skipValidator.Validate(options.Skip, settings);
             }
 
-            if (odata.RawValues.SkipToken != null)
+            if (options.RawValues.SkipToken != null)
             {
-                ValidateAllowed(AllowedQueryOptions.SkipToken, settings.AllowedQueryOptions);
+                ValidateAllowed(AllowedOptions.SkipToken, settings);
             }
 
-            if (odata.Top != null)
+            if (options.Top != null)
             {
-                ValidateAllowed(AllowedQueryOptions.Top, settings.AllowedQueryOptions);
-                topValidator.Validate(odata.Top, settings);
+                ValidateAllowed(AllowedOptions.Top, settings);
+                topValidator.Validate(options.Top, settings);
             }
         }
 
-        void ValidateAllowed(AllowedQueryOptions option, AllowedQueryOptions allowed)
+        void ValidateAllowed(AllowedOptions option, ValidationSettings settings)
         {
-            if (!allowed.HasFlag(option))
+            if (!settings.AllowedOptions.HasFlag(option))
             {
                 throw new ODataException($"The '{option}' query option is not allowed.");
             }

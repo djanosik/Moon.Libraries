@@ -10,13 +10,13 @@
         /// </summary>
         /// <param name="skip">The parsed $skip query option.</param>
         /// <param name="settings">The validation settings.</param>
-        public virtual void Validate(long? skip, ODataValidationSettings settings)
+        public virtual void Validate(long? skip, ValidationSettings settings)
         {
             Requires.NotNull(settings, nameof(settings));
 
             if (skip > settings.MaxSkip)
             {
-                throw new ODataException($"The $skip query option exceeded the ODataValidationSettiongs.MaxSkip value.");
+                throw new ODataException($"The $skip query option exceeded the ValidationSettiongs.MaxSkip value.");
             }
         }
     }

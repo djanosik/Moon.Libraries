@@ -10,13 +10,13 @@
         /// </summary>
         /// <param name="top">The parsed $top query option.</param>
         /// <param name="settings">The validation settings.</param>
-        public virtual void Validate(long? top, ODataValidationSettings settings)
+        public virtual void Validate(long? top, ValidationSettings settings)
         {
             Requires.NotNull(settings, nameof(settings));
 
             if (top > settings.MaxTop)
             {
-                throw new ODataException($"The $top query option exceeded the ODataValidationSettiongs.MaxTop value.");
+                throw new ODataException($"The $top query option exceeded the ValidationSettiongs.MaxTop value.");
             }
         }
     }

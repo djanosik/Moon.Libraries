@@ -3,14 +3,14 @@
     /// <summary>
     /// This class describes the validation settings for querying.
     /// </summary>
-    public class ODataValidationSettings
+    public class ValidationSettings
     {
         /// <summary>
         /// Gets or sets the query parameters that are allowed inside query. The default is all
         /// query options, including $count, $deltatoken, $format, $filter, $orderby, $search,
         /// $select, $expand, $skip, $skiptoken and $top.
         /// </summary>
-        public AllowedQueryOptions AllowedQueryOptions { get; set; } = AllowedQueryOptions.All;
+        public AllowedOptions AllowedOptions { get; set; } = AllowedOptions.All;
 
         /// <summary>
         /// Gets or sets a list of allowed functions used in the $filter query.
@@ -18,14 +18,9 @@
         public AllowedFunctions AllowedFunctions { get; set; } = AllowedFunctions.All;
 
         /// <summary>
-        /// Gets or sets a list of allowed arithmetic operators in the $filter query.
+        /// Gets or sets a list of allowed operators in the $filter query.
         /// </summary>
-        public AllowedArithmeticOperators AllowedArithmeticOperators { get; set; } = AllowedArithmeticOperators.All;
-
-        /// <summary>
-        /// Gets or sets a list of allowed logical operators in the $filter query.
-        /// </summary>
-        public AllowedLogicalOperators AllowedLogicalOperators { get; set; } = AllowedLogicalOperators.All;
+        public AllowedOperators AllowedOperators { get; set; } = AllowedOperators.All;
 
         /// <summary>
         /// Gets or sets the max value of $skip that a client can request.
