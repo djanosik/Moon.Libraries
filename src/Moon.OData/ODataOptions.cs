@@ -50,6 +50,7 @@ namespace Moon.OData
 
             RawValues = new ODataRawValues(options);
             var parser = CreateParser(primitives);
+            parser.Resolver.EnableCaseInsensitive = true;
 
             count = Lazy.From(parser.ParseCount);
             deltaToken = Lazy.From(parser.ParseDeltaToken);
