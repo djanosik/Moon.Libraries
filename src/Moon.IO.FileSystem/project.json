@@ -16,7 +16,7 @@
     "dnx451": { },
     "dotnet": {
       "dependencies": {
-        "System.IO.FileSystem": "4.0.1-beta-23225"
+        "System.IO.FileSystem": "4.0.1-beta-23409"
       }
     }
   }
