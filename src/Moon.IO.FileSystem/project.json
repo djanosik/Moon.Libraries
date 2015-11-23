@@ -13,10 +13,9 @@
 
   "frameworks": {
     "net451": { },
-    "dnx451": { },
-    "dotnet": {
+    "dotnet5.4": {
       "dependencies": {
-        "System.IO.FileSystem": "4.0.1-beta-23409"
+        "System.IO.FileSystem": "4.0.1-*"
       }
     }
   }

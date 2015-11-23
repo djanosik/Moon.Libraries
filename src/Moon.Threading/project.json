@@ -13,10 +13,9 @@
 
   "frameworks": {
     "net451": { },
-    "dnx451": { },
-    "dotnet": {
+    "dotnet5.4": {
       "dependencies": {
-        "System.Threading.Tasks": "4.0.11-beta-23409"
+        "System.Threading.Tasks": "4.0.11-*"
       }
     }
   }

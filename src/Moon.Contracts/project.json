@@ -9,12 +9,11 @@
 
   "frameworks": {
     "net451": { },
-    "dnx451": { },
-    "dotnet": {
+    "dotnet5.4": {
       "dependencies": {
-        "System.Diagnostics.Tools": "4.0.1-beta-23409",
-        "System.Linq": "4.0.1-beta-23409",
-        "System.Reflection": "4.1.0-beta-23409"
+        "System.Diagnostics.Tools": "4.0.1-*",
+        "System.Linq": "4.0.1-*",
+        "System.Reflection": "4.1.0-*"
       }
     }
   }

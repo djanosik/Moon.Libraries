@@ -13,10 +13,9 @@
 
   "frameworks": {
     "net451": { },
-    "dnx451": { },
-    "dotnet": {
+    "dotnet5.4": {
       "dependencies": {
-        "System.Collections": "4.0.11-beta-23409"
+        "System.Collections": "4.0.11-*"
       }
     }
   }
