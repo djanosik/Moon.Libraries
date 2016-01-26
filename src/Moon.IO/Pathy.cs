@@ -9,31 +9,12 @@ namespace Moon.IO
     public static class Pathy
     {
         /// <summary>
-        /// Appends trailing slash to the given path.
-        /// </summary>
-        /// <param name="folderPath">The folder path.</param>
-        public static string AppendTrailingSlash(string folderPath)
-        {
-            Requires.NotNull(folderPath, nameof(folderPath));
-
-            folderPath = Normalize(folderPath);
-            var lastIndex = folderPath.Length - 1;
-
-            if (folderPath.Length == 0 || folderPath[lastIndex] != '/')
-            {
-                folderPath += "/";
-            }
-
-            return folderPath;
-        }
-
-        /// <summary>
         /// Returns random file name without extension.
         /// </summary>
         public static string GetRandomFileName()
         {
             var fileName = Path.GetRandomFileName();
-            fileName = fileName.Replace('.', '-').ToLower();
+            fileName = fileName.Replace('.', '-').ToLowerInvariant();
             return $"f{fileName}";
         }
 
@@ -174,6 +155,25 @@ namespace Moon.IO
             }
 
             return path;
+        }
+
+        /// <summary>
+        /// Appends trailing slash to the given path.
+        /// </summary>
+        /// <param name="folderPath">The folder path.</param>
+        public static string AppendTrailingSlash(string folderPath)
+        {
+            Requires.NotNull(folderPath, nameof(folderPath));
+
+            folderPath = Normalize(folderPath);
+            var lastIndex = folderPath.Length - 1;
+
+            if (folderPath.Length == 0 || folderPath[lastIndex] != '/')
+            {
+                folderPath += "/";
+            }
+
+            return folderPath;
         }
 
         /// <summary>

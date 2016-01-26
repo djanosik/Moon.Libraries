@@ -2,14 +2,14 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETFramework,Version=v4.5.1": {
+    ".NETFramework,Version=v4.6": {
       "Moon.Contracts/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
+        "framework": ".NETFramework,Version=v4.6"
       },
       "Moon.Runtime/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
           "Moon.Contracts": "1.0.0-ci"
         }
@@ -161,27 +161,27 @@
         }
       }
     },
-    ".NETFramework,Version=v4.5.1/win7-x86": {
+    ".NETFramework,Version=v4.6/win7-x86": {
       "Moon.Contracts/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
+        "framework": ".NETFramework,Version=v4.6"
       },
       "Moon.Runtime/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
           "Moon.Contracts": "1.0.0-ci"
         }
       }
     },
-    ".NETFramework,Version=v4.5.1/win7-x64": {
+    ".NETFramework,Version=v4.6/win7-x64": {
       "Moon.Contracts/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
+        "framework": ".NETFramework,Version=v4.6"
       },
       "Moon.Runtime/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
           "Moon.Contracts": "1.0.0-ci"
         }
@@ -1105,7 +1105,7 @@
     "": [
       "Moon.Runtime >= 1.0.0-ci"
     ],
-    ".NETFramework,Version=v4.5.1": [],
+    ".NETFramework,Version=v4.6": [],
     ".NETPlatform,Version=v5.4": [
       "System.Threading.Tasks >= 4.0.11-*"
     ]

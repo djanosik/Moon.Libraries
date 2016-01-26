@@ -1,18 +1,30 @@
-﻿using Xunit;
+﻿using System.Collections.Generic;
+using FluentAssertions;
+using Moon.Testing;
+using Xunit;
 
 namespace Moon.Reflection.Tests
 {
-    public class AnonymousTests
+    public class AnonymousTests : TestSetup
     {
-        [Fact]
-        public void ToDictionary_ShouldConvertPropertiesToItems()
-        {
-            var obj = new { test = "test", test2 = "test2" };
-            var dictionary = Anonymous.ToDictionary(obj);
+        object anonymous;
+        IDictionary<string, string> result;
 
-            Assert.Equal(2, dictionary.Count);
-            Assert.Equal("test", dictionary["test"]);
-            Assert.Equal("test2", dictionary["test2"]);
+        [Fact]
+        public void ConvertingAnonymousToDictionary()
+        {
+            "Given the anonymous object"
+                .x(() => anonymous = new { test = "test", test2 = "test2" });
+
+            "When I convert the object to dictionary"
+                .x(() => result = Anonymous.ToDictionary(anonymous));
+
+            "Then it should have two items"
+                .x(() =>
+                {
+                    result["test"].Should().Be("test");
+                    result["test2"].Should().Be("test2");
+                });
         }
     }
 }

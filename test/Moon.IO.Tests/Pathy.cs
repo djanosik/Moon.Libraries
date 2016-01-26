@@ -1,141 +1,298 @@
-﻿using Xunit;
+﻿using FluentAssertions;
+using Moon.Testing;
+using Xunit;
 
 namespace Moon.IO
 {
-    public class PathyTests
+    public class PathyTests : TestSetup
     {
-        [Fact]
-        public void AppendTrailingSlash_ShouldAppendSlash()
-        {
-            var result = Pathy.AppendTrailingSlash("/test/result");
+        string path, url;
 
-            Assert.Equal("/test/result/", result);
+        [Fact]
+        public void CheckingWhetherAbsolutePathIsAbsolute()
+        {
+            bool result = false;
+
+            "Given the path"
+                .x(() => path = "c:/test.txt");
+
+            "When I check whether the path is absolute"
+                .x(() => result = Pathy.IsAbsolutePath(path));
+
+            "Then it should return true"
+                .x(() =>
+                {
+                    result.Should().BeTrue();
+                });
         }
 
         [Fact]
-        public void AppendTrailingSlash_EmptyString_ShouldReturnSlash()
+        public void CheckingWhetherAbsoluteUrlIsAbsolute()
         {
-            var result = Pathy.AppendTrailingSlash("");
+            bool result = false;
 
-            Assert.Equal("/", result);
-        }
+            "Given the URL"
+                .x(() => url = "http://test.cz/");
 
-        [Fact]
-        public void IsAbsolutePath_AbsoluteFilePath_ShouldReturnTrue()
-        {
-            var result = Pathy.IsAbsolutePath("c:/test.txt");
+            "When I check whether the URL is absolute"
+                .x(() => result = Pathy.IsAbsolutePath(url));
 
-            Assert.True(result);
-        }
-
-        [Fact]
-        public void IsAbsolutePath_AbsoluteUrl_ShouldReturnTrue()
-        {
-            var result = Pathy.IsAbsolutePath("http://test.cz/");
-
-            Assert.True(result);
+            "Then it should return true"
+                .x(() =>
+                {
+                    result.Should().BeTrue();
+                });
         }
 
         [Theory]
         [InlineData("../test.txt"), InlineData("..\\test.txt")]
         [InlineData("/test.txt"), InlineData("test.txt")]
-        public void IsAbsolutePath_RelativePath_ShouldReturnFalse(string path)
+        public void CheckingWhetherRelativePathIsAbsolute(string relative)
         {
-            var result = Pathy.IsAbsolutePath(path);
+            bool result = false;
 
-            Assert.False(result);
+            "When I check whether the path is absolute"
+                .x(() => result = Pathy.IsAbsolutePath(relative));
+
+            "Then it should return false"
+                .x(() =>
+                {
+                    result.Should().BeFalse();
+                });
         }
 
         [Fact]
-        public void MakeAbsolute_AbsoluteFilePathAndRelativeInputPath_ShouldReturnInputConvertedToAbsolutePath()
+        public void MakingParentRelativePathAbsolute()
         {
-            const string input = "../test.txt";
-            var result = Pathy.MakeAbsolute("c:/test/test.txt", input);
+            string result = null;
 
-            Assert.Equal("c:/test.txt", result);
+            "Given the path"
+                .x(() => path = "../test.txt");
+
+            "When I make it absolute"
+                .x(() => result = Pathy.MakeAbsolute("c:/test/test.txt", path));
+
+            "Then the result should be absolute"
+                .x(() =>
+                {
+                    result.Should().Be("c:/test.txt");
+                });
         }
 
         [Fact]
-        public void MakeAbsolute_AbsoluteFolderPathAndRelativeInputPath_ShouldReturnInputConvertedToAbsolutePath()
+        public void MakingRelativePathAbsolute()
         {
-            const string input = "test.txt";
-            var result = Pathy.MakeAbsolute("c:/test", input);
+            string result = null;
 
-            Assert.Equal("c:/test.txt", result);
+            "Given the path"
+                .x(() => path = "test.txt");
+
+            "When I make it absolute"
+                .x(() => result = Pathy.MakeAbsolute("c:/test", path));
+
+            "Then the result should be absolute"
+                .x(() =>
+                {
+                    result.Should().Be("c:/test.txt");
+                });
         }
 
         [Fact]
-        public void MakeAbsolute_AbsoluteInputPath_ShouldReturnInput()
+        public void MakingAbsolutePathAbsolute()
         {
-            const string input = "c:/test.txt";
-            var result = Pathy.MakeAbsolute("c:/anyabsolute.txt", input);
+            string result = null;
 
-            Assert.Equal(input, result);
+            "Given the path"
+                .x(() => path = "c:/test.txt");
+
+            "When I make it absolute"
+                .x(() => result = Pathy.MakeAbsolute("c:/anyabsolute.txt", path));
+
+            "Then the result should be absolute"
+                .x(() =>
+                {
+                    result.Should().Be(path);
+                });
         }
 
         [Fact]
-        public void MakeRelativeToRoot_ShouldReturnInputConvertedToRelativePath()
+        public void MakingAbsolutePathRelativeToRoot()
         {
-            const string input = "c:/test/neco/test.txt";
-            var result = Pathy.MakeRelativeToRoot("c:/test/", input);
+            string result = null;
 
-            Assert.Equal("/neco/test.txt", result);
+            "Given the path"
+                .x(() => path = "c:/test/neco/test.txt");
+
+            "When I make it relative to root"
+                .x(() => result = Pathy.MakeRelativeToRoot("c:/test/", path));
+
+            "Then the result should be relative"
+                .x(() =>
+                {
+                    result.Should().Be("/neco/test.txt");
+                });
         }
 
         [Fact]
-        public void Normalize_AbsolutePath_ShouldReturnNormalizedPath()
+        public void NormalizingAbsolutePath()
         {
-            var result = Pathy.Normalize("c:\\test\\\\test.txt");
+            string result = null;
 
-            Assert.Equal("c:/test/test.txt", result);
+            "Given the path"
+                .x(() => path = "c:\\test\\\\test.txt");
+
+            "When I normalize the path"
+                .x(() => result = Pathy.Normalize(path));
+
+            "Then the result should be normalized"
+                .x(() =>
+                {
+                    result.Should().Be("c:/test/test.txt");
+                });
         }
 
         [Fact]
-        public void Normalize_HttpUrl_ShouldReturnNormalizedPath()
+        public void NormalizingAbsoluteUrl()
         {
-            var result = Pathy.Normalize("http:\\\\www.web.cz\\");
+            string result = null;
 
-            Assert.Equal("http://www.web.cz/", result);
+            "Given the URL"
+                .x(() => url = "http:\\\\www.web.cz\\");
+
+            "When I normalize the URL"
+                .x(() => result = Pathy.Normalize(url));
+
+            "Then the result should be normalized"
+                .x(() =>
+                {
+                    result.Should().Be("http://www.web.cz/");
+                });
         }
 
         [Fact]
-        public void Normalize_RelativePath_ShouldReturnNormalizedPath()
+        public void NormalizingRelativePath()
         {
-            var result = Pathy.Normalize("..\\\\test.txt");
+            string result = null;
 
-            Assert.Equal("../test.txt", result);
+            "Given the path"
+                .x(() => path = "..\\\\test.txt");
+
+            "When I normalize the path"
+                .x(() => result = Pathy.Normalize(path));
+
+            "Then the result should be normalized"
+                .x(() =>
+                {
+                    result.Should().Be("../test.txt");
+                });
         }
 
         [Fact]
-        public void RemoveLeadingSlash_ShouldReturnExpectedResult()
+        public void AppendingTrailingSlash()
         {
-            var result = Pathy.RemoveLeadingSlash("/test/result");
+            string result = null;
 
-            Assert.Equal("test/result", result);
+            "Given the path"
+                .x(() => path = "/test/result");
+
+            "When I append trailing slash"
+                .x(() => result = Pathy.AppendTrailingSlash(path));
+
+            "Then the result should have trailing slash"
+                .x(() =>
+                {
+                    result.Should().Be("/test/result/");
+                });
         }
 
         [Fact]
-        public void RemoveLeadingSlash_EmptyString_ShouldReturnExpectedResult()
+        public void AppendingTrailingSlashToEmptyString()
         {
-            var result = Pathy.RemoveLeadingSlash("");
+            string result = null;
 
-            Assert.Equal("", result);
+            "Given the path"
+                .x(() => path = string.Empty);
+
+            "When I append trailing slash"
+                .x(() => result = Pathy.AppendTrailingSlash(path));
+
+            "Then the result should have trailing slash"
+                .x(() =>
+                {
+                    result.Should().Be("/");
+                });
         }
 
         [Fact]
-        public void RemoveTrailingSlash_ShouldReturnExpectedResult()
+        public void RemovingLeadingSlash()
         {
-            var result = Pathy.RemoveTrailingSlash("/test/result/");
+            string result = null;
 
-            Assert.Equal("/test/result", result);
+            "Given the path"
+                .x(() => path = "/test/result");
+
+            "When I remove leading slash"
+                .x(() => result = Pathy.RemoveLeadingSlash(path));
+
+            "Then the result should not have leading slash"
+                .x(() =>
+                {
+                    result.Should().Be("test/result");
+                });
         }
 
         [Fact]
-        public void RemoveTrailingSlash_EmptyString_ShouldReturnExpectedResult()
+        public void RemovingLeadingSlashFromEmptyString()
         {
-            var result = Pathy.RemoveTrailingSlash("");
+            string result = null;
 
-            Assert.Equal("", result);
+            "Given the path"
+                .x(() => path = string.Empty);
+
+            "When I remove leading slash"
+                .x(() => result = Pathy.RemoveLeadingSlash(path));
+
+            "Then the result should not have leading slash"
+                .x(() =>
+                {
+                    result.Should().Be(path);
+                });
+        }
+
+        [Fact]
+        public void RemovingTrailingSlash()
+        {
+            string result = null;
+
+            "Given the path"
+                .x(() => path = "/test/result/");
+
+            "When I remove trailing slash"
+                .x(() => result = Pathy.RemoveTrailingSlash(path));
+
+            "Then the result should not have trailing slash"
+                .x(() =>
+                {
+                    result.Should().Be("/test/result");
+                });
+        }
+
+        [Fact]
+        public void RemovingTrailingSlashFromEmptyString()
+        {
+            string result = null;
+
+            "Given the path"
+                .x(() => path = string.Empty);
+
+            "When I remove trailing slash"
+                .x(() => result = Pathy.RemoveTrailingSlash(path));
+
+            "Then the result should not have trailing slash"
+                .x(() =>
+                {
+                    result.Should().Be(path);
+                });
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Moon.Collections", "src\Moon.Collections\Moon.Collections.xproj", "{EFF016D4-1BC6-4B55-A71B-F02AB9C907D3}"
 EndProject
@@ -44,6 +44,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7ACA82C9-9073-4F44-BB15-2B85F7A2E878}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Moon.Contracts.Tests", "test\Moon.Contracts.Tests\Moon.Contracts.Tests.xproj", "{CDE59232-AAA7-426E-9D47-156846065783}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Moon.Security", "src\Moon.Security\Moon.Security.xproj", "{6E5AC956-1E61-45A8-858F-F0B88AF7A11C}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Moon.Security.Tests", "test\Moon.Security.Tests\Moon.Security.Tests.xproj", "{CFE023A3-5C32-4951-A64B-4FE630E68B9F}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Moon.Testing", "src\Moon.Testing\Moon.Testing.xproj", "{6B2A9C64-C0C6-4AC5-8F80-10D997091F4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +109,18 @@ Global
 		{CDE59232-AAA7-426E-9D47-156846065783}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDE59232-AAA7-426E-9D47-156846065783}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDE59232-AAA7-426E-9D47-156846065783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E5AC956-1E61-45A8-858F-F0B88AF7A11C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E5AC956-1E61-45A8-858F-F0B88AF7A11C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E5AC956-1E61-45A8-858F-F0B88AF7A11C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E5AC956-1E61-45A8-858F-F0B88AF7A11C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFE023A3-5C32-4951-A64B-4FE630E68B9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE023A3-5C32-4951-A64B-4FE630E68B9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFE023A3-5C32-4951-A64B-4FE630E68B9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFE023A3-5C32-4951-A64B-4FE630E68B9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B2A9C64-C0C6-4AC5-8F80-10D997091F4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B2A9C64-C0C6-4AC5-8F80-10D997091F4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B2A9C64-C0C6-4AC5-8F80-10D997091F4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B2A9C64-C0C6-4AC5-8F80-10D997091F4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,5 +139,8 @@ Global
 		{C00E64C5-8945-4625-80E9-A2C8D86E2B5C} = {7ACA82C9-9073-4F44-BB15-2B85F7A2E878}
 		{1281D43A-466F-45EC-AE49-CB9CD0F12FC7} = {D806EDE3-0690-40D6-B47E-7C2E016962BD}
 		{CDE59232-AAA7-426E-9D47-156846065783} = {7ACA82C9-9073-4F44-BB15-2B85F7A2E878}
+		{6E5AC956-1E61-45A8-858F-F0B88AF7A11C} = {D806EDE3-0690-40D6-B47E-7C2E016962BD}
+		{CFE023A3-5C32-4951-A64B-4FE630E68B9F} = {7ACA82C9-9073-4F44-BB15-2B85F7A2E878}
+		{6B2A9C64-C0C6-4AC5-8F80-10D997091F4E} = {D806EDE3-0690-40D6-B47E-7C2E016962BD}
 	EndGlobalSection
 EndGlobal

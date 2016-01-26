@@ -2,7 +2,7 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETFramework,Version=v4.5.1": {},
+    ".NETFramework,Version=v4.6": {},
     ".NETPlatform,Version=v5.4": {
       "System.Collections/4.0.10": {
         "type": "package",
@@ -132,8 +132,8 @@
         }
       }
     },
-    ".NETFramework,Version=v4.5.1/win7-x86": {},
-    ".NETFramework,Version=v4.5.1/win7-x64": {},
+    ".NETFramework,Version=v4.6/win7-x86": {},
+    ".NETFramework,Version=v4.6/win7-x64": {},
     ".NETPlatform,Version=v5.4/win7-x86": {
       "System.Collections/4.0.10": {
         "type": "package",
@@ -942,7 +942,7 @@
   },
   "projectFileDependencyGroups": {
     "": [],
-    ".NETFramework,Version=v4.5.1": [],
+    ".NETFramework,Version=v4.6": [],
     ".NETPlatform,Version=v5.4": [
       "System.Diagnostics.Tools >= 4.0.1-*",
       "System.Linq >= 4.0.1-*",

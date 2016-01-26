@@ -8,7 +8,7 @@
   "tags": [ "moontea", "contracts", "guard" ],
 
   "frameworks": {
-    "net451": { },
+    "net46": { },
     "dotnet5.4": {
       "dependencies": {
         "System.Diagnostics.Tools": "4.0.1-*",

@@ -2,7 +2,55 @@
   "locked": false,
   "version": 2,
   "targets": {
-    "DNX,Version=v4.5.1": {
+    "DNX,Version=v4.6": {
+      "FluentAssertions/4.2.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net45/FluentAssertions.Core.dll": {},
+          "lib/net45/FluentAssertions.dll": {}
+        },
+        "runtime": {
+          "lib/net45/FluentAssertions.Core.dll": {},
+          "lib/net45/FluentAssertions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Cryptography.Internal/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Cryptography.Internal.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Cryptography.Internal.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Cryptography.KeyDerivation/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Cryptography.Internal": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Cryptography.KeyDerivation.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Cryptography.KeyDerivation.dll": {}
+        }
+      },
       "Microsoft.Dnx.Compilation.Abstractions/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -126,7 +174,25 @@
       },
       "Moon.Contracts/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
+        "framework": ".NETFramework,Version=v4.6"
+      },
+      "Moon.Security/1.0.0-ci": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6",
+        "dependencies": {
+          "Microsoft.AspNet.Cryptography.KeyDerivation": "1.0.0",
+          "Moon.Contracts": "1.0.0-ci"
+        }
+      },
+      "Moon.Testing/1.0.0-ci": {
+        "type": "project",
+        "framework": "DNX,Version=v4.6",
+        "dependencies": {
+          "FluentAssertions": "4.2.1",
+          "Moon.Security": "1.0.0-ci",
+          "xunit": "2.1.0",
+          "xunit.runner.dnx": "2.1.0-rc1"
+        }
       },
       "Newtonsoft.Json/7.0.1": {
         "type": "package",
@@ -247,7 +313,55 @@
         }
       }
     },
-    "DNX,Version=v4.5.1/win7-x86": {
+    "DNX,Version=v4.6/win7-x86": {
+      "FluentAssertions/4.2.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net45/FluentAssertions.Core.dll": {},
+          "lib/net45/FluentAssertions.dll": {}
+        },
+        "runtime": {
+          "lib/net45/FluentAssertions.Core.dll": {},
+          "lib/net45/FluentAssertions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Cryptography.Internal/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Cryptography.Internal.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Cryptography.Internal.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Cryptography.KeyDerivation/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Cryptography.Internal": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Cryptography.KeyDerivation.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Cryptography.KeyDerivation.dll": {}
+        }
+      },
       "Microsoft.Dnx.Compilation.Abstractions/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -371,7 +485,25 @@
       },
       "Moon.Contracts/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
+        "framework": ".NETFramework,Version=v4.6"
+      },
+      "Moon.Security/1.0.0-ci": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6",
+        "dependencies": {
+          "Microsoft.AspNet.Cryptography.KeyDerivation": "1.0.0",
+          "Moon.Contracts": "1.0.0-ci"
+        }
+      },
+      "Moon.Testing/1.0.0-ci": {
+        "type": "project",
+        "framework": "DNX,Version=v4.6",
+        "dependencies": {
+          "FluentAssertions": "4.2.1",
+          "Moon.Security": "1.0.0-ci",
+          "xunit": "2.1.0",
+          "xunit.runner.dnx": "2.1.0-rc1"
+        }
       },
       "Newtonsoft.Json/7.0.1": {
         "type": "package",
@@ -492,7 +624,55 @@
         }
       }
     },
-    "DNX,Version=v4.5.1/win7-x64": {
+    "DNX,Version=v4.6/win7-x64": {
+      "FluentAssertions/4.2.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net45/FluentAssertions.Core.dll": {},
+          "lib/net45/FluentAssertions.dll": {}
+        },
+        "runtime": {
+          "lib/net45/FluentAssertions.Core.dll": {},
+          "lib/net45/FluentAssertions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Cryptography.Internal/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Cryptography.Internal.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Cryptography.Internal.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Cryptography.KeyDerivation/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Cryptography.Internal": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Cryptography.KeyDerivation.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Cryptography.KeyDerivation.dll": {}
+        }
+      },
       "Microsoft.Dnx.Compilation.Abstractions/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -616,7 +796,25 @@
       },
       "Moon.Contracts/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
+        "framework": ".NETFramework,Version=v4.6"
+      },
+      "Moon.Security/1.0.0-ci": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6",
+        "dependencies": {
+          "Microsoft.AspNet.Cryptography.KeyDerivation": "1.0.0",
+          "Moon.Contracts": "1.0.0-ci"
+        }
+      },
+      "Moon.Testing/1.0.0-ci": {
+        "type": "project",
+        "framework": "DNX,Version=v4.6",
+        "dependencies": {
+          "FluentAssertions": "4.2.1",
+          "Moon.Security": "1.0.0-ci",
+          "xunit": "2.1.0",
+          "xunit.runner.dnx": "2.1.0-rc1"
+        }
       },
       "Newtonsoft.Json/7.0.1": {
         "type": "package",
@@ -742,6 +940,143 @@
     "Moon.Contracts/1.0.0-ci": {
       "type": "project",
       "path": "../../src/Moon.Contracts/project.json"
+    },
+    "Moon.Security/1.0.0-ci": {
+      "type": "project",
+      "path": "../../src/Moon.Security/project.json"
+    },
+    "Moon.Testing/1.0.0-ci": {
+      "type": "project",
+      "path": "../../src/Moon.Testing/project.json"
+    },
+    "FluentAssertions/4.2.1": {
+      "type": "package",
+      "sha512": "GNipLr0GU8I7l1CrgaMyDuluOrhSfj2S8vQYNRJXBstGKT3qlQTHFcX5HgrV9/50ykiRaCpxdQBdAS4lvluS5A==",
+      "files": [
+        "FluentAssertions.4.2.1.nupkg",
+        "FluentAssertions.4.2.1.nupkg.sha512",
+        "FluentAssertions.nuspec",
+        "lib/dotnet/FluentAssertions.Core.dll",
+        "lib/dotnet/FluentAssertions.Core.pdb",
+        "lib/dotnet/FluentAssertions.dll",
+        "lib/dotnet/FluentAssertions.pdb",
+        "lib/dotnet/FluentAssertions.xml",
+        "lib/monoandroid/FluentAssertions.Core.dll",
+        "lib/monoandroid/FluentAssertions.Core.pdb",
+        "lib/monoandroid/FluentAssertions.Core.xml",
+        "lib/monotouch/FluentAssertions.Core.dll",
+        "lib/monotouch/FluentAssertions.Core.pdb",
+        "lib/monotouch/FluentAssertions.Core.xml",
+        "lib/net40/FluentAssertions.Core.dll",
+        "lib/net40/FluentAssertions.Core.pdb",
+        "lib/net40/FluentAssertions.Core.xml",
+        "lib/net40/FluentAssertions.dll",
+        "lib/net40/FluentAssertions.pdb",
+        "lib/net40/FluentAssertions.xml",
+        "lib/net45/FluentAssertions.Core.dll",
+        "lib/net45/FluentAssertions.Core.pdb",
+        "lib/net45/FluentAssertions.Core.xml",
+        "lib/net45/FluentAssertions.dll",
+        "lib/net45/FluentAssertions.pdb",
+        "lib/net45/FluentAssertions.xml",
+        "lib/portable-monotouch+monoandroid+xamarin.ios/FluentAssertions.Core.dll",
+        "lib/portable-monotouch+monoandroid+xamarin.ios/FluentAssertions.Core.pdb",
+        "lib/portable-monotouch+monoandroid+xamarin.ios/FluentAssertions.Core.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/FluentAssertions.Core.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/FluentAssertions.Core.pdb",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/FluentAssertions.Core.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/FluentAssertions.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/FluentAssertions.pdb",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/FluentAssertions.XML",
+        "lib/portable-win81+wpa81/FluentAssertions.Core.dll",
+        "lib/portable-win81+wpa81/FluentAssertions.Core.pdb",
+        "lib/portable-win81+wpa81/FluentAssertions.Core.xml",
+        "lib/portable-win81+wpa81/FluentAssertions.dll",
+        "lib/portable-win81+wpa81/FluentAssertions.pdb",
+        "lib/portable-win81+wpa81/FluentAssertions.pri",
+        "lib/portable-win81+wpa81/FluentAssertions.xml",
+        "lib/sl5/de/Microsoft.CSharp.resources.dll",
+        "lib/sl5/de/System.Xml.Linq.resources.dll",
+        "lib/sl5/es/Microsoft.CSharp.resources.dll",
+        "lib/sl5/es/System.Xml.Linq.resources.dll",
+        "lib/sl5/FluentAssertions.Core.dll",
+        "lib/sl5/FluentAssertions.Core.pdb",
+        "lib/sl5/FluentAssertions.Core.xml",
+        "lib/sl5/FluentAssertions.dll",
+        "lib/sl5/FluentAssertions.pdb",
+        "lib/sl5/FluentAssertions.xml",
+        "lib/sl5/fr/Microsoft.CSharp.resources.dll",
+        "lib/sl5/fr/System.Xml.Linq.resources.dll",
+        "lib/sl5/it/Microsoft.CSharp.resources.dll",
+        "lib/sl5/it/System.Xml.Linq.resources.dll",
+        "lib/sl5/ja/Microsoft.CSharp.resources.dll",
+        "lib/sl5/ja/System.Xml.Linq.resources.dll",
+        "lib/sl5/ko/Microsoft.CSharp.resources.dll",
+        "lib/sl5/ko/System.Xml.Linq.resources.dll",
+        "lib/sl5/Microsoft.CSharp.dll",
+        "lib/sl5/Microsoft.CSharp.xml",
+        "lib/sl5/Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll",
+        "lib/sl5/Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.xml",
+        "lib/sl5/ru/Microsoft.CSharp.resources.dll",
+        "lib/sl5/ru/System.Xml.Linq.resources.dll",
+        "lib/sl5/System.Xml.Linq.dll",
+        "lib/sl5/System.Xml.Linq.xml",
+        "lib/sl5/zh-Hans/Microsoft.CSharp.resources.dll",
+        "lib/sl5/zh-Hans/System.Xml.Linq.resources.dll",
+        "lib/sl5/zh-Hant/Microsoft.CSharp.resources.dll",
+        "lib/sl5/zh-Hant/System.Xml.Linq.resources.dll",
+        "lib/win81/FluentAssertions.Core.dll",
+        "lib/win81/FluentAssertions.Core.pdb",
+        "lib/win81/FluentAssertions.Core.xml",
+        "lib/win81/FluentAssertions.dll",
+        "lib/win81/FluentAssertions.pdb",
+        "lib/win81/FluentAssertions.pri",
+        "lib/win81/FluentAssertions.xml",
+        "lib/wp8/FluentAssertions.Core.dll",
+        "lib/wp8/FluentAssertions.Core.pdb",
+        "lib/wp8/FluentAssertions.Core.xml",
+        "lib/wp8/FluentAssertions.dll",
+        "lib/wp8/FluentAssertions.pdb",
+        "lib/wp8/FluentAssertions.xml",
+        "lib/wpa81/FluentAssertions.Core.dll",
+        "lib/wpa81/FluentAssertions.Core.pdb",
+        "lib/wpa81/FluentAssertions.Core.xml",
+        "lib/wpa81/FluentAssertions.dll",
+        "lib/wpa81/FluentAssertions.pdb",
+        "lib/wpa81/FluentAssertions.pri",
+        "lib/wpa81/FluentAssertions.xml",
+        "lib/xamarin.ios/FluentAssertions.Core.dll",
+        "lib/xamarin.ios/FluentAssertions.Core.pdb",
+        "lib/xamarin.ios/FluentAssertions.Core.xml"
+      ]
+    },
+    "Microsoft.AspNet.Cryptography.Internal/1.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "gQBLMaEd0ZRntSBjuWFJ6Qu3BKO6SORWA3Iv/Rhd4oEB1O8Mzdk3nHAyWyo/i8GhE740sajdwT8yXZTm3fzglg==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.AspNet.Cryptography.Internal.dll",
+        "lib/dotnet5.4/Microsoft.AspNet.Cryptography.Internal.xml",
+        "lib/net451/Microsoft.AspNet.Cryptography.Internal.dll",
+        "lib/net451/Microsoft.AspNet.Cryptography.Internal.xml",
+        "Microsoft.AspNet.Cryptography.Internal.1.0.0-rc1-final.nupkg",
+        "Microsoft.AspNet.Cryptography.Internal.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.AspNet.Cryptography.Internal.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.Cryptography.KeyDerivation/1.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "a0HOA+i0gEY5SIzJZX4QXuj+hY6C7NT3t60EwreWYPAy/rruoxlkarU8H9oHwtatT2/FjC8kdMNQS72y1I/5KQ==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.AspNet.Cryptography.KeyDerivation.dll",
+        "lib/dotnet5.4/Microsoft.AspNet.Cryptography.KeyDerivation.xml",
+        "lib/net451/Microsoft.AspNet.Cryptography.KeyDerivation.dll",
+        "lib/net451/Microsoft.AspNet.Cryptography.KeyDerivation.xml",
+        "Microsoft.AspNet.Cryptography.KeyDerivation.1.0.0-rc1-final.nupkg",
+        "Microsoft.AspNet.Cryptography.KeyDerivation.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.AspNet.Cryptography.KeyDerivation.nuspec"
+      ]
     },
     "Microsoft.Dnx.Compilation.Abstractions/1.0.0-rc1-final": {
       "type": "package",
@@ -1037,9 +1372,8 @@
   "projectFileDependencyGroups": {
     "": [
       "Moon.Contracts >= 1.0.0-ci",
-      "xunit.runner.dnx >= 2.1.0-rc1-*",
-      "xunit >= 2.1.0"
+      "Moon.Testing >= 1.0.0-ci"
     ],
-    "DNX,Version=v4.5.1": []
+    "DNX,Version=v4.6": []
   }
 }

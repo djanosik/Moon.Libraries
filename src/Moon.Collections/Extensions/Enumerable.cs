@@ -10,6 +10,14 @@ namespace Moon.Collections
     public static class EnumerableExtensions
     {
         /// <summary>
+        /// Determines whether a sequence contains no elements.
+        /// </summary>
+        /// <typeparam name="T">The type of elements of source.</typeparam>
+        /// <param name="source">A source enumeration.</param>
+        public static bool Empty<T>(this IEnumerable<T> source)
+            => !source.Any();
+
+        /// <summary>
         /// Appends the specified item to the sequence.
         /// </summary>
         /// <typeparam name="TSource">The type of elements of source.</typeparam>
@@ -25,12 +33,32 @@ namespace Moon.Collections
         }
 
         /// <summary>
-        /// Determines whether a sequence contains no elements.
+        /// Projects each element of a sequence into a new form.
         /// </summary>
-        /// <typeparam name="T">The type of elements of source.</typeparam>
-        /// <param name="source">A source enumeration.</param>
-        public static bool Empty<T>(this IEnumerable<T> source)
-            => !source.Any();
+        /// <typeparam name="TSource">The type of the elements of source.</typeparam>
+        /// <typeparam name="TResult">The type of the value returned by selector.</typeparam>
+        /// <param name="source">A sequence of values to invoke a transform function on.</param>
+        /// <param name="selector">A transform function to apply to each element.</param>
+        /// <returns>
+        /// A <see cref="List{T}" /> whose elements are the result of invoking the transform
+        /// function on each element of source.
+        /// </returns>
+        public static List<TResult> List<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector)
+            => source.Select(selector).ToList();
+
+        /// <summary>
+        /// Projects each element of a sequence into a new form by incorporating the element's index.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of source.</typeparam>
+        /// <typeparam name="TResult">The type of the value returned by selector.</typeparam>
+        /// <param name="source">A sequence of values to invoke a transform function on.</param>
+        /// <param name="selector">A transform function to apply to each element.</param>
+        /// <returns>
+        /// A <see cref="List{T}" /> whose elements are the result of invoking the transform
+        /// function on each element of source.
+        /// </returns>
+        public static List<TResult> List<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, int, TResult> selector)
+            => source.Select(selector).ToList();
 
         /// <summary>
         /// Returns first half of items from the <paramref name="source" /> enumeration.

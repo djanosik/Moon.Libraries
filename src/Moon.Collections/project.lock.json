@@ -2,14 +2,14 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETFramework,Version=v4.5.1": {
+    ".NETFramework,Version=v4.6": {
       "Moon.Contracts/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
+        "framework": ".NETFramework,Version=v4.6"
       },
       "Moon.Runtime/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
           "Moon.Contracts": "1.0.0-ci"
         }
@@ -161,27 +161,27 @@
         }
       }
     },
-    ".NETFramework,Version=v4.5.1/win7-x86": {
+    ".NETFramework,Version=v4.6/win7-x86": {
       "Moon.Contracts/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
+        "framework": ".NETFramework,Version=v4.6"
       },
       "Moon.Runtime/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
           "Moon.Contracts": "1.0.0-ci"
         }
       }
     },
-    ".NETFramework,Version=v4.5.1/win7-x64": {
+    ".NETFramework,Version=v4.6/win7-x64": {
       "Moon.Contracts/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
+        "framework": ".NETFramework,Version=v4.6"
       },
       "Moon.Runtime/1.0.0-ci": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
           "Moon.Contracts": "1.0.0-ci"
         }
@@ -518,7 +518,7 @@
     "System.Collections/4.0.11-beta-23516": {
       "type": "package",
       "serviceable": true,
-      "sha512": "TDca4OETV0kkXdpkyivMw1/EKKD1Sa/NVAjirw+fA0LZ37jLDYX+KhPPUQxgkvhCe/SVvxETD5Viiudza2k7OQ==",
+      "sha512": "FSd5zsGfmG2pidC3CVizQPNGTK1Q3A2HEuRqwUPLU/AArjELLC5p4l6XIAlJ9ZBPdbp6V8vFQAxUHzkFfyVkYA==",
       "files": [
         "lib/DNXCore50/System.Collections.dll",
         "lib/MonoAndroid10/_._",
@@ -1119,7 +1119,7 @@
     "": [
       "Moon.Runtime >= 1.0.0-ci"
     ],
-    ".NETFramework,Version=v4.5.1": [],
+    ".NETFramework,Version=v4.6": [],
     ".NETPlatform,Version=v5.4": [
       "System.Collections >= 4.0.11-*"
     ]

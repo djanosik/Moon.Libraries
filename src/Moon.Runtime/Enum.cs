@@ -77,13 +77,12 @@ namespace Moon
         {
             Requires.NotNull(name, nameof(name));
 
-            if (!ignoreCase)
+            if (ignoreCase)
             {
-                return IsDefined(name);
+                return GetNames().Contains(name, StringComparer.OrdinalIgnoreCase);
             }
 
-            var names = GetNames().Select(i => i.ToLower());
-            return names.Contains(name.ToLower());
+            return IsDefined(name);
         }
 
         /// <summary>

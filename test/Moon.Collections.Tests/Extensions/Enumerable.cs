@@ -1,52 +1,76 @@
 ﻿using System.Linq;
+using FluentAssertions;
+using Moon.Testing;
 using Xunit;
 
 namespace Moon.Collections.Tests
 {
-    public class EnumerableExtensionsTests
+    public class EnumerableExtensionsTests : TestSetup
     {
+        int[] source, result;
+
         [Fact]
-        public void FirstHalf_ShouldReturnFiveItems()
+        public void GettingFirstHalfOfNineItems()
         {
-            var source = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            "Given the source"
+                .x(() => source = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 
-            var results = source.FirstHalf().ToArray();
+            "When I get the first half"
+                .x(() => result = source.FirstHalf().ToArray());
 
-            Assert.Equal(5, results.Count());
-            Assert.True(results.SequenceEqual(new[] { 1, 2, 3, 4, 5 }));
+            "Then it should return 5 items"
+                .x(() =>
+                {
+                    result.Should().BeEquivalentTo(new[] { 1, 2, 3, 4, 5 });
+                });
         }
 
         [Fact]
-        public void FirstHalf_ShouldReturnThreeItems()
+        public void GettingSecondHalfOfNineItems()
         {
-            var source = new[] { 1, 2, 3, 4, 5, 6 };
+            "Given the source"
+                .x(() => source = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 
-            var results = source.FirstHalf().ToArray();
+            "When I get the first half"
+                .x(() => result = source.SecondHalf().ToArray());
 
-            Assert.Equal(3, results.Count());
-            Assert.True(results.SequenceEqual(new[] { 1, 2, 3 }));
+            "Then it should return 4 items"
+                .x(() =>
+                {
+                    result.Should().BeEquivalentTo(new[] { 6, 7, 8, 9 });
+                });
         }
 
         [Fact]
-        public void SecondHalf_ShouldReturnFourItems()
+        public void GettingFirstHalfOfSixItems()
         {
-            var source = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            "Given the source"
+                .x(() => source = new[] { 1, 2, 3, 4, 5, 6 });
 
-            var results = source.SecondHalf().ToArray();
+            "When I get the first half"
+                .x(() => result = source.FirstHalf().ToArray());
 
-            Assert.Equal(4, results.Count());
-            Assert.True(results.SequenceEqual(new[] { 6, 7, 8, 9 }));
+            "Then it should return 3 items"
+                .x(() =>
+                {
+                    result.Should().BeEquivalentTo(new[] { 1, 2, 3 });
+                });
         }
 
         [Fact]
-        public void SecondHalf_ShouldReturnThreeItems()
+        public void GettingSecondHalfOfSixItems()
         {
-            var source = new[] { 1, 2, 3, 4, 5, 6 };
+            "Given the source"
+                .x(() => source = new[] { 1, 2, 3, 4, 5, 6 });
 
-            var results = source.SecondHalf().ToArray();
+            "When I get the first half"
+                .x(() => result = source.SecondHalf().ToArray());
 
-            Assert.Equal(3, results.Count());
-            Assert.True(results.SequenceEqual(new[] { 4, 5, 6 }));
+            "Then it should return 3 items"
+                .x(() =>
+                {
+                    result.Should().BeEquivalentTo(new[] { 4, 5, 6 });
+                });
         }
     }
 }

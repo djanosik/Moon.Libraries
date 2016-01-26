@@ -46,7 +46,7 @@ namespace Moon.IO
         {
             if (cancellationToken.IsCancellationRequested)
             {
-                return await new CanceledTask<byte[]>();
+                return await Task.FromCanceled<byte[]>(cancellationToken);
             }
 
             var buffer = new byte[16 * 1024];
@@ -55,7 +55,8 @@ namespace Moon.IO
                 int read;
                 while ((read = await input.ReadAsync(buffer, 0, buffer.Length, cancellationToken)) > 0)
                 {
-                    await memoryStream.WriteAsync(buffer, 0, read, cancellationToken);
+                    await memoryStream.WriteAsync(buffer, 0, read, cancellationToken)
+                        .ConfigureAwait(false);
                 }
                 return memoryStream.ToArray();
             }

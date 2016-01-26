@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using Moon.Testing;
 using Xunit;
 
 namespace Moon.Contracts.Tests
 {
-    public class RequiresTests
+    public class RequiresTests : TestSetup
     {
         [Fact]
-        public void AssignableTo_TypeIsNotAssignable_ThrowsException()
+        public void RequiringAssignableTo()
         {
             var type = typeof(int);
 
@@ -14,7 +15,7 @@ namespace Moon.Contracts.Tests
         }
 
         [Fact]
-        public void NotEmpty_CollectionIsEmpty_ThrowsException()
+        public void RequiringNotEmptyCollection()
         {
             var isEmpty = new List<string>();
 
@@ -22,7 +23,7 @@ namespace Moon.Contracts.Tests
         }
 
         [Fact]
-        public void NotNull_ObjectIsNull_ThrowsException()
+        public void RequiringNotNullObject()
         {
             var isNull = (string)null;
 
@@ -30,7 +31,7 @@ namespace Moon.Contracts.Tests
         }
 
         [Fact]
-        public void NotNullOrEmpty_StringIsEmpty_ThrowsException()
+        public void RequiringNotNullAndNotEmptyString()
         {
             var isEmpty = string.Empty;
 
@@ -38,21 +39,19 @@ namespace Moon.Contracts.Tests
         }
 
         [Fact]
-        public void NotNullOrWhiteSpace_StringContainsOnlyWhiteSpace_ThrowsException()
+        public void RequiringNotNullAndNotWhiteSpaceString()
         {
             var onlyWhiteSpace = "           ";
 
             Assert.Throws<ContractException>(() => Requires.NotNullOrWhiteSpace(onlyWhiteSpace, nameof(onlyWhiteSpace)));
         }
 
-
         [Fact]
-        public void That_ConditionIsFalse_ThrowsException()
+        public void RequiringCustomCondition()
         {
             var number = 42;
 
             Assert.Throws<ContractException>(() => Requires.That(number < 42, "number is not less than 42"));
         }
-
     }
 }

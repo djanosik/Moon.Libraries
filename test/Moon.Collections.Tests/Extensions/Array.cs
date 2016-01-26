@@ -1,26 +1,44 @@
-﻿using System.Linq;
+﻿using FluentAssertions;
+using Moon.Testing;
 using Xunit;
 
 namespace Moon.Collections.Tests
 {
-    public class ArrayExtensionsTests
+    public class ArrayExtensionsTests : TestSetup
     {
-        [Fact]
-        public void Move_ShouldMoveItemToTheNewPosition()
-        {
-            var items = new[] { 1, 2, 3 };
-            items.Move(0, 2);
+        int[] numbers, result;
 
-            Assert.Equal(1, items[2]);
+        [Fact]
+        public void MovingItem()
+        {
+            "Given the array"
+                .x(() => numbers = new[] { 1, 2, 3 });
+
+            "When I move first item to last position"
+                .x(() => numbers.Move(0, 2));
+
+            "Then the last item should be 1"
+                .x(() =>
+                {
+                    numbers[2].Should().Be(1);
+                });
         }
 
         [Fact]
-        public void Trim_SholdReturnTrimmedArray()
+        public void TrimmingArray()
         {
-            var result = new[] { 1, 2, 3 }.Trim(1);
+            "Given the array"
+                .x(() => numbers = new[] { 1, 2, 3 });
 
-            Assert.Equal(1, result.Count());
-            Assert.Equal(1, result[0]);
+            "When I trim the array and get the result"
+                .x(() => result = numbers.Trim(1));
+
+            "Then it should return an array with the first item"
+                .x(() =>
+                {
+                    result.Should().HaveCount(1);
+                    result[0].Should().Be(numbers[0]);
+                });
         }
     }
 }

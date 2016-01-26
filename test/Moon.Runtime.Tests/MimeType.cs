@@ -1,31 +1,59 @@
-﻿using Xunit;
+﻿using FluentAssertions;
+using Moon.Testing;
+using Xunit;
 
 namespace Moon.Tests
 {
     public class MimeTypeTests
     {
-        [Fact]
-        public void Get_FileWithKnownExtension_ShouldReturnCorrectMimeType()
-        {
-            var result = MimeType.Get("data.json");
+        string input, result;
 
-            Assert.Equal(result, "application/json");
+        [Fact]
+        public void GettingTypeOfKnownFileName()
+        {
+            "Given the file name"
+                .x(() => input = "data.json");
+
+            "When I get MIME type for the file name"
+                .x(() => result = MimeType.Get(input));
+
+            "Then it should be 'application/json'"
+                .x(() =>
+                {
+                    result.Should().Be("application/json");
+                });
         }
 
         [Fact]
-        public void Get_KnownExtension_ShouldReturnCorrectMimeType()
+        public void GettingTypeOfKnownExtension()
         {
-            var result = MimeType.Get(".json");
+            "Given the file extension"
+                .x(() => input = ".json");
 
-            Assert.Equal(result, "application/json");
+            "When I get MIME type for the file extension"
+                .x(() => result = MimeType.Get(input));
+
+            "Then it should be 'application/json'"
+                .x(() =>
+                {
+                    result.Should().Be("application/json");
+                });
         }
 
         [Fact]
-        public void Get_UnknownExtension_ShouldReturnDefaultMimeType()
+        public void GettingTypeOfUnknownExtension()
         {
-            var result = MimeType.Get(".test");
+            "Given the file extension"
+                .x(() => input = ".unk");
 
-            Assert.Equal(result, "application/octet-stream");
+            "When I get MIME type for the file extension"
+                .x(() => result = MimeType.Get(input));
+
+            "Then it should be 'application/octet-stream'"
+                .x(() =>
+                {
+                    result.Should().Be("application/octet-stream");
+                });
         }
     }
 }

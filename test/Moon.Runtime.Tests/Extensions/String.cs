@@ -1,65 +1,112 @@
 using System;
+using FluentAssertions;
+using Moon.Testing;
 using Xunit;
 
 namespace Moon.Tests
 {
     public class StringExtensionsTests
     {
-        [Fact]
-        public void Capitalize_AnyString_ShouldConvertFirstLetterToUpperCase()
-        {
-            var result = "test text".Capitalize();
+        string text, result;
+        StringComparison comparison;
 
-            Assert.Equal("Test text", result);
+        [Fact]
+        public void CapitalizingText()
+        {
+            "Given the text"
+                .x(() => text = "test text");
+
+            "When I capitalize the text"
+                .x(() => result = text.Capitalize());
+
+            "Then it should return expected result"
+                .x(() =>
+                {
+                    result.Should().Be("Test text");
+                });
         }
 
         [Fact]
-        public void RemoveDiacritics_AnyString_ShouldRemoveDiacritics()
+        public void RemovingDiacritics()
         {
-            var result = "ěščřžýáíéťň".RemoveDiacritics();
+            "Given the text"
+                .x(() => text = "ěščřžýáíéťň");
 
-            Assert.Equal("escrzyaietn", result);
+            "When I remove diacritics from the text"
+                .x(() => result = text.RemoveDiacritics());
+
+            "Then it should return expected result"
+                .x(() =>
+                {
+                    result.Should().Be("escrzyaietn");
+                });
         }
 
         [Fact]
-        public void RemoveAll_AnyString_ShouldRemoveAllOccurencesOfString()
+        public void RemovingAllOccurrences()
         {
-            var result = "testTextOfText".RemoveAll("Text");
+            "Given the text"
+                .x(() => text = "testTextOfText");
 
-            Assert.Equal("testOf", result);
+            "When I remove all occurrences of 'Text'"
+                .x(() => result = text.RemoveAll("Text"));
+
+            "Then it should return expected result"
+                .x(() =>
+                {
+                    result.Should().Be("testOf");
+                });
         }
 
         [Fact]
-        public void RemoveFirst_AnyString_ShouldRemoveFirstOccurenceOfString()
+        public void RemovingFirstOccurrence()
         {
-            var result = "testTextOfText".RemoveFirst("Text");
+            "Given the text"
+                .x(() => text = "testTextOfText");
 
-            Assert.Equal("testOfText", result);
+            "When I remove first occurrence of 'Text'"
+                .x(() => result = text.RemoveFirst("Text"));
+
+            "Then it should return expected result"
+                .x(() =>
+                {
+                    result.Should().Be("testOfText");
+                });
         }
 
         [Fact]
-        public void RemoveLast_AnyString_ShouldRemoveLastOccurenceOfString()
+        public void RemovingLastOccurrence()
         {
-            var result = "testTextOfText".RemoveLast("Text");
+            "Given the text"
+                .x(() => text = "testTextOfText");
 
-            Assert.Equal("testTextOf", result);
+            "When I remove last occurrence of 'Text'"
+                .x(() => result = text.RemoveLast("Text"));
+
+            "Then it should return expected result"
+                .x(() =>
+                {
+                    result.Should().Be("testTextOf");
+                });
         }
 
         [Fact]
-        public void Replace_AnyString_ShouldReplaceStringUsingTheGivenComparisonMethod()
+        public void ReplacingOccurrences()
         {
-            var result = "text Text TeXt".Replace("text", "test", StringComparison.CurrentCultureIgnoreCase);
+            "Given the text"
+                .x(() => text = "text Text TeXt");
 
-            Assert.Equal("test test test", result);
-        }
+            "And the string comparison"
+                .x(() => comparison = StringComparison.CurrentCultureIgnoreCase);
 
-        [Fact]
-        public void Shorten_AnyString_ShouldReturnShortenedString()
-        {
-            const string input = "abcdefghijklmnopqrstuvwxyz";
-            string result = input.Shorten(9);
+            "When I replace 'text' occurrences with 'test'"
+                .x(() => result = text.Replace("text", "test", comparison));
 
-            Assert.True(result.Length < input.Length);
+            "Then it should return expected result"
+                .x(() =>
+                {
+                    result.Should().Be("test test test");
+                });
         }
     }
 }

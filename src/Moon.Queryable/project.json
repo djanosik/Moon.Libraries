@@ -12,7 +12,7 @@
   },
 
   "frameworks": {
-    "net451": { },
+    "net46": { },
     "dotnet5.4": {
       "dependencies": {
         "System.Linq.Queryable": "4.0.1-*"

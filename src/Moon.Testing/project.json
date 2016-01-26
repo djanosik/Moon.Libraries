@@ -1,0 +1,21 @@
+﻿{
+  "version": "1.0.0-ci",
+  "authors": [ "Dusan Janosik" ],
+  "owners": [ "djanosik" ],
+  "projectUrl": "https://github.com/djanosik/Moon.Libraries",
+  "iconUrl": "http://moontea.net/moon.png",
+  "description": "Helpers for writing BDD-like xUnit.net tests (mimics xBehave.net syntax).",
+  "tags": [ "moontea", "xunit", "testing" ],
+
+  "dependencies": {
+    "FluentAssertions": "4.2.1",
+    "Moon.Security": "1.0.0-ci",
+    "xunit": "2.1.0",
+    "xunit.runner.dnx": "2.1.0-rc1-*"
+  },
+
+  "frameworks": {
+    "dnx46": { },
+    "dnxcore50": { }
+  }
+}

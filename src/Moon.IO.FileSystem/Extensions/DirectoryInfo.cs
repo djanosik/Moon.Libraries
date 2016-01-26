@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Moon.IO.FileSystem
+namespace Moon.IO
 {
     /// <summary>
     /// <see cref="DirectoryInfo" /> extension methods.

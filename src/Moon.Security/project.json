@@ -1,0 +1,23 @@
+﻿{
+  "version": "1.0.0-ci",
+  "authors": [ "Dusan Janosik" ],
+  "owners": [ "djanosik" ],
+  "projectUrl": "https://github.com/djanosik/Moon.Libraries",
+  "iconUrl": "http://moontea.net/moon.png",
+  "description": "Security helpers and extensions for System.Security.Claims.",
+  "tags": [ "moontea", "framework", "security", "claims" ],
+
+  "dependencies": {
+    "Microsoft.AspNet.Cryptography.KeyDerivation": "1.0.0-*",
+    "Moon.Contracts": "1.0.0-ci"
+  },
+
+  "frameworks": {
+    "net46": { },
+    "dotnet5.4": {
+      "dependencies": {
+        "System.Security.Claims": "4.0.1-*"
+      }
+    }
+  }
+}

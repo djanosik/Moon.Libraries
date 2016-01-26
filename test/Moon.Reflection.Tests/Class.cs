@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using Moon.Testing;
 using Xunit;
 
 namespace Moon.Reflection.Tests
 {
-    public class ClassTests
+    public class ClassTests : TestSetup
     {
         [Fact]
-        public void Create_ReturnsNewInstance()
+        public void CreatingInstance()
         {
             var list = Class.Create<List<int>>();
 
@@ -15,7 +15,7 @@ namespace Moon.Reflection.Tests
         }
 
         [Fact]
-        public void Create_WithParams_ReturnsNewInstance()
+        public void CreatingInstanceWithParameters()
         {
             var list = Class.Create<List<int>>(1);
 

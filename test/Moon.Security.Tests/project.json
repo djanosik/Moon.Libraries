@@ -1,0 +1,13 @@
+﻿{
+  "version": "1.0.0-ci",
+  "dependencies": {
+    "Moon.Security": "1.0.0-ci",
+    "Moon.Testing": "1.0.0-ci"
+  },
+  "commands": {
+    "test": "xunit.runner.dnx"
+  },
+  "frameworks": {
+    "dnx46": { }
+  }
+}

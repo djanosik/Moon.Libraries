@@ -6,4 +6,5 @@ using System.Resources;
 [assembly: NeutralResourcesLanguage("en-US")]
 [assembly: SuppressMessage("SonarQube", "S1121")]
 [assembly: SuppressMessage("SonarQube", "S1226")]
+[assembly: SuppressMessage("SonarQube", "S2360")]
 [assembly: SuppressMessage("SonarQube", "S3215")]
