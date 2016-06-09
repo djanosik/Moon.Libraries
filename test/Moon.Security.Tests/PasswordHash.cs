@@ -1,16 +1,15 @@
 ﻿using FluentAssertions;
 using Moon.Security;
-using Moon.Testing;
-using Xunit;
+using Xbehave;
 
 namespace Moon.Tests
 {
-    public class PasswordHashTests : TestSetup
+    public class PasswordHashTests
     {
         string password, hash;
         bool result;
 
-        [Fact]
+        [Scenario]
         public void Hashing()
         {
             "Given the password"

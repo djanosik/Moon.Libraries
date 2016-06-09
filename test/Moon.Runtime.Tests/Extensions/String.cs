@@ -1,7 +1,6 @@
 using System;
 using FluentAssertions;
-using Moon.Testing;
-using Xunit;
+using Xbehave;
 
 namespace Moon.Tests
 {
@@ -10,7 +9,7 @@ namespace Moon.Tests
         string text, result;
         StringComparison comparison;
 
-        [Fact]
+        [Scenario]
         public void CapitalizingText()
         {
             "Given the text"
@@ -26,7 +25,7 @@ namespace Moon.Tests
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void RemovingDiacritics()
         {
             "Given the text"
@@ -42,7 +41,7 @@ namespace Moon.Tests
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void RemovingAllOccurrences()
         {
             "Given the text"
@@ -58,7 +57,7 @@ namespace Moon.Tests
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void RemovingFirstOccurrence()
         {
             "Given the text"
@@ -74,7 +73,7 @@ namespace Moon.Tests
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void RemovingLastOccurrence()
         {
             "Given the text"
@@ -90,7 +89,7 @@ namespace Moon.Tests
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void ReplacingOccurrences()
         {
             "Given the text"

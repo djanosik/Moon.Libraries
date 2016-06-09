@@ -1,14 +1,14 @@
 ﻿using FluentAssertions;
-using Moon.Testing;
+using Xbehave;
 using Xunit;
 
 namespace Moon.IO
 {
-    public class PathyTests : TestSetup
+    public class PathyTests
     {
         string path, url;
 
-        [Fact]
+        [Scenario]
         public void CheckingWhetherAbsolutePathIsAbsolute()
         {
             bool result = false;
@@ -26,7 +26,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void CheckingWhetherAbsoluteUrlIsAbsolute()
         {
             bool result = false;
@@ -44,7 +44,7 @@ namespace Moon.IO
                 });
         }
 
-        [Theory]
+        [Scenario]
         [InlineData("../test.txt"), InlineData("..\\test.txt")]
         [InlineData("/test.txt"), InlineData("test.txt")]
         public void CheckingWhetherRelativePathIsAbsolute(string relative)
@@ -61,7 +61,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void MakingParentRelativePathAbsolute()
         {
             string result = null;
@@ -79,7 +79,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void MakingRelativePathAbsolute()
         {
             string result = null;
@@ -97,7 +97,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void MakingAbsolutePathAbsolute()
         {
             string result = null;
@@ -115,7 +115,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void MakingAbsolutePathRelativeToRoot()
         {
             string result = null;
@@ -133,7 +133,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void NormalizingAbsolutePath()
         {
             string result = null;
@@ -151,7 +151,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void NormalizingAbsoluteUrl()
         {
             string result = null;
@@ -169,7 +169,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void NormalizingRelativePath()
         {
             string result = null;
@@ -187,7 +187,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void AppendingTrailingSlash()
         {
             string result = null;
@@ -205,7 +205,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void AppendingTrailingSlashToEmptyString()
         {
             string result = null;
@@ -223,7 +223,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void RemovingLeadingSlash()
         {
             string result = null;
@@ -241,7 +241,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void RemovingLeadingSlashFromEmptyString()
         {
             string result = null;
@@ -259,7 +259,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void RemovingTrailingSlash()
         {
             string result = null;
@@ -277,7 +277,7 @@ namespace Moon.IO
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void RemovingTrailingSlashFromEmptyString()
         {
             string result = null;

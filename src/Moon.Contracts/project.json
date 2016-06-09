@@ -1,19 +1,22 @@
 {
   "version": "1.0.0-ci",
   "authors": [ "Dusan Janosik" ],
-  "owners": [ "djanosik" ],
-  "projectUrl": "https://github.com/djanosik/Moon.Libraries",
-  "iconUrl": "http://moontea.net/moon.png",
   "description": "Simple Guard (or DbC) implementation.",
-  "tags": [ "moontea", "contracts", "guard" ],
+
+  "packOptions": {
+    "owners": [ "djanosik" ],
+    "projectUrl": "https://github.com/djanosik/Moon.Libraries",
+    "iconUrl": "https://djanosik.github.io/moon.png",
+    "tags": [ "moon", "contracts", "guard" ]
+  },
 
   "frameworks": {
     "net46": { },
-    "dotnet5.4": {
+    "netstandard1.5": {
       "dependencies": {
         "System.Diagnostics.Tools": "4.0.1-*",
-        "System.Linq": "4.0.1-*",
-        "System.Reflection": "4.1.0-*"
+        "System.Linq": "4.1.0-*",
+        "System.Resources.ResourceManager": "4.0.1-*"
       }
     }
   }

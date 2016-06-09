@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using FluentAssertions;
-using Moon.Testing;
-using Xunit;
+using Xbehave;
 
 namespace Moon.Reflection.Tests
 {
-    public class AnonymousTests : TestSetup
+    public class AnonymousTests
     {
         object anonymous;
         IDictionary<string, string> result;
 
-        [Fact]
+        [Scenario]
         public void ConvertingAnonymousToDictionary()
         {
             "Given the anonymous object"

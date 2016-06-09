@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
-using Moon.Testing;
-using Xunit;
+using Xbehave;
 
 namespace Moon.Tests
 {
@@ -8,7 +7,7 @@ namespace Moon.Tests
     {
         string input, result;
 
-        [Fact]
+        [Scenario]
         public void GettingTypeOfKnownFileName()
         {
             "Given the file name"
@@ -24,7 +23,7 @@ namespace Moon.Tests
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void GettingTypeOfKnownExtension()
         {
             "Given the file extension"
@@ -40,7 +39,7 @@ namespace Moon.Tests
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void GettingTypeOfUnknownExtension()
         {
             "Given the file extension"

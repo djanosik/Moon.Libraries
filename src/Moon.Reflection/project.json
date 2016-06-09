@@ -1,11 +1,14 @@
 {
   "version": "1.0.0-ci",
   "authors": [ "Dusan Janosik" ],
-  "owners": [ "djanosik" ],
-  "projectUrl": "https://github.com/djanosik/Moon.Libraries",
-  "iconUrl": "http://moontea.net/moon.png",
   "description": "Fast object activator, extensions for System.Reflection.",
-  "tags": [ "moontea", "reflection" ],
+
+  "packOptions": {
+    "owners": [ "djanosik" ],
+    "projectUrl": "https://github.com/djanosik/Moon.Libraries",
+    "iconUrl": "https://djanosik.github.io/moon.png",
+    "tags": [ "moon", "reflection" ]
+  },
 
   "dependencies": {
     "Moon.Runtime": "1.0.0-ci"
@@ -13,7 +16,7 @@
 
   "frameworks": {
     "net46": { },
-    "dotnet5.4": {
+    "netstandard1.5": {
       "dependencies": {
         "System.Reflection.Extensions": "4.0.1-*",
         "System.Linq.Expressions": "4.0.11-*"

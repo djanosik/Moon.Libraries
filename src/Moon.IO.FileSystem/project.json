@@ -1,11 +1,14 @@
 {
   "version": "1.0.0-ci",
   "authors": [ "Dusan Janosik" ],
-  "owners": [ "djanosik" ],
-  "projectUrl": "https://github.com/djanosik/Moon.Libraries",
-  "iconUrl": "http://moontea.net/moon.png",
   "description": "Helpers for handling operations with files, extensions for System.IO.FileSystem.",
-  "tags": [ "moontea", "IO", "files", "filesystem" ],
+
+  "packOptions": {
+    "owners": [ "djanosik" ],
+    "projectUrl": "https://github.com/djanosik/Moon.Libraries",
+    "iconUrl": "https://djanosik.github.io/moon.png",
+    "tags": [ "moon", "IO", "filesystem" ]
+  },
 
   "dependencies": {
     "Moon.IO": "1.0.0-ci"
@@ -13,7 +16,7 @@
 
   "frameworks": {
     "net46": { },
-    "dotnet5.4": {
+    "netstandard1.5": {
       "dependencies": {
         "System.IO.FileSystem": "4.0.1-*"
       }

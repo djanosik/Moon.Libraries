@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using Moon.Testing;
+using Xbehave;
 using Xunit;
 
 namespace Moon.Collections.Tests
 {
-    public class ListExtensionsTests : TestSetup
+    public class ListExtensionsTests
     {
         List<int> numbers;
         List<string> strings;
 
-        [Fact]
+        [Scenario]
         public void MovingItem()
         {
             "Given the list"
@@ -27,7 +27,7 @@ namespace Moon.Collections.Tests
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void RemovingDuplicatesUsingEqualityComparer()
         {
             "Given the list"
@@ -40,7 +40,7 @@ namespace Moon.Collections.Tests
                 .x(() => strings.Should().HaveCount(4));
         }
 
-        [Fact]
+        [Scenario]
         public void RemovingDuplicatesUsingComparisonDelegate()
         {
             "Given the list"
@@ -53,7 +53,7 @@ namespace Moon.Collections.Tests
                 .x(() => strings.Should().HaveCount(4));
         }
 
-        [Fact]
+        [Scenario]
         public void RemovingDuplicatesUsingComparerLambda()
         {
             "Given the list"

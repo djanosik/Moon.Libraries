@@ -1,15 +1,14 @@
 ﻿using FluentAssertions;
-using Moon.Testing;
-using Xunit;
+using Xbehave;
 
 namespace Moon.Security.Tests
 {
-    public class PasswordTests : TestSetup
+    public class PasswordTests
     {
         int length;
         string result;
 
-        [Fact]
+        [Scenario]
         public void GeneratingPassword()
         {
             "Given the length"

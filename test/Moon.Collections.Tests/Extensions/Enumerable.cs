@@ -1,15 +1,14 @@
 ﻿using System.Linq;
 using FluentAssertions;
-using Moon.Testing;
-using Xunit;
+using Xbehave;
 
 namespace Moon.Collections.Tests
 {
-    public class EnumerableExtensionsTests : TestSetup
+    public class EnumerableExtensionsTests
     {
         int[] source, result;
 
-        [Fact]
+        [Scenario]
         public void GettingFirstHalfOfNineItems()
         {
             "Given the source"
@@ -25,7 +24,7 @@ namespace Moon.Collections.Tests
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void GettingSecondHalfOfNineItems()
         {
             "Given the source"
@@ -41,7 +40,7 @@ namespace Moon.Collections.Tests
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void GettingFirstHalfOfSixItems()
         {
             "Given the source"
@@ -57,7 +56,7 @@ namespace Moon.Collections.Tests
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void GettingSecondHalfOfSixItems()
         {
             "Given the source"

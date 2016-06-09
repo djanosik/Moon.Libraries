@@ -1,14 +1,13 @@
 ﻿using FluentAssertions;
-using Moon.Testing;
-using Xunit;
+using Xbehave;
 
 namespace Moon.Collections.Tests
 {
-    public class ArrayExtensionsTests : TestSetup
+    public class ArrayExtensionsTests
     {
         int[] numbers, result;
 
-        [Fact]
+        [Scenario]
         public void MovingItem()
         {
             "Given the array"
@@ -24,7 +23,7 @@ namespace Moon.Collections.Tests
                 });
         }
 
-        [Fact]
+        [Scenario]
         public void TrimmingArray()
         {
             "Given the array"

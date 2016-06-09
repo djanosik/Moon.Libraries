@@ -1,11 +1,14 @@
 {
   "version": "1.0.0-ci",
   "authors": [ "Dusan Janosik" ],
-  "owners": [ "djanosik" ],
-  "projectUrl": "https://github.com/djanosik/Moon.Libraries",
-  "iconUrl": "http://moontea.net/moon.png",
   "description": "Helper that runs async methods synchronously, extensions for System.Threading.",
-  "tags": [ "moontea", "utilities", "helpers", "common" ],
+
+  "packOptions": {
+    "owners": [ "djanosik" ],
+    "projectUrl": "https://github.com/djanosik/Moon.Libraries",
+    "iconUrl": "https://djanosik.github.io/moon.png",
+    "tags": [ "moon", "threading" ]
+  },
 
   "dependencies": {
     "Moon.Runtime": "1.0.0-ci"
@@ -13,7 +16,7 @@
 
   "frameworks": {
     "net46": { },
-    "dotnet5.4": {
+    "netstandard1.5": {
       "dependencies": {
         "System.Threading.Tasks": "4.0.11-*"
       }

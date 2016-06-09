@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using Moon.Testing;
 using Xunit;
 
 namespace Moon.Contracts.Tests
 {
-    public class RequiresTests : TestSetup
+    public class RequiresTests
     {
         [Fact]
         public void RequiringAssignableTo()

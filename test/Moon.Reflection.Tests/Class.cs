@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using Moon.Testing;
 using Xunit;
 
 namespace Moon.Reflection.Tests
 {
-    public class ClassTests : TestSetup
+    public class ClassTests
     {
         [Fact]
         public void CreatingInstance()

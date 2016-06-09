@@ -1,11 +1,14 @@
 {
   "version": "1.0.0-ci",
   "authors": [ "Dusan Janosik" ],
-  "owners": [ "djanosik" ],
-  "projectUrl": "https://github.com/djanosik/Moon.Libraries",
-  "iconUrl": "http://moontea.net/moon.png",
   "description": "Essential types and helpers, extensions for System.Runtime.",
-  "tags": [ "moontea", "framework", "runtime" ],
+
+  "packOptions": {
+    "owners": [ "djanosik" ],
+    "projectUrl": "https://github.com/djanosik/Moon.Libraries",
+    "iconUrl": "https://djanosik.github.io/moon.png",
+    "tags": [ "moon", "framework", "runtime" ]
+  },
 
   "dependencies": {
     "Moon.Contracts": "1.0.0-ci"
@@ -13,9 +16,9 @@
 
   "frameworks": {
     "net46": { },
-    "dotnet5.4": {
+    "netstandard1.5": {
       "dependencies": {
-        "System.Runtime.Extensions": "4.0.11-*"
+        "System.Runtime.Extensions": "4.1.0-*"
       }
     }
   }
