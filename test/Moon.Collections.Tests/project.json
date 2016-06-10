@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.0-ci",
   "testRunner": "xunit",
   "dependencies": {
     "Moon.Collections": "1.0.0-ci",
