@@ -18,7 +18,7 @@
     "net46": { },
     "netstandard1.5": {
       "dependencies": {
-        "System.IO.FileSystem": "4.0.1-*"
+        "System.IO.FileSystem": "4.0.1"
       }
     }
   }

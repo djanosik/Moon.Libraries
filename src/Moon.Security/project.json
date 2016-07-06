@@ -11,7 +11,7 @@
   },
 
   "dependencies": {
-    "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.0.0-*",
+    "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.0.0",
     "Moon.Contracts": "1.0.0-ci"
   },
 
@@ -19,7 +19,7 @@
     "net46": { },
     "netstandard1.5": {
       "dependencies": {
-        "System.Security.Claims": "4.0.1-*"
+        "System.Security.Claims": "4.0.1"
       }
     }
   }

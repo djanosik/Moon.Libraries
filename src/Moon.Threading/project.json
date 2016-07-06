@@ -18,7 +18,7 @@
     "net46": { },
     "netstandard1.5": {
       "dependencies": {
-        "System.Threading.Tasks": "4.0.11-*"
+        "System.Threading.Tasks": "4.0.11"
       }
     }
   }

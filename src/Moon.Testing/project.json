@@ -11,10 +11,11 @@
   },
 
   "dependencies": {
-    "dotnet-test-xunit": "1.0.0-*",
+    "dotnet-test-xunit": "2.2.0-*",
     "FluentAssertions": "4.8.0",
     "Moon.Security": "1.0.0-ci",
-    "Xbehave": "2.1.0"
+    "Xbehave": "2.1.0",
+    "xunit": "2.2.0-*"
   },
 
   "frameworks": {
