@@ -20,9 +20,6 @@ namespace Moon.Security
         /// <param name="principal">The application user.</param>
         /// <param name="claimType">The claim type whose first value should be returned.</param>
         public static string FindFirstValue(this ClaimsPrincipal principal, string claimType)
-        {
-            var claim = principal.FindFirst(claimType);
-            return claim != null ? claim.Value : null;
-        }
+            => principal.FindFirst(claimType)?.Value;
     }
 }

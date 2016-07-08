@@ -1,69 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using Xbehave;
 using Xunit;
 
 namespace Moon.Collections.Tests
 {
     public class ListExtensionsTests
     {
-        List<int> numbers;
-        List<string> strings;
-
-        [Scenario]
-        public void MovingItem()
+        [Fact]
+        public void MovingFirstItemToLastPosition()
         {
-            "Given the list"
-                .x(() => numbers = new List<int> { 1, 2, 3 });
+            var numbers = new List<int> { 1, 2, 3 };
+            numbers.Move(0, 2);
 
-            "When I move first item to last position"
-                .x(() => numbers.Move(0, 2));
-
-            "Then the last item should be 1"
-                .x(() =>
-                {
-                    numbers[2].Should().Be(1);
-                });
+            numbers[2].Should().Be(1);
         }
 
-        [Scenario]
-        public void RemovingDuplicatesUsingEqualityComparer()
-        {
-            "Given the list"
-                .x(() => strings = new List<string> { "1", "2", "1", "3", "1", "4" });
-
-            "When I remove duplicates using equality comparer"
-                .x(() => strings.RemoveDuplicates(StringComparer.CurrentCulture));
-
-            "Then it should contain 4 items"
-                .x(() => strings.Should().HaveCount(4));
-        }
-
-        [Scenario]
-        public void RemovingDuplicatesUsingComparisonDelegate()
-        {
-            "Given the list"
-                .x(() => strings = new List<string> { "1", "2", "1", "3", "1", "4" });
-
-            "When I remove duplicates using comparison delegate"
-                .x(() => strings.RemoveDuplicates((Comparison<string>)string.Compare));
-
-            "Then it should contain 4 items"
-                .x(() => strings.Should().HaveCount(4));
-        }
-
-        [Scenario]
+        [Fact]
         public void RemovingDuplicatesUsingComparerLambda()
         {
-            "Given the list"
-                .x(() => strings = new List<string> { "1", "2", "1", "3", "1", "4" });
+            var strings = new List<string> { "1", "2", "1", "3", "1", "4" };
+            strings.RemoveDuplicates((x, y) => x == y);
 
-            "When I remove duplicates using comparer lambda"
-                .x(() => strings.RemoveDuplicates((x, y) => x == y));
+            strings.Should().HaveCount(4);
+        }
 
-            "Then it should contain 4 items"
-                .x(() => strings.Should().HaveCount(4));
+        [Fact]
+        public void RemovingDuplicatesUsingComparisonDelegate()
+        {
+            var strings = new List<string> { "1", "2", "1", "3", "1", "4" };
+            strings.RemoveDuplicates((Comparison<string>)string.Compare);
+
+            strings.Should().HaveCount(4);
+        }
+
+        [Fact]
+        public void RemovingDuplicatesUsingEqualityComparer()
+        {
+            var strings = new List<string> { "1", "2", "1", "3", "1", "4" };
+            strings.RemoveDuplicates(StringComparer.CurrentCulture);
+
+            strings.Should().HaveCount(4);
         }
     }
 }

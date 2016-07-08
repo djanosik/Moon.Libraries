@@ -14,19 +14,19 @@ namespace Moon.Contracts.Tests
         }
 
         [Fact]
+        public void RequiringCustomCondition()
+        {
+            var number = 42;
+
+            Assert.Throws<ContractException>(() => Requires.That(number < 42, "number is not less than 42"));
+        }
+
+        [Fact]
         public void RequiringNotEmptyCollection()
         {
             var isEmpty = new List<string>();
 
             Assert.Throws<ContractException>(() => Requires.NotEmpty(isEmpty, nameof(isEmpty)));
-        }
-
-        [Fact]
-        public void RequiringNotNullObject()
-        {
-            var isNull = (string)null;
-
-            Assert.Throws<ContractException>(() => Requires.NotNull(isNull, nameof(isNull)));
         }
 
         [Fact]
@@ -46,11 +46,11 @@ namespace Moon.Contracts.Tests
         }
 
         [Fact]
-        public void RequiringCustomCondition()
+        public void RequiringNotNullObject()
         {
-            var number = 42;
+            var isNull = (string)null;
 
-            Assert.Throws<ContractException>(() => Requires.That(number < 42, "number is not less than 42"));
+            Assert.Throws<ContractException>(() => Requires.NotNull(isNull, nameof(isNull)));
         }
     }
 }

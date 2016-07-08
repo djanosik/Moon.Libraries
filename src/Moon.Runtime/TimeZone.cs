@@ -10,7 +10,7 @@ namespace Moon
         readonly Lazy<TimeZoneInfo> info;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseTimeZone" /> class.
+        /// Initializes a new instance of the <see cref="TimeZone" /> class.
         /// </summary>
         /// <param name="id">The IANA Time Zone identifier.</param>
         protected TimeZone(string id)
@@ -31,6 +31,20 @@ namespace Moon
             => info.Value;
 
         /// <summary>
+        /// Returns whether the specified time zone is equal to the current one.
+        /// </summary>
+        /// <param name="other">The other time zone.</param>
+        public bool Equals(TimeZone other)
+            => Info.Equals(other.Info);
+
+        /// <summary>
+        /// Returns whether the specified time zone is equal to the current one.
+        /// </summary>
+        /// <param name="other">The other time zone.</param>
+        public bool Equals(TimeZoneInfo other)
+            => Info.Equals(other);
+
+        /// <summary>
         /// Converts a time from the current time zone to another.
         /// </summary>
         /// <param name="dateTime">The date and time to convert.</param>
@@ -45,14 +59,7 @@ namespace Moon
         /// <summary>
         /// Returns whether the specified time zone is equal to the current one.
         /// </summary>
-        /// <param name="other">The other time zone.</param>
-        public bool Equals(TimeZoneInfo other)
-            => Info.Equals(other);
-
-        /// <summary>
-        /// Returns whether the specified time zone is equal to the current one.
-        /// </summary>
-        /// <param name="other">The other time zone.</param>
+        /// <param name="obj">The other time zone.</param>
         public override bool Equals(object obj)
         {
             var timeZone = obj as TimeZone;
@@ -69,13 +76,6 @@ namespace Moon
 
             return false;
         }
-
-        /// <summary>
-        /// Returns whether the specified time zone is equal to the current one.
-        /// </summary>
-        /// <param name="other">The other time zone.</param>
-        public bool Equals(TimeZone other)
-            => Info.Equals(other.Info);
 
         /// <summary>
         /// Returns a hash code for this time zone.

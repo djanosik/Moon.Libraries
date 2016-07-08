@@ -1,43 +1,27 @@
 ﻿using FluentAssertions;
-using Xbehave;
+using Xunit;
 
 namespace Moon.Collections.Tests
 {
     public class ArrayExtensionsTests
     {
-        int[] numbers, result;
-
-        [Scenario]
-        public void MovingItem()
+        [Fact]
+        public void MovingFirstItemToLastPosition()
         {
-            "Given the array"
-                .x(() => numbers = new[] { 1, 2, 3 });
+            var numbers = new[] { 1, 2, 3 };
+            numbers.Move(0, 2);
 
-            "When I move first item to last position"
-                .x(() => numbers.Move(0, 2));
-
-            "Then the last item should be 1"
-                .x(() =>
-                {
-                    numbers[2].Should().Be(1);
-                });
+            numbers[2].Should().Be(1);
         }
 
-        [Scenario]
+        [Fact]
         public void TrimmingArray()
         {
-            "Given the array"
-                .x(() => numbers = new[] { 1, 2, 3 });
+            var numbers = new[] { 1, 2, 3 };
+            var result = numbers.Trim(1);
 
-            "When I trim the array and get the result"
-                .x(() => result = numbers.Trim(1));
-
-            "Then it should return an array with the first item"
-                .x(() =>
-                {
-                    result.Should().HaveCount(1);
-                    result[0].Should().Be(numbers[0]);
-                });
+            result.Should().HaveCount(1);
+            result[0].Should().Be(numbers[0]);
         }
     }
 }

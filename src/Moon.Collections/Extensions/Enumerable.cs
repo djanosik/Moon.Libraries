@@ -95,11 +95,9 @@ namespace Moon.Collections
         public static IEnumerable<T> SecondHalf<T>(this IEnumerable<T> source)
         {
             var items = source.Reverse().ToArray();
-            T[] results;
-
             var halfLength = items.Length / 2;
+            var results = new T[halfLength];
 
-            results = new T[halfLength];
             Array.Copy(items, results, halfLength);
 
             return results.Reverse();

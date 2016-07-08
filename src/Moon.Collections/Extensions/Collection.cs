@@ -34,7 +34,7 @@ namespace Moon.Collections
                 }
                 else
                 {
-                    foreach (T item in items)
+                    foreach (var item in items)
                     {
                         source.Add(item);
                     }

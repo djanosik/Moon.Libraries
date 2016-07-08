@@ -105,7 +105,7 @@ namespace Moon.Collections
                 if (position >= 0)
                 {
                     key = query.Substring(startIndex, position - startIndex);
-                    value = query.Substring(position + 1, (i - position) - 1);
+                    value = query.Substring(position + 1, i - position - 1);
                 }
                 else
                 {

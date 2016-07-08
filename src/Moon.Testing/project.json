@@ -1,20 +1,19 @@
 ﻿{
   "version": "1.0.0-ci",
   "authors": [ "Dusan Janosik" ],
-  "description": "Helpers for writing BDD-like xUnit.net tests (for .NET CLI projects).",
+  "description": "Helpers for writing xUnit.net tests (for .NET CLI projects).",
 
   "packOptions": {
     "owners": [ "djanosik" ],
     "projectUrl": "https://github.com/djanosik/Moon.Libraries",
     "iconUrl": "https://djanosik.github.io/moon.png",
-    "tags": [ "moontea", "xunit", "xbehave", "testing" ]
+    "tags": [ "moontea", "xunit", "testing" ]
   },
 
   "dependencies": {
     "dotnet-test-xunit": "2.2.0-*",
     "FluentAssertions": "4.8.0",
     "Moon.Security": "1.0.0-ci",
-    "Xbehave": "2.1.0",
     "xunit": "2.2.0-*"
   },
 

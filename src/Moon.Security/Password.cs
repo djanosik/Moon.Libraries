@@ -24,7 +24,7 @@ namespace Moon.Security
             var chars = new char[length];
             const string allowedChars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
 
-            for (int i = 0; i < length; i++)
+            for (var i = 0; i < length; i++)
             {
                 chars[i] = allowedChars[random.Next(0, allowedChars.Length)];
             }

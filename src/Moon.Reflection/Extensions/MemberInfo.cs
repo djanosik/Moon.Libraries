@@ -16,7 +16,7 @@ namespace Moon.Reflection
         /// <typeparam name="T">The type of the attribute.</typeparam>
         /// <param name="member">The member info.</param>
         public static T GetAttribute<T>(this MemberInfo member) where T : Attribute
-            => member.GetAttribute<T>(true);
+        => member.GetAttribute<T>(true);
 
         /// <summary>
         /// Returns an attribute of the specified type.
@@ -27,7 +27,7 @@ namespace Moon.Reflection
         /// Specifies whether to search this member's inheritance chain to find the attribute.
         /// </param>
         public static T GetAttribute<T>(this MemberInfo member, bool inherit) where T : Attribute
-            => member.GetCustomAttributes(inherit).OfType<T>().FirstOrDefault();
+        => member.GetCustomAttributes(inherit).OfType<T>().FirstOrDefault();
 
         /// <summary>
         /// Returns attributes of the specified type.
@@ -35,7 +35,7 @@ namespace Moon.Reflection
         /// <typeparam name="T">The <see cref="Type" /> of attributes.</typeparam>
         /// <param name="member">The member info.</param>
         public static IEnumerable<T> GetAttributes<T>(this MemberInfo member) where T : Attribute
-            => member.GetAttributes<T>(true);
+        => member.GetAttributes<T>(true);
 
         /// <summary>
         /// Returns attributes of the specified type.
@@ -46,7 +46,7 @@ namespace Moon.Reflection
         /// Specifies whether to search this member's inheritance chain to find the attributes.
         /// </param>
         public static IEnumerable<T> GetAttributes<T>(this MemberInfo member, bool inherit) where T : Attribute
-            => member.GetCustomAttributes(inherit).OfType<T>();
+        => member.GetCustomAttributes(inherit).OfType<T>();
 
         /// <summary>
         /// Returns an attribute of the specified type.
@@ -54,7 +54,7 @@ namespace Moon.Reflection
         /// <typeparam name="T">The <see cref="Type" /> of attribute.</typeparam>
         /// <param name="member">The member info.</param>
         public static bool IsDefined<T>(this MemberInfo member) where T : Attribute
-            => member.IsDefined<T>(true);
+        => member.IsDefined<T>(true);
 
         /// <summary>
         /// Returns whether one or more attributes of the specified type or of its derived types is
@@ -66,6 +66,6 @@ namespace Moon.Reflection
         /// Specifies whether to search this member's inheritance chain to find the attribute.
         /// </param>
         public static bool IsDefined<T>(this MemberInfo member, bool inherit) where T : Attribute
-            => member.IsDefined(typeof(T), inherit);
+        => member.IsDefined(typeof(T), inherit);
     }
 }

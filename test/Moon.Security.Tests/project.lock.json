@@ -340,28 +340,6 @@
           "lib/net45/_._": {}
         }
       },
-      "Xbehave/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Xbehave.Core": "[2.1.0]",
-          "xunit": "[2.1.0, 3.0.0)"
-        }
-      },
-      "Xbehave.Core/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "xunit.core": "[2.1.0, 3.0.0)",
-          "xunit.extensibility.execution": "[2.1.0, 3.0.0)"
-        },
-        "compile": {
-          "lib/portable-net45/Xbehave.Core.dll": {},
-          "lib/portable-net45/Xbehave.Execution.desktop.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net45/Xbehave.Core.dll": {},
-          "lib/portable-net45/Xbehave.Execution.desktop.dll": {}
-        }
-      },
       "xunit/2.2.0-beta2-build3300": {
         "type": "package",
         "dependencies": {
@@ -472,7 +450,6 @@
         "dependencies": {
           "FluentAssertions": "4.8.0",
           "Moon.Security": "1.0.0-ci",
-          "Xbehave": "2.1.0",
           "dotnet-test-xunit": "2.2.0",
           "xunit": "2.2.0"
         },
@@ -1104,29 +1081,6 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
-      ]
-    },
-    "Xbehave/2.1.0": {
-      "sha512": "8JHZ6d8hS7SZMbaaAsYsNi0hOm8DP3DwXXKZMzHm3uTzDcX7vXTyiVfvdtQ9pnSFF+c3QaTOaJ1/FDpyzc2reA==",
-      "type": "package",
-      "path": "Xbehave/2.1.0",
-      "files": [
-        "Xbehave.2.1.0.nupkg.sha512",
-        "Xbehave.nuspec"
-      ]
-    },
-    "Xbehave.Core/2.1.0": {
-      "sha512": "RHznWZFHE/NMsct5RQ4payh2WSPdVTOtmVPamFFeADTnyQ2y1ChVEA9y2RER5cSfPK6inQXaL1ckcNzd8jrezw==",
-      "type": "package",
-      "path": "Xbehave.Core/2.1.0",
-      "files": [
-        "Xbehave.Core.2.1.0.nupkg.sha512",
-        "Xbehave.Core.nuspec",
-        "lib/portable-net45/Xbehave.Core.dll",
-        "lib/portable-net45/Xbehave.Core.pdb",
-        "lib/portable-net45/Xbehave.Core.xml",
-        "lib/portable-net45/Xbehave.Execution.desktop.dll",
-        "lib/portable-net45/Xbehave.Execution.desktop.pdb"
       ]
     },
     "xunit/2.2.0-beta2-build3300": {

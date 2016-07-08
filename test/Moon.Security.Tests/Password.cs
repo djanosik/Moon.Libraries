@@ -1,27 +1,17 @@
 ﻿using FluentAssertions;
-using Xbehave;
+using Xunit;
 
 namespace Moon.Security.Tests
 {
     public class PasswordTests
     {
-        int length;
-        string result;
-
-        [Scenario]
+        [Fact]
         public void GeneratingPassword()
         {
-            "Given the length"
-                .x(() => length = 10);
+            const int length = 10;
+            var result = Password.Generate(length);
 
-            "When I generate a password"
-                .x(() => result = Password.Generate(length));
-
-            "Then it should be 10 chars long"
-                .x(() =>
-                {
-                    result.Should().HaveLength(length);
-                });
+            result.Should().HaveLength(length);
         }
     }
 }

@@ -96,7 +96,7 @@ namespace Moon.Security
                 var salt = new byte[saltLength];
                 Buffer.BlockCopy(hash, 12, salt, 0, salt.Length);
 
-                int subkeyLength = hash.Length - 12 - salt.Length;
+                var subkeyLength = hash.Length - 12 - salt.Length;
 
                 if (subkeyLength < saltSize)
                 {
@@ -117,10 +117,10 @@ namespace Moon.Security
 
         static uint ReadNetworkByteOrder(byte[] buffer, int offset)
         {
-            return ((uint)(buffer[offset + 0]) << 24)
-                | ((uint)(buffer[offset + 1]) << 16)
-                | ((uint)(buffer[offset + 2]) << 8)
-                | ((uint)(buffer[offset + 3]));
+            return ((uint)buffer[offset + 0] << 24)
+                   | ((uint)buffer[offset + 1] << 16)
+                   | ((uint)buffer[offset + 2] << 8)
+                   | buffer[offset + 3];
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
@@ -137,7 +137,7 @@ namespace Moon.Security
             var areSame = true;
             for (var i = 0; i < a.Length; i++)
             {
-                areSame &= (a[i] == b[i]);
+                areSame &= a[i] == b[i];
             }
             return areSame;
         }

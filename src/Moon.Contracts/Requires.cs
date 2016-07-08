@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 
 namespace Moon
 {
@@ -39,6 +40,7 @@ namespace Moon
         /// </summary>
         /// <param name="value">The value to check.</param>
         /// <param name="name">The expression being tested.</param>
+        [ContractAnnotation("halt <= value:null")]
         public static void NotNull(object value, string name)
             => That(value != null, $"{name} is null");
 
@@ -47,6 +49,7 @@ namespace Moon
         /// </summary>
         /// <param name="value">The value to check.</param>
         /// <param name="name">The expression being tested.</param>
+        [ContractAnnotation("halt <= value:null")]
         public static void NotNullOrEmpty(string value, string name)
             => That(!string.IsNullOrEmpty(value), $"{name} is null or empty");
 
@@ -56,6 +59,7 @@ namespace Moon
         /// </summary>
         /// <param name="value">The value to check.</param>
         /// <param name="name">The expression being tested.</param>
+        [ContractAnnotation("halt <= value:null")]
         public static void NotNullOrWhiteSpace(string value, string name)
             => That(!string.IsNullOrWhiteSpace(value), $"{name} is null, empty or consists only of white-space characters");
 
@@ -66,6 +70,7 @@ namespace Moon
         /// <param name="condition">The condition to be checked.</param>
         /// <param name="message">The message of the exception thrown when the condition fails.</param>
         /// <exception cref="ContractException">The <paramref name="condition" /> is false.</exception>
+        [ContractAnnotation("halt <= condition:false")]
         public static void That(bool condition, string message = null)
         {
             if (string.IsNullOrWhiteSpace(message))

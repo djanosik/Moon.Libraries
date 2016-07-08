@@ -163,8 +163,7 @@ namespace Moon
         /// <param name="length">The length of the result string.</param>
         public static string Shorten(this string input, int length)
         {
-            var delimiters = new[]
-            {
+            var delimiters = new[] {
                 " ", ".", ",", ";", "\\", "/", "(", ")", ":", "-", "="
             };
 
@@ -185,7 +184,7 @@ namespace Moon
 
             if (input.Length > length)
             {
-                string lastChar = input.Substring(length, 1);
+                var lastChar = input.Substring(length, 1);
 
                 if (delimiters.Contains(lastChar))
                 {
@@ -195,7 +194,7 @@ namespace Moon
                 {
                     finalText = input.Substring(0, length);
 
-                    for (int i = length - 1; i >= 0; i--)
+                    for (var i = length - 1; i >= 0; i--)
                     {
                         lastChar = input.Substring(i, 1);
 

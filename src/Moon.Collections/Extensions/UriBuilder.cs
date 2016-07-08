@@ -16,7 +16,7 @@ namespace Moon.Collections
             => uri.GetQuery()[key];
 
         /// <summary>
-        /// Parses the query string and returns a <see cref="QueryCollection" />.
+        /// Parses the query string and returns a <see cref="QueryDictionary" />.
         /// </summary>
         /// <param name="uri">The <see cref="UriBuilder" /> instance.</param>
         public static QueryDictionary GetQuery(this UriBuilder uri)
