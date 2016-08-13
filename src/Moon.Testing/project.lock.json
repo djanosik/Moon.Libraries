@@ -34,7 +34,7 @@
           }
         }
       },
-      "FluentAssertions/4.8.0": {
+      "FluentAssertions/4.13.0": {
         "type": "package",
         "frameworkAssemblies": [
           "System.Xml",
@@ -462,23 +462,13 @@
         "runtimes/win7-x86/lib/net451/dotnet-test-xunit.exe"
       ]
     },
-    "FluentAssertions/4.8.0": {
-      "sha512": "At9wlzzvdRRKvR40Bffd3RygdtqdiPYozDgTM76rNEW+IQznmVsdHa3/SScei7JQbZ0Oa9gubb+uocnYDrOEBA==",
+    "FluentAssertions/4.13.0": {
+      "sha512": "pwUxkKNClLDtcseAhXcsJ1zTn6f8lqSP4oxw1Fzspofp+7do2bL9XtXKkuHEoyAdiMh8qVnJEKpNHWxinwuyvw==",
       "type": "package",
+      "path": "FluentAssertions/4.13.0",
       "files": [
-        "FluentAssertions.4.8.0.nupkg.sha512",
+        "FluentAssertions.4.13.0.nupkg.sha512",
         "FluentAssertions.nuspec",
-        "lib/dotnet/FluentAssertions.Core.dll",
-        "lib/dotnet/FluentAssertions.Core.pdb",
-        "lib/dotnet/FluentAssertions.dll",
-        "lib/dotnet/FluentAssertions.pdb",
-        "lib/dotnet/FluentAssertions.xml",
-        "lib/monoandroid/FluentAssertions.Core.dll",
-        "lib/monoandroid/FluentAssertions.Core.pdb",
-        "lib/monoandroid/FluentAssertions.Core.xml",
-        "lib/monotouch/FluentAssertions.Core.dll",
-        "lib/monotouch/FluentAssertions.Core.pdb",
-        "lib/monotouch/FluentAssertions.Core.xml",
         "lib/net40/FluentAssertions.Core.dll",
         "lib/net40/FluentAssertions.Core.pdb",
         "lib/net40/FluentAssertions.Core.xml",
@@ -491,9 +481,12 @@
         "lib/net45/FluentAssertions.dll",
         "lib/net45/FluentAssertions.pdb",
         "lib/net45/FluentAssertions.xml",
-        "lib/portable-monotouch+monoandroid+xamarin.ios/FluentAssertions.Core.dll",
-        "lib/portable-monotouch+monoandroid+xamarin.ios/FluentAssertions.Core.pdb",
-        "lib/portable-monotouch+monoandroid+xamarin.ios/FluentAssertions.Core.xml",
+        "lib/netstandard1.3/FluentAssertions.Core.XML",
+        "lib/netstandard1.3/FluentAssertions.Core.dll",
+        "lib/netstandard1.3/FluentAssertions.Core.pdb",
+        "lib/netstandard1.3/FluentAssertions.dll",
+        "lib/netstandard1.3/FluentAssertions.pdb",
+        "lib/netstandard1.3/FluentAssertions.xml",
         "lib/portable-net40+sl5+win8+wp8+wpa81/FluentAssertions.Core.dll",
         "lib/portable-net40+sl5+win8+wp8+wpa81/FluentAssertions.Core.pdb",
         "lib/portable-net40+sl5+win8+wp8+wpa81/FluentAssertions.Core.xml",
@@ -537,6 +530,12 @@
         "lib/sl5/zh-Hans/System.Xml.Linq.resources.dll",
         "lib/sl5/zh-Hant/Microsoft.CSharp.resources.dll",
         "lib/sl5/zh-Hant/System.Xml.Linq.resources.dll",
+        "lib/uap10.0/FluentAssertions.Core.XML",
+        "lib/uap10.0/FluentAssertions.Core.dll",
+        "lib/uap10.0/FluentAssertions.Core.pdb",
+        "lib/uap10.0/FluentAssertions.dll",
+        "lib/uap10.0/FluentAssertions.pdb",
+        "lib/uap10.0/FluentAssertions.xml",
         "lib/win81/FluentAssertions.Core.dll",
         "lib/win81/FluentAssertions.Core.pdb",
         "lib/win81/FluentAssertions.Core.xml",
@@ -556,10 +555,7 @@
         "lib/wpa81/FluentAssertions.dll",
         "lib/wpa81/FluentAssertions.pdb",
         "lib/wpa81/FluentAssertions.pri",
-        "lib/wpa81/FluentAssertions.xml",
-        "lib/xamarin.ios/FluentAssertions.Core.dll",
-        "lib/xamarin.ios/FluentAssertions.Core.pdb",
-        "lib/xamarin.ios/FluentAssertions.Core.xml"
+        "lib/wpa81/FluentAssertions.xml"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/1.0.0": {
@@ -1190,7 +1186,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "FluentAssertions >= 4.8.0",
+      "FluentAssertions >= 4.13.0",
       "Moon.Security >= 1.0.0-ci",
       "dotnet-test-xunit >= 2.2.0-*",
       "xunit >= 2.2.0-*"

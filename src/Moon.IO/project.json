@@ -5,8 +5,8 @@
 
   "packOptions": {
     "owners": [ "djanosik" ],
-    "projectUrl": "https://github.com/djanosik/Moon.Libraries",
-    "iconUrl": "https://djanosik.github.io/moon.png",
+    "projectUrl": "https://gitlab.com/djanosik/moon-libraries",
+    "iconUrl": "https://djanosik.gitlab.io/moon.png",
     "tags": [ "moon", "IO" ]
   },
 
