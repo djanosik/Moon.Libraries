@@ -1,13 +1,13 @@
 {
   "version": "1.0.0-ci",
-  "authors": [ "Dusan Janosik" ],
+  "authors": ["Dusan Janosik"],
   "description": "Helpers for handling operations with files, extensions for System.IO.FileSystem.",
 
   "packOptions": {
-    "owners": [ "djanosik" ],
+    "owners": ["djanosik"],
     "projectUrl": "https://gitlab.com/djanosik/moon-libraries",
     "iconUrl": "https://djanosik.gitlab.io/moon.png",
-    "tags": [ "moon", "IO", "filesystem" ]
+    "tags": ["moon", "IO", "filesystem"]
   },
 
   "dependencies": {
@@ -15,7 +15,7 @@
   },
 
   "frameworks": {
-    "net46": { },
+    "net46": {},
     "netstandard1.5": {
       "dependencies": {
         "System.IO.FileSystem": "4.0.1"

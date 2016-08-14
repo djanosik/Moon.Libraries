@@ -1,13 +1,13 @@
 {
   "version": "1.0.0-ci",
-  "authors": [ "Dusan Janosik" ],
+  "authors": ["Dusan Janosik"],
   "description": "Fast object activator, extensions for System.Reflection.",
 
   "packOptions": {
-    "owners": [ "djanosik" ],
+    "owners": ["djanosik"],
     "projectUrl": "https://gitlab.com/djanosik/moon-libraries",
     "iconUrl": "https://djanosik.gitlab.io/moon.png",
-    "tags": [ "moon", "reflection" ]
+    "tags": ["moon", "reflection"]
   },
 
   "dependencies": {
@@ -15,11 +15,11 @@
   },
 
   "frameworks": {
-    "net46": { },
+    "net46": {},
     "netstandard1.5": {
       "dependencies": {
         "System.Reflection.Extensions": "4.0.1",
-        "System.Linq.Expressions":"4.1.0"
+        "System.Linq.Expressions": "4.1.0"
       }
     }
   }

@@ -3,7 +3,7 @@
 namespace JetBrains.Annotations
 {
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
-    sealed class ContractAnnotationAttribute : Attribute
+    internal sealed class ContractAnnotationAttribute : Attribute
     {
         public ContractAnnotationAttribute(string contract)
             : this(contract, false)

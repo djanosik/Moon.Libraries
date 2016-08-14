@@ -149,7 +149,7 @@ namespace Moon.IO
 
             path = Normalize(path);
 
-            if (path.Length == 0 || path[0] != '/')
+            if ((path.Length == 0) || (path[0] != '/'))
             {
                 path = "/" + path;
             }
@@ -168,7 +168,7 @@ namespace Moon.IO
             folderPath = Normalize(folderPath);
             var lastIndex = folderPath.Length - 1;
 
-            if (folderPath.Length == 0 || folderPath[lastIndex] != '/')
+            if ((folderPath.Length == 0) || (folderPath[lastIndex] != '/'))
             {
                 folderPath += "/";
             }
@@ -218,7 +218,7 @@ namespace Moon.IO
             return folderPath;
         }
 
-        static string RemoveRedundantSlashes(string path)
+        private static string RemoveRedundantSlashes(string path)
         {
             const string schemeSep = "://";
 
@@ -246,7 +246,7 @@ namespace Moon.IO
             return path;
         }
 
-        static string ReplaceBackSlashes(string path)
+        private static string ReplaceBackSlashes(string path)
         {
             Requires.NotNull(path, nameof(path));
 

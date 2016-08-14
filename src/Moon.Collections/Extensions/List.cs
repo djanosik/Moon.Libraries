@@ -32,8 +32,8 @@ namespace Moon.Collections
         /// <param name="newIndex">The new index of an element.</param>
         public static void Move<T>(this IList<T> source, int oldIndex, int newIndex)
         {
-            Requires.That(oldIndex >= 0 && oldIndex < source.Count, "oldIndex is out of range");
-            Requires.That(newIndex >= 0 && newIndex < source.Count, "newIndex is out of range");
+            Requires.That((oldIndex >= 0) && (oldIndex < source.Count), "oldIndex is out of range");
+            Requires.That((newIndex >= 0) && (newIndex < source.Count), "newIndex is out of range");
 
             if (oldIndex != newIndex)
             {

@@ -7,7 +7,7 @@ namespace Moon.Security
     /// </summary>
     public static class Password
     {
-        static readonly Random random = new Random();
+        private static readonly Random random = new Random();
 
         /// <summary>
         /// Generates a 12 characters long password.

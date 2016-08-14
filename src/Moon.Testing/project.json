@@ -1,13 +1,13 @@
 ﻿{
   "version": "1.0.0-ci",
-  "authors": [ "Dusan Janosik" ],
+  "authors": ["Dusan Janosik"],
   "description": "Helpers for writing xUnit.net tests (for .NET CLI projects).",
 
   "packOptions": {
-    "owners": [ "djanosik" ],
+    "owners": ["djanosik"],
     "projectUrl": "https://gitlab.com/djanosik/moon-libraries",
     "iconUrl": "https://djanosik.gitlab.io/moon.png",
-    "tags": [ "moontea", "xunit", "testing" ]
+    "tags": ["moontea", "xunit", "testing"]
   },
 
   "dependencies": {
@@ -18,6 +18,6 @@
   },
 
   "frameworks": {
-    "net46": { }
+    "net46": {}
   }
 }

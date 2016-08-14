@@ -9,7 +9,7 @@ namespace Moon.Collections
     /// <typeparam name="T">The type of objects to compare.</typeparam>
     public sealed class DelegateComparer<T> : IComparer<T>
     {
-        readonly Comparison<T> comparer;
+        private readonly Comparison<T> comparer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DelegateComparer{T}" /> class.

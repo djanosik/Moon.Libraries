@@ -1,13 +1,13 @@
 {
   "version": "1.0.0-ci",
-  "authors": [ "Dusan Janosik" ],
+  "authors": ["Dusan Janosik"],
   "description": "Helpers for handling IO operations, extensions for System.IO.",
 
   "packOptions": {
-    "owners": [ "djanosik" ],
+    "owners": ["djanosik"],
     "projectUrl": "https://gitlab.com/djanosik/moon-libraries",
     "iconUrl": "https://djanosik.gitlab.io/moon.png",
-    "tags": [ "moon", "IO" ]
+    "tags": ["moon", "IO"]
   },
 
   "dependencies": {
@@ -15,7 +15,7 @@
   },
 
   "frameworks": {
-    "net46": { },
-    "netstandard1.5": { }
+    "net46": {},
+    "netstandard1.5": {}
   }
 }

@@ -1,13 +1,13 @@
 {
   "version": "1.0.0-ci",
-  "authors": [ "Dusan Janosik" ],
+  "authors": ["Dusan Janosik"],
   "description": "Helper that runs async methods synchronously, extensions for System.Threading.",
 
   "packOptions": {
-    "owners": [ "djanosik" ],
+    "owners": ["djanosik"],
     "projectUrl": "https://gitlab.com/djanosik/moon-libraries",
     "iconUrl": "https://djanosik.gitlab.io/moon.png",
-    "tags": [ "moon", "threading" ]
+    "tags": ["moon", "threading"]
   },
 
   "dependencies": {
@@ -15,7 +15,7 @@
   },
 
   "frameworks": {
-    "net46": { },
+    "net46": {},
     "netstandard1.5": {
       "dependencies": {
         "System.Threading.Tasks": "4.0.11"

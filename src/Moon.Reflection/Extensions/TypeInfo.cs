@@ -72,7 +72,7 @@ namespace Moon.Reflection
             if (interfaceInfo.IsGenericTypeDefinition)
             {
                 return typeInfo.ImplementedInterfaces
-                    .Any(x => x.GetTypeInfo().IsGenericType && x.GetTypeInfo().GetGenericTypeDefinition() == interfaceInfo.AsType());
+                    .Any(x => x.GetTypeInfo().IsGenericType && (x.GetTypeInfo().GetGenericTypeDefinition() == interfaceInfo.AsType()));
             }
 
             return interfaceInfo.IsAssignableFrom(typeInfo);

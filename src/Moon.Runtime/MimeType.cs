@@ -9,8 +9,7 @@ namespace Moon
     /// </summary>
     public static class MimeType
     {
-        static readonly Dictionary<string, string> mimeMap = new Dictionary<string, string>(StringComparer.CurrentCultureIgnoreCase)
-        {
+        private static readonly Dictionary<string, string> mimeMap = new Dictionary<string, string>(StringComparer.CurrentCultureIgnoreCase) {
             [".3dm"] = "x-world/x-3dmf",
             [".3ds"] = "image/x-3ds",
             [".3gp"] = "video/3gpp",

@@ -7,7 +7,7 @@ namespace Moon
     /// </summary>
     public abstract class TimeZone : IEquatable<TimeZone>, IEquatable<TimeZoneInfo>
     {
-        readonly Lazy<TimeZoneInfo> info;
+        private readonly Lazy<TimeZoneInfo> info;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeZone" /> class.

@@ -11,10 +11,10 @@ namespace Moon.Security
     /// </summary>
     public static class PasswordHash
     {
-        const int saltSize = 128 / 8;
-        const int subkeySize = 256 / 8;
+        private const int saltSize = 128 / 8;
+        private const int subkeySize = 256 / 8;
 
-        static readonly RandomNumberGenerator random;
+        private static readonly RandomNumberGenerator random;
 
         /// <summary>
         /// Initializes the <see cref="PasswordHash" /> class.
@@ -56,7 +56,7 @@ namespace Moon.Security
             return false;
         }
 
-        static byte[] Hash(string password, KeyDerivationPrf prf, int iterationCount)
+        private static byte[] Hash(string password, KeyDerivationPrf prf, int iterationCount)
         {
             var salt = new byte[saltSize];
             random.GetBytes(salt);
@@ -72,7 +72,7 @@ namespace Moon.Security
             return result;
         }
 
-        static void WriteNetworkByteOrder(byte[] buffer, int offset, uint value)
+        private static void WriteNetworkByteOrder(byte[] buffer, int offset, uint value)
         {
             buffer[offset + 0] = (byte)(value >> 24);
             buffer[offset + 1] = (byte)(value >> 16);
@@ -80,7 +80,7 @@ namespace Moon.Security
             buffer[offset + 3] = (byte)(value >> 0);
         }
 
-        static bool Verify(byte[] hash, string password)
+        private static bool Verify(byte[] hash, string password)
         {
             try
             {
@@ -115,7 +115,7 @@ namespace Moon.Security
             }
         }
 
-        static uint ReadNetworkByteOrder(byte[] buffer, int offset)
+        private static uint ReadNetworkByteOrder(byte[] buffer, int offset)
         {
             return ((uint)buffer[offset + 0] << 24)
                    | ((uint)buffer[offset + 1] << 16)
@@ -124,13 +124,13 @@ namespace Moon.Security
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        static bool ByteArraysEqual(byte[] a, byte[] b)
+        private static bool ByteArraysEqual(byte[] a, byte[] b)
         {
-            if (a == null && b == null)
+            if ((a == null) && (b == null))
             {
                 return true;
             }
-            if (a == null || b == null || a.Length != b.Length)
+            if ((a == null) || (b == null) || (a.Length != b.Length))
             {
                 return false;
             }

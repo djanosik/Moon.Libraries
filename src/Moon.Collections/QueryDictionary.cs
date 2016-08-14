@@ -64,7 +64,7 @@ namespace Moon.Collections
             return builder.ToString();
         }
 
-        void ParseQueryString(string query, bool urlEncoded)
+        private void ParseQueryString(string query, bool urlEncoded)
         {
             var questionMarkIndex = query.IndexOf('?');
 

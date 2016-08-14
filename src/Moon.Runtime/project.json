@@ -1,13 +1,13 @@
 {
   "version": "1.0.0-ci",
-  "authors": [ "Dusan Janosik" ],
+  "authors": ["Dusan Janosik"],
   "description": "Essential types and helpers, extensions for System.Runtime.",
 
   "packOptions": {
-    "owners": [ "djanosik" ],
+    "owners": ["djanosik"],
     "projectUrl": "https://gitlab.com/djanosik/moon-libraries",
     "iconUrl": "https://djanosik.gitlab.io/moon.png",
-    "tags": [ "moon", "framework", "runtime" ]
+    "tags": ["moon", "framework", "runtime"]
   },
 
   "dependencies": {
@@ -15,7 +15,7 @@
   },
 
   "frameworks": {
-    "net46": { },
+    "net46": {},
     "netstandard1.5": {
       "dependencies": {
         "System.Runtime.Extensions": "4.1.0"
