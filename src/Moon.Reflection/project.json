@@ -16,11 +16,6 @@
 
   "frameworks": {
     "net46": {},
-    "netstandard1.5": {
-      "dependencies": {
-        "System.Reflection.Extensions": "4.0.1",
-        "System.Linq.Expressions": "4.1.0"
-      }
-    }
+    "netstandard1.3": {}
   }
 }

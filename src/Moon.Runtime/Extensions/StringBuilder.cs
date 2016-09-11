@@ -3,9 +3,6 @@ using System.Text;
 
 namespace Moon
 {
-    /// <summary>
-    /// <see cref="StringBuilder" /> extension methods.
-    /// </summary>
     public static class StringBuilderExtensions
     {
         /// <summary>

@@ -2,9 +2,6 @@
 
 namespace Moon.Collections
 {
-    /// <summary>
-    /// <see cref="ICollection{T}" /> extension methods.
-    /// </summary>
     public static class CollectionExtensions
     {
         /// <summary>

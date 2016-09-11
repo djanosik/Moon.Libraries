@@ -3,7 +3,7 @@
 namespace Moon
 {
     /// <summary>
-    /// The helper used to dispose objects.
+    /// Helper class providing safe way to dispose objects.
     /// </summary>
     public static class Disposable
     {

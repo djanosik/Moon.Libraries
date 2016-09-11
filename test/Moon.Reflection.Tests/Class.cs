@@ -6,17 +6,17 @@ namespace Moon.Reflection.Tests
     public class ClassTests
     {
         [Fact]
-        public void CreatingInstance()
+        public void ActivatingInstance()
         {
-            var list = Class.Create<List<int>>();
+            var list = Class.Activate<List<int>>();
 
             Assert.IsAssignableFrom<List<int>>(list);
         }
 
         [Fact]
-        public void CreatingInstanceWithParameters()
+        public void ActivatingInstanceWithParameters()
         {
-            var list = Class.Create<List<int>>(1);
+            var list = Class.Activate<List<int>>(1);
 
             Assert.IsAssignableFrom<List<int>>(list);
             Assert.Equal(1, list.Capacity);

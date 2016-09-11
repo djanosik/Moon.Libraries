@@ -2,9 +2,6 @@
 
 namespace Moon.Queryable
 {
-    /// <summary>
-    /// <see cref="IQueryable{T}" /> extension methods.
-    /// </summary>
     public static class QueryableExtensions
     {
         /// <summary>

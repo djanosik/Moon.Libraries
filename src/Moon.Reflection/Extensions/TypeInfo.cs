@@ -5,9 +5,6 @@ using System.Reflection;
 
 namespace Moon.Reflection
 {
-    /// <summary>
-    /// <see cref="TypeInfo" /> extension methods.
-    /// </summary>
     public static class TypeInfoExtensions
     {
         /// <summary>

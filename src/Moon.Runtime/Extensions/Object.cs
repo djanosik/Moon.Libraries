@@ -2,9 +2,6 @@
 
 namespace Moon
 {
-    /// <summary>
-    /// <see cref="object" /> extension methods.
-    /// </summary>
     public static class ObjectExtensions
     {
         /// <summary>

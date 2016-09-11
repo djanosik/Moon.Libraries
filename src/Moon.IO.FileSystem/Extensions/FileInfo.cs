@@ -2,9 +2,6 @@
 
 namespace Moon.IO
 {
-    /// <summary>
-    /// <see cref="FileInfo" /> extension methods.
-    /// </summary>
     public static class FileInfoExtensions
     {
         /// <summary>

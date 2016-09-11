@@ -2,11 +2,15 @@
 
 namespace Moon.Collections
 {
-    /// <summary>
-    /// <see cref="UriBuilder" /> extension methods.
-    /// </summary>
     public static class UriBuilderExtensions
     {
+        /// <summary>
+        /// Parses the query string and returns a <see cref="QueryDictionary" />.
+        /// </summary>
+        /// <param name="uri">The <see cref="UriBuilder" /> instance.</param>
+        public static QueryDictionary GetQuery(this UriBuilder uri)
+            => new QueryDictionary(uri.Query);
+
         /// <summary>
         /// Returns a value of the query parameter with the specified key.
         /// </summary>
@@ -14,13 +18,6 @@ namespace Moon.Collections
         /// <param name="key">The query parameter key.</param>
         public static string GetQuery(this UriBuilder uri, string key)
             => uri.GetQuery()[key];
-
-        /// <summary>
-        /// Parses the query string and returns a <see cref="QueryDictionary" />.
-        /// </summary>
-        /// <param name="uri">The <see cref="UriBuilder" /> instance.</param>
-        public static QueryDictionary GetQuery(this UriBuilder uri)
-            => new QueryDictionary(uri.Query);
 
         /// <summary>
         /// Removes the query.

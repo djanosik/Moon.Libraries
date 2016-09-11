@@ -2,9 +2,6 @@
 
 namespace Moon.IO
 {
-    /// <summary>
-    /// <see cref="DirectoryInfo" /> extension methods.
-    /// </summary>
     public static class DirectoryInfoExtensions
     {
         /// <summary>

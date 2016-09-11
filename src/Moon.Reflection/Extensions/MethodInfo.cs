@@ -2,9 +2,6 @@
 
 namespace Moon.Reflection
 {
-    /// <summary>
-    /// <see cref="MethodInfo" /> extension methods.
-    /// </summary>
     public static class MethodInfoExtensions
     {
         /// <summary>

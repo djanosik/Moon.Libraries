@@ -5,9 +5,6 @@ using System.Reflection;
 
 namespace Moon.Reflection
 {
-    /// <summary>
-    /// The <see cref="Assembly" /> extension methods.
-    /// </summary>
     public static class AssemblyExtensions
     {
         /// <summary>

@@ -15,16 +15,16 @@ namespace Moon.Reflection
         /// Creates an instance of the specified type.
         /// </summary>
         /// <typeparam name="TResult">The <see cref="Type" /> of the result.</typeparam>
-        public static TResult Create<TResult>() where TResult : class, new()
-            => (TResult)Create(typeof(TResult));
+        public static TResult Activate<TResult>() where TResult : class, new()
+            => (TResult)Activate(typeof(TResult));
 
         /// <summary>
         /// Creates an instance of the specified type.
         /// </summary>
         /// <typeparam name="TResult">The <see cref="Type" /> of the result.</typeparam>
         /// <param name="args">An array of constructor arguments.</param>
-        public static TResult Create<TResult>(params object[] args) where TResult : class
-            => (TResult)Create(typeof(TResult), args);
+        public static TResult Activate<TResult>(params object[] args) where TResult : class
+            => (TResult)Activate(typeof(TResult), args);
 
         /// <summary>
         /// Creates an instance of the specified type.
@@ -32,11 +32,11 @@ namespace Moon.Reflection
         /// <typeparam name="TResult">The <see cref="Type" /> of the result.</typeparam>
         /// <param name="type">The <see cref="Type" /> to create an instance of.</param>
         /// <param name="args">An array of constructor arguments.</param>
-        public static TResult Create<TResult>(Type type, params object[] args)
+        public static TResult Activate<TResult>(Type type, params object[] args)
         {
             Requires.AssignableTo<TResult>(type, nameof(type));
 
-            return (TResult)Create(type, args);
+            return (TResult)Activate(type, args);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Moon.Reflection
         /// </summary>
         /// <param name="type">The <see cref="Type" /> of the result object.</param>
         /// <param name="args">An array of constructor arguments.</param>
-        public static object Create(Type type, params object[] args)
+        public static object Activate(Type type, params object[] args)
         {
             Requires.NotNull(type, nameof(type));
 

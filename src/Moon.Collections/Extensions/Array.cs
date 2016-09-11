@@ -3,9 +3,6 @@ using System.Linq;
 
 namespace Moon.Collections
 {
-    /// <summary>
-    /// <see cref="Array" /> extension methods.
-    /// </summary>
     public static class ArrayExtensions
     {
         /// <summary>

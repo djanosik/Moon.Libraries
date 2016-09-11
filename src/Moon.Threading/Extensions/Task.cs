@@ -3,9 +3,6 @@ using System.Threading.Tasks;
 
 namespace Moon.Threading.Tasks
 {
-    /// <summary>
-    /// <see cref="Task{TResult}" /> extension methods.
-    /// </summary>
     public static class TaskExtensions
     {
         /// <summary>

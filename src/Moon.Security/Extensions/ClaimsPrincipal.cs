@@ -2,9 +2,6 @@
 
 namespace Moon.Security
 {
-    /// <summary>
-    /// <see cref="ClaimsPrincipal" /> extension methods.
-    /// </summary>
     public static class ClaimsPrincipalExtensions
     {
         /// <summary>

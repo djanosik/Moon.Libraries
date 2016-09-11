@@ -4,20 +4,18 @@
   "description": "Simple Guard (or DbC) implementation.",
 
   "packOptions": {
-    "owners": ["djanosik"],
+    "owners": [ "djanosik" ],
     "projectUrl": "https://gitlab.com/djanosik/moon-libraries",
     "iconUrl": "https://djanosik.gitlab.io/moon.png",
-    "tags": ["moon", "contracts", "guard"]
+    "tags": [ "moon", "contracts", "guard" ]
+  },
+
+  "dependencies": {
+    "NETStandard.Library": "1.6.0"
   },
 
   "frameworks": {
     "net46": {},
-    "netstandard1.5": {
-      "dependencies": {
-        "System.Diagnostics.Tools": "4.0.1",
-        "System.Linq": "4.1.0",
-        "System.Resources.ResourceManager": "4.0.1"
-      }
-    }
+    "netstandard1.3": {}
   }
 }

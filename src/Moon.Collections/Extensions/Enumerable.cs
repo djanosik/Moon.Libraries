@@ -4,9 +4,6 @@ using System.Linq;
 
 namespace Moon.Collections
 {
-    /// <summary>
-    /// <see cref="IEnumerable{T}" /> extension methods.
-    /// </summary>
     public static class EnumerableExtensions
     {
         /// <summary>

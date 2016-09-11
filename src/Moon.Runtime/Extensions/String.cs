@@ -5,9 +5,6 @@ using System.Text;
 
 namespace Moon
 {
-    /// <summary>
-    /// <see cref="string" /> extension methods.
-    /// </summary>
     public static class StringExtensions
     {
         /// <summary>

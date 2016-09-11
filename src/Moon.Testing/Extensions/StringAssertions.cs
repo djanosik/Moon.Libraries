@@ -4,9 +4,6 @@ using Moon.Security;
 
 namespace Moon.Testing
 {
-    /// <summary>
-    /// <see cref="StringAssertions" /> extension methods.
-    /// </summary>
     public static class StringAssertionsExtensions
     {
         /// <summary>

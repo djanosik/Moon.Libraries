@@ -4,9 +4,6 @@ using System.Threading.Tasks;
 
 namespace Moon.IO
 {
-    /// <summary>
-    /// <see cref="Stream" /> extension methods.
-    /// </summary>
     public static class StreamExtensions
     {
         /// <summary>

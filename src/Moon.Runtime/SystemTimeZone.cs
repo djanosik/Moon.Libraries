@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Moon
 {
     /// <summary>
-    /// The <see cref="ITimeZone" /> implementation based on the <see cref="TimeZoneInfo" />.
+    /// The <see cref="TimeZone" /> implementation based on the <see cref="TimeZoneInfo" />.
     /// </summary>
     public sealed class SystemTimeZone : TimeZone
     {
@@ -456,13 +457,8 @@ namespace Moon
         /// <summary>
         /// Returns an enumeration of all time zones.
         /// </summary>
-        public static IEnumerable<TimeZone> GetTimeZones()
-        {
-            foreach (var map in tzidMap)
-            {
-                yield return new SystemTimeZone(map.Key);
-            }
-        }
+        public static IEnumerable<TimeZone> GetTimeZones() 
+            => tzidMap.Select(map => new SystemTimeZone(map.Key));
 
         /// <summary>
         /// Converts a time from the current time zone to another.

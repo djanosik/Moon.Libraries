@@ -16,10 +16,6 @@
 
   "frameworks": {
     "net46": {},
-    "netstandard1.5": {
-      "dependencies": {
-        "System.Collections": "4.0.11"
-      }
-    }
+    "netstandard1.3": {}
   }
 }
