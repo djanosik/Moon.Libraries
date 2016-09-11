@@ -1,8 +1,10 @@
 version: 2.2.{build}
 init:
   - git config --global core.autocrlf true
+install:
+  - ps: inmo InvokeBuild
 build_script:
-  - fake.cmd Build
+  - ps: Invoke-Build
 artifacts:
   - path: artifacts/**.nupkg
     name: NuGet

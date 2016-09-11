@@ -29,11 +29,10 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Moon.Threading", "src\Moon.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{33290BAC-2B47-482E-8903-130966AE2B02}"
 	ProjectSection(SolutionItems) = preProject
+		.build.ps1 = .build.ps1
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
-		fake.cmd = fake.cmd
-		fake.fsx = fake.fsx
 		global.json = global.json
 		LICENSE = LICENSE
 		README.md = README.md
