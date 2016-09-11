@@ -23,24 +23,30 @@ task RestoreDependencies UpdateVersions, {
 }
 
 task PackProjects RestoreDependencies, {
-    dir src -Include project.json -Recurse |% {
-        $project = $_.FullName
-        exec { dotnet pack $project -c Release }
+    if(Test-Path src) {
+        dir src -Include project.json -Recurse |% {
+            $project = $_.FullName
+            exec { dotnet pack $project -c Release }
+        }
     }
 }
 
 task CopyArtifacts PackProjects, {
     ni "artifacts" -ItemType Directory -Force
-
-    dir src -Include *.nupkg -Recurse |% {
-        copy $_.FullName ("artifacts") -Force
+    
+    if(Test-Path src) {
+        dir src -Include *.nupkg -Recurse |% {
+            copy $_.FullName ("artifacts") -Force
+        }
     }
 }
 
 task RunTests CopyArtifacts, {
-    dir test -Include project.json -Recurse |% {
-        $project = $_.FullName
-        exec { dotnet test $project -c Release }
+    if(Test-Path test) {
+        dir test -Include project.json -Recurse |% {
+            $project = $_.FullName
+            exec { dotnet test $project -c Release }
+        }
     }
 }
 
