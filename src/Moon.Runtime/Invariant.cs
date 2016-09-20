@@ -9,6 +9,15 @@ namespace Moon
     public static class Invariant
     {
         /// <summary>
+        /// Tries to parse a decimal number out of a string using the <see cref="CultureInfo.InvariantCulture" />.
+        /// The method accepts null strings and leading and trailing whitespace.
+        /// </summary>
+        /// <param name="str">The input string.</param>
+        /// <param name="value">The parsed value.</param>
+        public static bool TryParse(string str, out decimal value)
+            => decimal.TryParse(str, NumberStyles.Number, CultureInfo.InvariantCulture, out value);
+
+        /// <summary>
         /// Tries to parse a double-precision floating point number out of a string using the
         /// <see cref="CultureInfo.InvariantCulture" />. The method accepts null strings and leading
         /// and trailing whitespace.
