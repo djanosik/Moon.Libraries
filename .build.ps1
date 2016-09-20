@@ -1,5 +1,3 @@
-use 4.0 MSBuild
-
 task Clean {
     del * -Include artifacts, bin, obj -Recurse -Force
 }
@@ -50,10 +48,10 @@ task RunTests CopyArtifacts, {
     }
 }
 
-task RestoreProjects RunTests, {
+function Exit-Build {
     dir * -Include project.json.bak, project.lock.json.bak -Recurse |% {
         move $_.FullName $_.FullName.Replace(".bak", "") -Force
     }
 }
 
-task . RestoreProjects
+task . RunTests
