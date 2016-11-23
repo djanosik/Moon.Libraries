@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JetBrains.Annotations
+namespace Moon
 {
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     internal sealed class ContractAnnotationAttribute : Attribute

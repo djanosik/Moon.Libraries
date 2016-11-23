@@ -1,30 +1,19 @@
 task Clean {
-    del * -Include artifacts, bin, obj -Recurse -Force
+    if(Test-Path artifacts) { del artifacts -Recurse -Force }
+    del * -Include bin, obj -Recurse -Force
 }
 
-task BackupProjects Clean, {
-    dir * -Include project.json, project.lock.json -Recurse |% {
-        copy $_.FullName ($_.FullName + ".bak") -Force
-    }
-}
-
-task UpdateVersions BackupProjects, {
-    $version = if($env:APPVEYOR) { $env:APPVEYOR_BUILD_VERSION } else { "1.0.0" }
-
-    dir * -Include project.json, project.lock.json -Recurse |% {
-        (gc $_.FullName) |% { $_ -replace "1.0.0-ci", $version } | sc $_.FullName
-    }
-}
-
-task RestoreDependencies UpdateVersions, {
+task RestoreDependencies Clean, {
    exec { dotnet restore }
 }
 
 task PackProjects RestoreDependencies, {
+    $version = if($env:APPVEYOR) { $env:APPVEYOR_BUILD_VERSION } else { "1.0.0-pre" }
+
     if(Test-Path src) {
-        dir src -Include project.json -Recurse |% {
+        dir src -Include *.csproj -Recurse |% {
             $project = $_.FullName
-            exec { dotnet pack $project -c Release }
+            exec { dotnet pack $project -c Release /p:Version=$version }
         }
     }
 }
@@ -41,16 +30,10 @@ task CopyArtifacts PackProjects, {
 
 task RunTests CopyArtifacts, {
     if(Test-Path test) {
-        dir test -Include project.json -Recurse |% {
-            $project = $_.FullName
-            exec { dotnet test $project -c Release }
-        }
-    }
-}
-
-function Exit-Build {
-    dir * -Include project.json.bak, project.lock.json.bak -Recurse |% {
-        move $_.FullName $_.FullName.Replace(".bak", "") -Force
+       dir test -Include *.csproj -Recurse |% {
+           $project = $_.FullName
+           exec { dotnet test $project -c Release }
+       }
     }
 }
 
