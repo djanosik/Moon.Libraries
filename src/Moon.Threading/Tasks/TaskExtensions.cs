@@ -6,13 +6,6 @@ namespace Moon.Threading.Tasks
     public static class TaskExtensions
     {
         /// <summary>
-        /// Returns whether the target task completed successfully.
-        /// </summary>
-        /// <param name="task">The target task.</param>
-        public static Task<bool> IsSuccessful<TResult>(this Task<TResult> task)
-            => task.Then(t => !t.IsFaulted);
-
-        /// <summary>
         /// Creates a continuation that executes asynchronously when the target task completes.
         /// </summary>
         /// <typeparam name="TResult">The type of the result.</typeparam>

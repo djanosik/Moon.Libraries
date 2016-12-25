@@ -69,13 +69,13 @@ namespace Moon
         /// </returns>
         public static DateTime ToUtc(DateTime dateTime, TimeZone srcTimeZone)
         {
-            if (dateTime.Kind == DateTimeKind.Utc)
+            if (dateTime.Kind != DateTimeKind.Utc)
             {
-                return dateTime;
+                dateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Unspecified);
+                return srcTimeZone.ConvertTime(dateTime, UtcZone);
             }
 
-            dateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Unspecified);
-            return srcTimeZone.ConvertTime(dateTime, UtcZone);
+            return dateTime;
         }
     }
 }

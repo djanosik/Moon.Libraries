@@ -1,8 +1,7 @@
 ﻿using FluentAssertions;
-using Moon.Security;
 using Xunit;
 
-namespace Moon.Tests
+namespace Moon.Security.Tests
 {
     public class PasswordHashTests
     {

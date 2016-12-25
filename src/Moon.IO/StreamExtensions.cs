@@ -51,8 +51,7 @@ namespace Moon.IO
                 int read;
                 while ((read = await input.ReadAsync(buffer, 0, buffer.Length, cancellationToken)) > 0)
                 {
-                    await memoryStream.WriteAsync(buffer, 0, read, cancellationToken)
-                        .ConfigureAwait(false);
+                    await memoryStream.WriteAsync(buffer, 0, read, cancellationToken);
                 }
                 return memoryStream.ToArray();
             }

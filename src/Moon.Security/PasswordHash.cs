@@ -28,11 +28,14 @@ namespace Moon.Security
         /// Returns a hashed representation of the supplied <paramref name="password" />.
         /// </summary>
         /// <param name="password">The password to hash.</param>
-        public static string Hash(string password)
+        /// <param name="iterationCount">
+        /// The number of iterations of the pseudo-random function to apply during the key derivation process.
+        /// </param>
+        public static string Hash(string password, int iterationCount = 10000)
         {
             Requires.NotNull(password, nameof(password));
 
-            var hash = Hash(password, KeyDerivationPrf.HMACSHA256, 10000);
+            var hash = Hash(password, KeyDerivationPrf.HMACSHA256, iterationCount);
             return Convert.ToBase64String(hash);
         }
 
@@ -72,14 +75,6 @@ namespace Moon.Security
             return result;
         }
 
-        private static void WriteNetworkByteOrder(byte[] buffer, int offset, uint value)
-        {
-            buffer[offset + 0] = (byte)(value >> 24);
-            buffer[offset + 1] = (byte)(value >> 16);
-            buffer[offset + 2] = (byte)(value >> 8);
-            buffer[offset + 3] = (byte)(value >> 0);
-        }
-
         private static bool Verify(byte[] hash, string password)
         {
             try
@@ -115,22 +110,30 @@ namespace Moon.Security
             }
         }
 
+        private static void WriteNetworkByteOrder(byte[] buffer, int offset, uint value)
+        {
+            buffer[offset + 0] = (byte)(value >> 24);
+            buffer[offset + 1] = (byte)(value >> 16);
+            buffer[offset + 2] = (byte)(value >> 8);
+            buffer[offset + 3] = (byte)(value >> 0);
+        }
+
         private static uint ReadNetworkByteOrder(byte[] buffer, int offset)
         {
-            return ((uint)buffer[offset + 0] << 24)
-                   | ((uint)buffer[offset + 1] << 16)
-                   | ((uint)buffer[offset + 2] << 8)
-                   | buffer[offset + 3];
+            return (uint)buffer[offset + 0] << 24
+                | (uint)buffer[offset + 1] << 16
+                | (uint)buffer[offset + 2] << 8
+                | buffer[offset + 3];
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private static bool ByteArraysEqual(byte[] a, byte[] b)
         {
-            if ((a == null) && (b == null))
+            if (a == null && b == null)
             {
                 return true;
             }
-            if ((a == null) || (b == null) || (a.Length != b.Length))
+            if (a == null || b == null || a.Length != b.Length)
             {
                 return false;
             }

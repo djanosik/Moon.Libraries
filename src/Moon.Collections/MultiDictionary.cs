@@ -7,8 +7,7 @@ namespace Moon.Collections
     /// </summary>
     /// <typeparam name="TKey">The type of the key.</typeparam>
     /// <typeparam name="TValue">The type of the value.</typeparam>
-    public class MultiDictionary<TKey, TValue>
-        : Dictionary<TKey, List<TValue>>
+    public class MultiDictionary<TKey, TValue> : Dictionary<TKey, List<TValue>>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiDictionary{TKey,TValue}" /> class.
@@ -35,11 +34,11 @@ namespace Moon.Collections
         {
             Requires.NotNull(key, nameof(key));
 
-            List<TValue> list;
-            if (!TryGetValue(key, out list))
+            if (!TryGetValue(key, out var list))
             {
                 this[key] = list = new List<TValue>();
             }
+
             list.Add(value);
         }
 
@@ -53,11 +52,11 @@ namespace Moon.Collections
             Requires.NotNull(key, nameof(key));
             Requires.NotNull(values, nameof(values));
 
-            List<TValue> list;
-            if (!TryGetValue(key, out list))
+            if (!TryGetValue(key, out var list))
             {
                 this[key] = list = new List<TValue>();
             }
+
             list.AddRange(values);
         }
 
@@ -70,8 +69,7 @@ namespace Moon.Collections
         {
             Requires.NotNull(key, nameof(key));
 
-            List<TValue> list;
-            return TryGetValue(key, out list) && list.Contains(value);
+            return TryGetValue(key, out var list) && list.Contains(value);
         }
 
         /// <summary>
@@ -84,8 +82,7 @@ namespace Moon.Collections
         {
             Requires.NotNull(key, nameof(key));
 
-            List<TValue> list;
-            return TryGetValue(key, out list) && list.Remove(value);
+            return TryGetValue(key, out var list) && list.Remove(value);
         }
     }
 }

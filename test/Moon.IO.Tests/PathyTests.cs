@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Xunit;
 
-namespace Moon.IO
+namespace Moon.IO.Tests
 {
     public class PathyTests
     {

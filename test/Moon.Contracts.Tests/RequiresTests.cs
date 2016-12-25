@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Xunit;
 
-namespace Moon.Contracts.Tests
+namespace Moon.Tests
 {
     public class RequiresTests
     {

@@ -62,14 +62,12 @@ namespace Moon
         /// <param name="obj">The other time zone.</param>
         public override bool Equals(object obj)
         {
-            var timeZone = obj as TimeZone;
-            if (timeZone != null)
+            if (obj is TimeZone timeZone)
             {
                 return Equals(timeZone);
             }
 
-            var timeZoneInfo = obj as TimeZoneInfo;
-            if (timeZoneInfo != null)
+            if (obj is TimeZoneInfo timeZoneInfo)
             {
                 return Equals(timeZoneInfo);
             }

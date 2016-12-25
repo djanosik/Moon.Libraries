@@ -16,6 +16,7 @@ namespace Moon
         {
             Requires.NotNull(key, nameof(key));
 
+            var delim = "&";
             var hasQuery = false;
 
             for (var i = 0; i < source.Length; i++)
@@ -27,19 +28,13 @@ namespace Moon
                 }
             }
 
-            string delim;
             if (!hasQuery)
             {
                 delim = "?";
             }
-            else if ((source[source.Length - 1] == '?')
-                     || (source[source.Length - 1] == '&'))
+            else if (source[source.Length - 1] == '?' || source[source.Length - 1] == '&')
             {
                 delim = string.Empty;
-            }
-            else
-            {
-                delim = "&";
             }
 
             var strKey = key;

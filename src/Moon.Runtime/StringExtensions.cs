@@ -94,12 +94,9 @@ namespace Moon
             var length = str.Length;
             var position = input.IndexOf(str, comparisonType);
 
-            if (position < 0)
-            {
-                return input;
-            }
-
-            return input.Remove(position, length);
+            return position >= 0
+                ? input.Remove(position, length)
+                : input;
         }
 
         /// <summary>
@@ -118,12 +115,9 @@ namespace Moon
             var length = str.Length;
             var position = input.LastIndexOf(str, comparisonType);
 
-            if (position < 0)
-            {
-                return input;
-            }
-
-            return input.Remove(position, length);
+            return position >= 0
+                ? input.Remove(position, length)
+                : input;
         }
 
         /// <summary>
@@ -133,10 +127,8 @@ namespace Moon
         /// <param name="input">The input string.</param>
         /// <param name="oldValue">The string to be replaced.</param>
         /// <param name="newValue">The string to replace all occurrences of oldValue.</param>
-        /// <param name="comparisonType">
-        /// One of the enumeration values that specifies the rules for the search.
-        /// </param>
-        public static string Replace(this string input, string oldValue, string newValue, StringComparison comparisonType)
+        /// <param name="comparisonType">The type of string comparison.</param>
+        public static string Replace(this string input, string oldValue, string newValue, StringComparison comparisonType = StringComparison.CurrentCulture)
         {
             var builder = new StringBuilder();
 
@@ -153,8 +145,8 @@ namespace Moon
                 previousIndex = index;
                 index = input.IndexOf(oldValue, index, comparisonType);
             }
-            builder.Append(input.Substring(previousIndex));
 
+            builder.Append(input.Substring(previousIndex));
             return builder.ToString();
         }
 
@@ -165,10 +157,7 @@ namespace Moon
         /// <param name="length">The length of the result string.</param>
         public static string Shorten(this string input, int length)
         {
-            var delimiters = new[] {
-                " ", ".", ",", ";", "\\", "/", "(", ")", ":", "-", "="
-            };
-
+            var delimiters = new[] { " ", ".", ",", ";", "\\", "/", "(", ")", ":", "-", "=" };
             return input.Shorten(length, delimiters);
         }
 

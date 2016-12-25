@@ -11,13 +11,11 @@ namespace Moon.Queryable
     public static class Predicate
     {
         /// <summary>
-        /// Combines the first predicate with the second using the logical "and".
+        /// Creates a predicate that evaluates to true.
         /// </summary>
         /// <typeparam name="T">The type of value.</typeparam>
-        /// <param name="first">The first expression.</param>
-        /// <param name="second">The second expression.</param>
-        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> first, Expression<Func<T, bool>> second)
-            => first.Compose(second, Expression.AndAlso);
+        public static Expression<Func<T, bool>> True<T>()
+            => p => true;
 
         /// <summary>
         /// Creates a predicate that evaluates to false.
@@ -27,12 +25,13 @@ namespace Moon.Queryable
             => p => false;
 
         /// <summary>
-        /// Negates the predicate.
+        /// Combines the first predicate with the second using the logical "and".
         /// </summary>
         /// <typeparam name="T">The type of value.</typeparam>
-        /// <param name="predicate">The predicate expression.</param>
-        public static Expression<Func<T, bool>> Not<T>(this Expression<Func<T, bool>> predicate)
-            => Expression.Lambda<Func<T, bool>>(Expression.Not(predicate.Body), predicate.Parameters);
+        /// <param name="first">The first expression.</param>
+        /// <param name="second">The second expression.</param>
+        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> first, Expression<Func<T, bool>> second)
+            => first.Compose(second, Expression.AndAlso);
 
         /// <summary>
         /// Combines the first predicate with the second using the logical "or".
@@ -44,19 +43,20 @@ namespace Moon.Queryable
             => first.Compose(second, Expression.OrElse);
 
         /// <summary>
+        /// Negates the predicate.
+        /// </summary>
+        /// <typeparam name="T">The type of value.</typeparam>
+        /// <param name="predicate">The predicate expression.</param>
+        public static Expression<Func<T, bool>> Not<T>(this Expression<Func<T, bool>> predicate)
+            => Expression.Lambda<Func<T, bool>>(Expression.Not(predicate.Body), predicate.Parameters);
+
+        /// <summary>
         /// Returns the given predicate. It makes it easier to assign predicate to implicitly typed variable.
         /// </summary>
         /// <typeparam name="T">The type of value.</typeparam>
         /// <param name="predicate">The predicate expression.</param>
         public static Expression<Func<T, bool>> P<T>(Expression<Func<T, bool>> predicate)
             => predicate;
-
-        /// <summary>
-        /// Creates a predicate that evaluates to true.
-        /// </summary>
-        /// <typeparam name="T">The type of value.</typeparam>
-        public static Expression<Func<T, bool>> True<T>()
-            => p => true;
 
         private static Expression<T> Compose<T>(this Expression<T> first, Expression<T> second, Func<Expression, Expression, Expression> merge)
         {

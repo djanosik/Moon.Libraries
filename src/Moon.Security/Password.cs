@@ -7,6 +7,7 @@ namespace Moon.Security
     /// </summary>
     public static class Password
     {
+        private const string allowedChars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
         private static readonly Random random = new Random();
 
         /// <summary>
@@ -22,7 +23,6 @@ namespace Moon.Security
         public static string Generate(int length)
         {
             var chars = new char[length];
-            const string allowedChars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
 
             for (var i = 0; i < length; i++)
             {
