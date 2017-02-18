@@ -1,19 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\Common.props" />
   <PropertyGroup>
-    <TargetFrameworks>net46;netstandard1.3</TargetFrameworks>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <Description>Helpers for handling operations with files, extensions for System.IO.FileSystem.</Description>
     <PackageTags>moon;IO;filesystem</PackageTags>
     <RootNamespace>Moon.IO</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="**\*.cs" />
-    <EmbeddedResource Include="**\*.resx" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Moon.IO\Moon.IO.csproj" />
-    <ProjectReference Include="..\Moon.Contracts\Moon.Contracts.csproj">
-      <FromP2P>true</FromP2P>
-    </ProjectReference>
   </ItemGroup>
 </Project>

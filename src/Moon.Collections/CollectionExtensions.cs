@@ -21,20 +21,20 @@ namespace Moon.Collections
         /// <param name="items">An enumeration of items to add to the collection.</param>
         public static void AddRange<T>(this ICollection<T> source, IEnumerable<T> items)
         {
-            if (items != null)
+            if (items == null)
             {
-                var list = source as List<T>;
+                return;
+            }
 
-                if (list != null)
+            if (source is List<T> list)
+            {
+                list.AddRange(items);
+            }
+            else
+            {
+                foreach (var item in items)
                 {
-                    list.AddRange(items);
-                }
-                else
-                {
-                    foreach (var item in items)
-                    {
-                        source.Add(item);
-                    }
+                    source.Add(item);
                 }
             }
         }

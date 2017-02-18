@@ -41,7 +41,10 @@ namespace Moon.Reflection
 
                 for (var i = 0; i < argTypes.Length; i++)
                 {
-                    if (argTypes[i] != paramTypes[i])
+                    var argTypeInfo = argTypes[i].GetTypeInfo();
+                    var paramTypeInfo = paramTypes[i].GetTypeInfo();
+
+                    if (!paramTypeInfo.IsAssignableFrom(argTypeInfo))
                     {
                         break;
                     }
@@ -69,7 +72,7 @@ namespace Moon.Reflection
             if (interfaceInfo.IsGenericTypeDefinition)
             {
                 return typeInfo.ImplementedInterfaces
-                    .Any(x => x.GetTypeInfo().IsGenericType && (x.GetTypeInfo().GetGenericTypeDefinition() == interfaceInfo.AsType()));
+                    .Any(x => x.GetTypeInfo().IsGenericType && x.GetTypeInfo().GetGenericTypeDefinition() == interfaceInfo.AsType());
             }
 
             return interfaceInfo.IsAssignableFrom(typeInfo);

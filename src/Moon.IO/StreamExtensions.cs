@@ -28,17 +28,10 @@ namespace Moon.IO
         /// Asynchronously reads all bytes from the stream.
         /// </summary>
         /// <param name="input">The input stream.</param>
-        public static Task<byte[]> ReadAllBytesAsync(this Stream input)
-            => input.ReadAllBytesAsync(CancellationToken.None);
-
-        /// <summary>
-        /// Asynchronously reads all bytes from the stream.
-        /// </summary>
-        /// <param name="input">The input stream.</param>
         /// <param name="cancellationToken">
         /// A cancellation token to observe while waiting for the task to complete.
         /// </param>
-        public static async Task<byte[]> ReadAllBytesAsync(this Stream input, CancellationToken cancellationToken)
+        public static async Task<byte[]> ReadAllBytesAsync(this Stream input, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (cancellationToken.IsCancellationRequested)
             {

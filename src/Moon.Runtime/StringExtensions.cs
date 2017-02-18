@@ -48,13 +48,8 @@ namespace Moon
         /// <param name="input">The string to modify.</param>
         public static string RemoveDiacritics(this string input)
         {
-#if NET46
-            var bytes = Encoding.GetEncoding("ISO-8859-8").GetBytes(input);
-            return Encoding.UTF8.GetString(bytes, 0, bytes.Length);
-#else
             var bytes = CodePagesEncodingProvider.Instance.GetEncoding("ISO-8859-8").GetBytes(input);
             return Encoding.UTF8.GetString(bytes, 0, bytes.Length);
-#endif
         }
 
         /// <summary>

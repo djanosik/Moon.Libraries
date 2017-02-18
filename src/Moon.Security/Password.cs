@@ -3,7 +3,7 @@
 namespace Moon.Security
 {
     /// <summary>
-    /// Utility for generating with passwords.
+    /// Utility for generating passwords.
     /// </summary>
     public static class Password
     {

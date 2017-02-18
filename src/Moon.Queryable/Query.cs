@@ -20,6 +20,6 @@ namespace Moon.Queryable
         /// <summary>
         /// Gets the source of elements to query.
         /// </summary>
-        public IQueryable<TSource> Source { get; private set; }
+        public IQueryable<TSource> Source { get; }
     }
 }

@@ -1,18 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\Common.props" />
   <PropertyGroup>
-    <TargetFrameworks>net46;netstandard1.3</TargetFrameworks>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <Description>Extensions for System.Linq, reusable LINQ queries, etc.</Description>
     <PackageTags>moon;linq;queryable</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="**\*.cs" />
-    <EmbeddedResource Include="**\*.resx" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Moon.Contracts\Moon.Contracts.csproj" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
+  <ItemGroup>
     <PackageReference Include="System.Linq.Queryable" Version="4.0.1" />
   </ItemGroup>
 </Project>
