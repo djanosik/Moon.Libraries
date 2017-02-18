@@ -101,22 +101,6 @@ namespace Moon.Collections
         }
 
         /// <summary>
-        /// Performs the specified action for all elements.
-        /// </summary>
-        /// <typeparam name="T">The type of elements of source.</typeparam>
-        /// <param name="source">The <see cref="IEnumerable{T}" /> to iterate through.</param>
-        /// <param name="action">The action to invoke for each item.</param>
-        public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
-        {
-            Requires.NotNull(action, nameof(action));
-
-            foreach (var item in source)
-            {
-                action(item);
-            }
-        }
-
-        /// <summary>
         /// Returns the items in ascending order, with their keys compared using the given <see cref="Comparison{T}" />.
         /// </summary>
         /// <typeparam name="T">The type of elements of source.</typeparam>
