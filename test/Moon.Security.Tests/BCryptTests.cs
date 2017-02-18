@@ -3,15 +3,15 @@ using Xunit;
 
 namespace Moon.Security.Tests
 {
-    public class PasswordHashTests
+    public class BCryptTests
     {
         [Fact]
         public void Hashing()
         {
             const string password = "ePXpPVR3oGSbJ1biQjD2";
 
-            var hash = PasswordHash.Hash(password);
-            var result = PasswordHash.Verify(hash, password);
+            var hash = BCrypt.HashPassword(password);
+            var result = BCrypt.Verify(hash, password);
 
             result.Should().BeTrue();
         }

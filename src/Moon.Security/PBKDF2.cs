@@ -9,21 +9,13 @@ namespace Moon.Security
     /// Utility used to compute and verify password hashes. The hash is computed by using PBKDF2
     /// with HMAC-SHA256, 128-bit salt, 256-bit subkey and 10000 iteration.
     /// </summary>
-    public static class PasswordHash
+    public static class PBKDF2
     {
         private const int saltSize = 128 / 8;
         private const int subkeySize = 256 / 8;
 
-        private static readonly RandomNumberGenerator random;
-
-        /// <summary>
-        /// Initializes the <see cref="PasswordHash" /> class.
-        /// </summary>
-        static PasswordHash()
-        {
-            random = RandomNumberGenerator.Create();
-        }
-
+        private static readonly RandomNumberGenerator random = RandomNumberGenerator.Create();
+        
         /// <summary>
         /// Returns a hashed representation of the supplied <paramref name="password" />.
         /// </summary>
@@ -31,19 +23,19 @@ namespace Moon.Security
         /// <param name="iterationCount">
         /// The number of iterations of the pseudo-random function to apply during the key derivation process.
         /// </param>
-        public static string Hash(string password, int iterationCount = 10000)
+        public static string HashPassword(string password, int iterationCount = 10000)
         {
             Requires.NotNull(password, nameof(password));
 
-            var hash = Hash(password, KeyDerivationPrf.HMACSHA256, iterationCount);
+            var hash = HashPassword(password, KeyDerivationPrf.HMACSHA256, iterationCount);
             return Convert.ToBase64String(hash);
         }
 
         /// <summary>
-        /// Returns a value indicating whether the given hash is valid for the specified password.
+        /// Verifies that the given hash is valid for the specified password.
         /// </summary>
         /// <param name="hash">The hashed representation of password.</param>
-        /// <param name="password">The password supplied for comparison.</param>
+        /// <param name="password">The password to verify.</param>
         public static bool Verify(string hash, string password)
         {
             Requires.NotNull(hash, nameof(hash));
@@ -59,7 +51,7 @@ namespace Moon.Security
             return false;
         }
 
-        private static byte[] Hash(string password, KeyDerivationPrf prf, int iterationCount)
+        private static byte[] HashPassword(string password, KeyDerivationPrf prf, int iterationCount)
         {
             var salt = new byte[saltSize];
             random.GetBytes(salt);
