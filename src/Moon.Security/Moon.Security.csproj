@@ -6,7 +6,7 @@
     <PackageTags>moon;security;cryptography;claims</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Moon.Contracts\Moon.Contracts.csproj" />
+    <ProjectReference Include="..\Moon.Runtime\Moon.Runtime.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="1.0.0" />
