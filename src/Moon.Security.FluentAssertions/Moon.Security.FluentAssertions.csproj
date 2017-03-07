@@ -10,6 +10,6 @@
     <ProjectReference Include="..\Moon.Security\Moon.Security.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="4.17.0" />
+    <PackageReference Include="FluentAssertions" Version="4.15.0" />
   </ItemGroup>
 </Project>
