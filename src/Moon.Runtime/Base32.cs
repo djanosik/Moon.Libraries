@@ -4,7 +4,7 @@ using System.Linq;
 namespace Moon
 {
     /// <summary>
-    /// The utility to deal with Base32 encoding and decoding.
+    /// Utility to encode / decode binary data using Base32 encoding.
     /// </summary>
     public static class Base32
     {

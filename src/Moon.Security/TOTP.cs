@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 namespace Moon.Security
 {
     /// <summary>
-    /// The utility used to generated and verify TOTP codes.
+    /// Utility used to generate and verify TOTP codes.
     /// </summary>
     public static class TOTP
     {

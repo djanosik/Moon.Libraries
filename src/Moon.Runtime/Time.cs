@@ -10,7 +10,7 @@ namespace Moon
         /// <summary>
         /// Gets the Coordinated Universal Time (UTC) zone.
         /// </summary>
-        public static TimeZone UtcZone { get; } = new UtcTimeZone();
+        public static TimeZoneBase UtcZone { get; } = new UtcTimeZone();
 
         /// <summary>
         /// Converts a Coordinated Universal Time (UTC) to the time in a specified time zone.
@@ -21,10 +21,10 @@ namespace Moon
         /// </param>
         /// <returns>
         /// The date and time in the destination time zone. Its <see cref="DateTime.Kind" />
-        /// property is <see cref="DateTimeKind.Utc" /> if destinationTimeZone is UTC; otherwise,
-        /// its <see cref="DateTime.Kind" /> property is <see cref="DateTimeKind.Unspecified" />.
+        /// is <see cref="DateTimeKind.Utc" /> if <paramref name="destTimeZone"/> is UTC; otherwise,
+        /// it's <see cref="DateTime.Kind" /> is <see cref="DateTimeKind.Unspecified" />.
         /// </returns>
-        public static DateTime? FromUtc(DateTime? dateTime, TimeZone destTimeZone)
+        public static DateTime? FromUtc(DateTime? dateTime, TimeZoneBase destTimeZone)
             => dateTime == null ? (DateTime?)null : FromUtc(dateTime.Value, destTimeZone);
 
         /// <summary>
@@ -36,10 +36,10 @@ namespace Moon
         /// </param>
         /// <returns>
         /// The date and time in the destination time zone. Its <see cref="DateTime.Kind" />
-        /// property is <see cref="DateTimeKind.Utc" /> if destinationTimeZone is UTC; otherwise,
-        /// its <see cref="DateTime.Kind" /> property is <see cref="DateTimeKind.Unspecified" />.
+        /// is <see cref="DateTimeKind.Utc" /> if <paramref name="destTimeZone"/> is UTC; otherwise,
+        /// it's <see cref="DateTime.Kind" /> is <see cref="DateTimeKind.Unspecified" />.
         /// </returns>
-        public static DateTime FromUtc(DateTime dateTime, TimeZone destTimeZone)
+        public static DateTime FromUtc(DateTime dateTime, TimeZoneBase destTimeZone)
         {
             Requires.That(dateTime.Kind != DateTimeKind.Local, "dateTime is local date time");
 
@@ -52,10 +52,10 @@ namespace Moon
         /// <param name="dateTime">The Coordinated Universal Time (UTC).</param>
         /// <param name="srcTimeZone">The time zone of the <paramref name="dateTime" />.</param>
         /// <returns>
-        /// The Coordinated Universal Time (UTC) that corresponds to the dateTime parameter. Its
-        /// <see cref="DateTime.Kind" /> property is <see cref="DateTimeKind.Utc" />.
+        /// The Coordinated Universal Time (UTC) that corresponds to the <paramref name="dateTime"/> parameter. 
+        /// Its <see cref="DateTime.Kind" /> is <see cref="DateTimeKind.Utc" />.
         /// </returns>
-        public static DateTime? ToUtc(DateTime? dateTime, TimeZone srcTimeZone)
+        public static DateTime? ToUtc(DateTime? dateTime, TimeZoneBase srcTimeZone)
             => dateTime == null ? (DateTime?)null : ToUtc(dateTime.Value, srcTimeZone);
 
         /// <summary>
@@ -64,10 +64,10 @@ namespace Moon
         /// <param name="dateTime">The Coordinated Universal Time (UTC).</param>
         /// <param name="srcTimeZone">The time zone of the <paramref name="dateTime" />.</param>
         /// <returns>
-        /// The Coordinated Universal Time (UTC) that corresponds to the dateTime parameter. Its
-        /// <see cref="DateTime.Kind" /> property is <see cref="DateTimeKind.Utc" />.
+        /// The Coordinated Universal Time (UTC) that corresponds to the dateTime parameter. 
+        /// Its <see cref="DateTime.Kind" /> is <see cref="DateTimeKind.Utc" />.
         /// </returns>
-        public static DateTime ToUtc(DateTime dateTime, TimeZone srcTimeZone)
+        public static DateTime ToUtc(DateTime dateTime, TimeZoneBase srcTimeZone)
         {
             if (dateTime.Kind != DateTimeKind.Utc)
             {

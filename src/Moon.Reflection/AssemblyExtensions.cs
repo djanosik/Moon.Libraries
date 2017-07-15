@@ -8,7 +8,7 @@ namespace Moon.Reflection
     public static class AssemblyExtensions
     {
         /// <summary>
-        /// Gets the types defined in the assembly.
+        /// Returns the types defined in the assembly.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
         /// <param name="predicate">A function to test each type for a condition.</param>

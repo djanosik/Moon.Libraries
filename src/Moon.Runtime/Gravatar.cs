@@ -4,7 +4,7 @@ using System.Text;
 namespace Moon
 {
     /// <summary>
-    /// An utility for generating Gravatar URLs.
+    /// Utility for generating Gravatar URLs.
     /// </summary>
     public static class Gravatar
     {

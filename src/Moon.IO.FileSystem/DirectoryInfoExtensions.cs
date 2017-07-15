@@ -5,18 +5,6 @@ namespace Moon.IO
     public static class DirectoryInfoExtensions
     {
         /// <summary>
-        /// Copies an existing directory to a new destination, disallowing the overwriting of
-        /// existing files.
-        /// </summary>
-        /// <param name="source">The directory to be copied.</param>
-        /// <param name="destDirName">
-        /// The name and path to which to copy this directory. The destination cannot be another
-        /// disk volume.
-        /// </param>
-        public static void CopyTo(this DirectoryInfo source, string destDirName)
-            => source.CopyTo(destDirName, true);
-
-        /// <summary>
         /// Copies an existing directory to a new destination, allowing the overwriting of existing files.
         /// </summary>
         /// <param name="source">The directory to be copied.</param>
@@ -27,7 +15,7 @@ namespace Moon.IO
         /// <param name="overwriteFiles">
         /// <c>true</c> to allow an existing file to be overwritten; otherwise, <c>false</c>.
         /// </param>
-        public static void CopyTo(this DirectoryInfo source, string destDirName, bool overwriteFiles)
+        public static void CopyTo(this DirectoryInfo source, string destDirName, bool overwriteFiles = false)
         {
             Requires.NotNullOrWhiteSpace(destDirName, nameof(destDirName));
 

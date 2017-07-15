@@ -5,7 +5,7 @@ namespace Moon
     /// <summary>
     /// The Coordinated Universal Time (UTC) zone.
     /// </summary>
-    public sealed class UtcTimeZone : TimeZone
+    public sealed class UtcTimeZone : TimeZoneBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UtcTimeZone" /> class.
@@ -15,17 +15,8 @@ namespace Moon
         {
         }
 
-        /// <summary>
-        /// Converts a Coordinated Universal Time (UTC) to the time in a specified time zone.
-        /// </summary>
-        /// <param name="dateTime">The date and time to convert.</param>
-        /// <param name="destTimeZone">The time zone to convert <paramref name="dateTime" /> to.</param>
-        /// <returns>
-        /// The date and time in the destination time zone. It's <see cref="DateTime.Kind" />
-        /// property is <see cref="DateTimeKind.Utc" /> if destinationTimeZone is UTC; otherwise,
-        /// it's <see cref="DateTime.Kind" /> property is <see cref="DateTimeKind.Unspecified" />.
-        /// </returns>
-        public override DateTime ConvertTime(DateTime dateTime, TimeZone destTimeZone)
+        /// <inheritdoc />
+        public override DateTime ConvertTime(DateTime dateTime, TimeZoneBase destTimeZone)
         {
             Requires.That(dateTime.Kind != DateTimeKind.Local, "dateTime is local date time");
 
@@ -39,9 +30,7 @@ namespace Moon
             return dateTime;
         }
 
-        /// <summary>
-        /// Retrieves the <see cref="TimeZoneInfo.Utc" /> time zone.
-        /// </summary>
+        /// <inheritdoc />
         protected override TimeZoneInfo GetTimeZoneInfo()
             => TimeZoneInfo.Utc;
     }

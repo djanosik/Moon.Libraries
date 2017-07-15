@@ -5,9 +5,9 @@ using System.Linq;
 namespace Moon
 {
     /// <summary>
-    /// The <see cref="TimeZone" /> implementation based on the <see cref="TimeZoneInfo" />.
+    /// The <see cref="TimeZoneBase" /> implementation based on the <see cref="TimeZoneInfo" />.
     /// </summary>
-    public sealed class SystemTimeZone : TimeZone
+    public sealed class SystemTimeZone : TimeZoneBase
     {
         private static readonly Dictionary<string, string> tzidMap = new Dictionary<string, string> {
             ["Etc/GMT+12"] = "Dateline Standard Time",
@@ -457,25 +457,14 @@ namespace Moon
         /// <summary>
         /// Returns an enumeration of all time zones.
         /// </summary>
-        public static IEnumerable<TimeZone> GetTimeZones() 
+        public static IEnumerable<TimeZoneBase> GetTimeZones() 
             => tzidMap.Select(map => new SystemTimeZone(map.Key));
 
-        /// <summary>
-        /// Converts a time from the current time zone to another.
-        /// </summary>
-        /// <param name="dateTime">The date and time to convert.</param>
-        /// <param name="destTimeZone">The time zone to convert <paramref name="dateTime" /> to.</param>
-        /// <returns>
-        /// The date and time in the destination time zone. It's <see cref="DateTime.Kind" />
-        /// property is <see cref="DateTimeKind.Utc" /> if destinationTimeZone is UTC; otherwise,
-        /// it's <see cref="DateTime.Kind" /> property is <see cref="DateTimeKind.Unspecified" />.
-        /// </returns>
-        public override DateTime ConvertTime(DateTime dateTime, TimeZone destTimeZone)
+        /// <inheritdoc />
+        public override DateTime ConvertTime(DateTime dateTime, TimeZoneBase destTimeZone)
             => TimeZoneInfo.ConvertTime(dateTime, Info, destTimeZone.Info);
 
-        /// <summary>
-        /// Retrieves the <see cref="TimeZoneInfo" /> from registry.
-        /// </summary>
+        /// <inheritdoc />
         protected override TimeZoneInfo GetTimeZoneInfo()
             => TimeZoneInfo.FindSystemTimeZoneById(tzidMap[Id]);
     }

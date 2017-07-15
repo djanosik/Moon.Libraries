@@ -21,14 +21,13 @@ using System.Text;
 namespace Moon.Security
 {
     /// <summary>
-    /// The implementation of OpenBSD-style Blowfish password hashing using the scheme described in
+    /// Implementation of OpenBSD-style Blowfish password hashing using the scheme described in
     /// "A Future-Adaptable Password Scheme" by Niels Provos and David Mazieres.
     /// </summary>
     public sealed class BCrypt
     {
         // BCrypt parameters
         private const int bcryptSaltLength = 16;
-
         private const int blowfishNumRounds = 16;
 
         // Initial key schedule
@@ -337,7 +336,6 @@ namespace Moon.Security
 
         // Expanded BF key
         private uint[] expandedP;
-
         private uint[] expandedS;
 
         /// <summary>

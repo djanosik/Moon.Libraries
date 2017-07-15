@@ -3,7 +3,7 @@
 namespace Moon
 {
     /// <summary>
-    /// Helper class for creating <see cref="Lazy{T}" /> instances.
+    /// Utility for creating <see cref="Lazy{T}" /> instances.
     /// </summary>
     public static class Lazy
     {

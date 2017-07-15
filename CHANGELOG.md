@@ -1,5 +1,11 @@
 # Moon.Libraries changelog
 
+3.1.0
+
+- `Anonymous` utility renamed to `AnonymouseObject`.
+- `Task.Then(...)` extension methods renamed to `ContinueWith(...)`.
+- `TimeZone` renamed to `TimeZoneBase`.
+
 3.0.1
 
 - All libraries are targeting .NET Standard.

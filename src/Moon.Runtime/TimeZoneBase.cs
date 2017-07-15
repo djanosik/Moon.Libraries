@@ -5,15 +5,15 @@ namespace Moon
     /// <summary>
     /// The base class for time zones.
     /// </summary>
-    public abstract class TimeZone : IEquatable<TimeZone>, IEquatable<TimeZoneInfo>
+    public abstract class TimeZoneBase : IEquatable<TimeZoneBase>, IEquatable<TimeZoneInfo>
     {
         private readonly Lazy<TimeZoneInfo> info;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TimeZone" /> class.
+        /// Initializes a new instance of the <see cref="TimeZoneBase" /> class.
         /// </summary>
         /// <param name="id">The IANA Time Zone identifier.</param>
-        protected TimeZone(string id)
+        protected TimeZoneBase(string id)
         {
             Id = id;
             info = Lazy.From(GetTimeZoneInfo);
@@ -27,22 +27,25 @@ namespace Moon
         /// <summary>
         /// Gets the <see cref="TimeZoneInfo" /> representing the time zone.
         /// </summary>
-        public TimeZoneInfo Info
-            => info.Value;
+        public TimeZoneInfo Info => info.Value;
 
         /// <summary>
         /// Returns whether the specified time zone is equal to the current one.
         /// </summary>
         /// <param name="other">The other time zone.</param>
-        public bool Equals(TimeZone other)
-            => Info.Equals(other.Info);
+        public bool Equals(TimeZoneBase other)
+        {
+            return Info.Equals(other.Info);
+        }
 
         /// <summary>
         /// Returns whether the specified time zone is equal to the current one.
         /// </summary>
         /// <param name="other">The other time zone.</param>
         public bool Equals(TimeZoneInfo other)
-            => Info.Equals(other);
+        {
+            return Info.Equals(other);
+        }
 
         /// <summary>
         /// Converts a time from the current time zone to another.
@@ -50,11 +53,11 @@ namespace Moon
         /// <param name="dateTime">The date and time to convert.</param>
         /// <param name="destTimeZone">The time zone to convert <paramref name="dateTime" /> to.</param>
         /// <returns>
-        /// The date and time in the destination time zone. It's <see cref="DateTime.Kind" />
-        /// property is <see cref="DateTimeKind.Utc" /> if destinationTimeZone is UTC; otherwise,
-        /// it's <see cref="DateTime.Kind" /> property is <see cref="DateTimeKind.Unspecified" />.
+        /// The date and time in the destination time zone. Its <see cref="DateTime.Kind" />
+        /// is <see cref="DateTimeKind.Utc" /> if <paramref name="destTimeZone"/> is UTC; otherwise,
+        /// it's <see cref="DateTime.Kind" /> is <see cref="DateTimeKind.Unspecified" />.
         /// </returns>
-        public abstract DateTime ConvertTime(DateTime dateTime, TimeZone destTimeZone);
+        public abstract DateTime ConvertTime(DateTime dateTime, TimeZoneBase destTimeZone);
 
         /// <summary>
         /// Returns whether the specified time zone is equal to the current one.
@@ -62,7 +65,7 @@ namespace Moon
         /// <param name="obj">The other time zone.</param>
         public override bool Equals(object obj)
         {
-            if (obj is TimeZone timeZone)
+            if (obj is TimeZoneBase timeZone)
             {
                 return Equals(timeZone);
             }

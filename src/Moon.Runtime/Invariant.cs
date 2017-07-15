@@ -3,8 +3,8 @@
 namespace Moon
 {
     /// <summary>
-    /// Provides convenient methods for quickly parsing values from strings rendered in the
-    /// invariant culture.
+    /// Provides convenient methods for quickly parsing values from strings 
+    /// rendered in the invariant culture.
     /// </summary>
     public static class Invariant
     {

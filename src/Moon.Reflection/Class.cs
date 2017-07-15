@@ -15,13 +15,6 @@ namespace Moon.Reflection
         /// Creates an instance of the specified type.
         /// </summary>
         /// <typeparam name="TResult">The <see cref="Type" /> of the result.</typeparam>
-        public static TResult Activate<TResult>() where TResult : class, new()
-            => (TResult)Activate(typeof(TResult));
-
-        /// <summary>
-        /// Creates an instance of the specified type.
-        /// </summary>
-        /// <typeparam name="TResult">The <see cref="Type" /> of the result.</typeparam>
         /// <param name="args">An array of constructor arguments.</param>
         public static TResult Activate<TResult>(params object[] args) where TResult : class
             => (TResult)Activate(typeof(TResult), args);
@@ -32,7 +25,7 @@ namespace Moon.Reflection
         /// <typeparam name="TResult">The <see cref="Type" /> of the result.</typeparam>
         /// <param name="type">The <see cref="Type" /> to create an instance of.</param>
         /// <param name="args">An array of constructor arguments.</param>
-        public static TResult Activate<TResult>(Type type, params object[] args)
+        public static TResult Activate<TResult>(Type type, params object[] args) where TResult : class
         {
             Requires.AssignableTo<TResult>(type, nameof(type));
 

@@ -5,9 +5,9 @@ using System.Reflection;
 namespace Moon.Reflection
 {
     /// <summary>
-    /// Utilities for dealing with objects.
+    /// Utility for dealing with anonymous objects.
     /// </summary>
-    public static class Anonymous
+    public static class AnonymousObject
     {
         /// <summary>
         /// Converts the anonymous object into the dictionary.
