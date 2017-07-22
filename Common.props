@@ -3,7 +3,7 @@
     <Company>Dušan Janošík</Company>
     <Copyright>Copyright © 2016 Dušan Janošík</Copyright>
     <Product>Moon.Libraries</Product>
-    <PackageIconUrl>https://djanosik.gitlab.io/moon.png</PackageIconUrl>
-    <PackageProjectUrl>https://gitlab.com/djanosik/moon-libraries</PackageProjectUrl>
+    <PackageIconUrl>https://djanosik.github.io/moon.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/djanosik/Moon.Libraries</PackageProjectUrl>
   </PropertyGroup>
 </Project>
