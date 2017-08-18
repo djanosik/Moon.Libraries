@@ -6,7 +6,11 @@ task Clean {
     del * -Include bin, obj -Recurse -Force
 }
 
-task BuildSolution Clean, {
+task RestoreDependencies Clean, {
+   exec { dotnet restore /p:Version=$version }
+}
+
+task BuildSolution RestoreDependencies, {
     dir *.sln | %{
         exec { dotnet build $_.FullName -c Release /p:Version=$version }
     }
